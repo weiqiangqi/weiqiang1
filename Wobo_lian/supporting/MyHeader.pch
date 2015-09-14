@@ -1,0 +1,21 @@
+//
+//  MyHeader.pch
+//  Wobo_lian
+//
+//  Created by lanou3g on 15/9/11.
+//  Copyright (c) 2015年 齐伟强. All rights reserved.
+//
+
+#ifndef Wobo_lian_MyHeader_pch
+#define Wobo_lian_MyHeader_pch
+
+#define kAppKey @"2312333036"
+#define kRedirectURI @"https://api.weibo.com/oauth2/default.html"
+
+ #import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+#import "WeiboSDK.h"
+
+
+#endif
