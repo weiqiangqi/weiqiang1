@@ -1,0 +1,14 @@
+//
+//  WQMusicPlayer.pch
+//  WQMusicPlayer
+//
+//  Created by lanou3g on 15/9/14.
+//  Copyright (c) 2015年 齐伟强. All rights reserved.
+//
+
+#ifndef WQMusicPlayer_WQMusicPlayer_pch
+#define WQMusicPlayer_WQMusicPlayer_pch
+
+#import "Url.h"
+
+#endif
