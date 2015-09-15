@@ -21,7 +21,7 @@
         });
     return  manager;
 }
-
+//括号里面是类型void (^)()
 - (void)requestAllMusicWithFinish:(void (^)())result{
     //进入子线程进行数据请求,数据解析
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
@@ -34,7 +34,7 @@
         }
         //数据请求解析完成之后到主线程去执行block
             dispatch_async(dispatch_get_main_queue(), ^{
-        
+        //这个是调用block
         result();
     });
     });
