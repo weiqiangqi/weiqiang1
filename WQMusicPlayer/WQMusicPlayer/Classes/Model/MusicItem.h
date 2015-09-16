@@ -28,4 +28,7 @@
 @property(nonatomic,strong)NSString * duration;
 //
 @property(nonatomic,strong)NSString * artists_name;
+//歌词
+@property(nonatomic,strong)NSString * lyric;
+
 @end

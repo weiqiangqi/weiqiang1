@@ -37,6 +37,8 @@
 		C20D285B1BA6A4B00054A337 /* WQMusicPlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C20D285A1BA6A4B00054A337 /* WQMusicPlayerTests.m */; };
 		C26D554E1BA846ED00B0C596 /* PlayingController.m in Sources */ = {isa = PBXBuildFile; fileRef = C26D554D1BA846ED00B0C596 /* PlayingController.m */; };
 		C2874D321BA8F6530045B429 /* AudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C2874D311BA8F6530045B429 /* AudioPlayer.m */; };
+		C2874D381BA98E650045B429 /* LyricModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2874D371BA98E650045B429 /* LyricModel.m */; };
+		C2874D3B1BA9903C0045B429 /* LyricHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = C2874D3A1BA9903C0045B429 /* LyricHelp.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +112,10 @@
 		C26D554D1BA846ED00B0C596 /* PlayingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingController.m; sourceTree = "<group>"; };
 		C2874D301BA8F6530045B429 /* AudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayer.h; sourceTree = "<group>"; };
 		C2874D311BA8F6530045B429 /* AudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayer.m; sourceTree = "<group>"; };
+		C2874D361BA98E650045B429 /* LyricModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LyricModel.h; sourceTree = "<group>"; };
+		C2874D371BA98E650045B429 /* LyricModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LyricModel.m; sourceTree = "<group>"; };
+		C2874D391BA9903C0045B429 /* LyricHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LyricHelp.h; sourceTree = "<group>"; };
+		C2874D3A1BA9903C0045B429 /* LyricHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LyricHelp.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +190,8 @@
 				C203CB871BA6CE4900C9427F /* MusicHelp.m */,
 				C2874D301BA8F6530045B429 /* AudioPlayer.h */,
 				C2874D311BA8F6530045B429 /* AudioPlayer.m */,
+				C2874D391BA9903C0045B429 /* LyricHelp.h */,
+				C2874D3A1BA9903C0045B429 /* LyricHelp.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -201,6 +209,8 @@
 			children = (
 				C203CB891BA6D25600C9427F /* MusicItem.h */,
 				C203CB8A1BA6D25600C9427F /* MusicItem.m */,
+				C2874D361BA98E650045B429 /* LyricModel.h */,
+				C2874D371BA98E650045B429 /* LyricModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -468,6 +478,7 @@
 			files = (
 				C203CB6B1BA6B50900C9427F /* AppDelegate.m in Sources */,
 				C203CBB51BA6E6E700C9427F /* SDWebImageManager.m in Sources */,
+				C2874D3B1BA9903C0045B429 /* LyricHelp.m in Sources */,
 				C203CBB01BA6E6E700C9427F /* SDImageCache.m in Sources */,
 				C203CBB41BA6E6E700C9427F /* SDWebImageDownloaderOperation.m in Sources */,
 				C203CBBD1BA6E6E700C9427F /* UIView+WebCacheOperation.m in Sources */,
@@ -490,6 +501,7 @@
 				C203CBB91BA6E6E700C9427F /* UIImage+MultiFormat.m in Sources */,
 				C203CBBB1BA6E6E700C9427F /* UIImageView+HighlightedWebCache.m in Sources */,
 				C203CBB81BA6E6E700C9427F /* UIImage+GIF.m in Sources */,
+				C2874D381BA98E650045B429 /* LyricModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

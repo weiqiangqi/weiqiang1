@@ -12,11 +12,17 @@
 #import "MusicHelp.h"
 #import "MusicItem.h"
 #import "AudioPlayer.h"
-@interface PlayingController ()<AudioPlayerDelegate>
+#import "LyricHelp.h"
+#import "LyricModel.h"
+@interface PlayingController ()<AudioPlayerDelegate,UITableViewDataSource>
 
 @property(nonatomic,strong)MusicItem * currentModel;
 
 @property(nonatomic,assign)NSInteger currentIndex;
+
+@property (weak, nonatomic) IBOutlet UITableView *lyricTableView;
+
+
 
 @end
 
@@ -62,7 +68,9 @@
    
     [self.slider4Playing addTarget:self action:@selector(timeSliderAction:) forControlEvents:UIControlEventValueChanged];
     
+    [self.lyricTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellID"];
     
+        
     // Do any additional setup after loading the view.
 }
 
@@ -86,6 +94,11 @@
     [self upUI];
     [[AudioPlayer sharePlayer] setPrepareMusicWithURL:self.currentModel.mp3Url];
    [AudioPlayer sharePlayer].delegate = self;
+    
+    [[LyricHelp shareLyric]initWithLyricString:self.currentModel.lyric];
+    //在开始播放后去重新去加载数据
+    [self.lyricTableView reloadData];
+    
 }
 
 #pragma mark --私有的方法--
@@ -143,7 +156,6 @@
 
 #pragma mark --AudioPlayerDelegate
 - (void)audioPlayerPlayingWith:(AudioPlayer *)audiopPlayer Progress:(float)progress{
-    NSLog(@"%f",progress);
     self.img4Picture.transform = CGAffineTransformRotate(self.img4Picture.transform, M_PI /80);
     //更新时间
     //已经播放时间
@@ -157,9 +169,11 @@
     self.label4PlayedTime.textAlignment = NSTextAlignmentRight;
     self.label4LastrTime.text = [NSString stringWithFormat:@"%d:%d",minit2,second2];
     //更新进度条
-    
     self.slider4Playing.value = progress;
+    //确定歌曲的行
+    NSIndexPath * index = [NSIndexPath indexPathForRow:[[LyricHelp shareLyric] getIndexWithTime:progress]inSection:0];
     
+    [self.lyricTableView selectRowAtIndexPath:index animated:YES scrollPosition:UITableViewScrollPositionBottom];
     
     
 }
@@ -169,6 +183,21 @@
     [self button4NextAction:nil];
 }
 
+#pragma mark ---UITableViewDataSource---
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+ 
+    return [LyricHelp shareLyric].lyricArray.count;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cellID"];
+ 
+    LyricModel * lyricModel = [LyricHelp shareLyric].lyricArray[indexPath.row];
+    cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    cell.textLabel.text = lyricModel.lyricStr;
+    cell.backgroundColor = [UIColor colorWithRed:0.891 green:1.000 blue:0.778 alpha:1.000];
+    
+    return cell;
+}
 
 
 #pragma mark --lazy load--
