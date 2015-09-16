@@ -9,9 +9,14 @@
 #import "MusiclListController.h"
 #import "MusiclItemCell.h"
 #import "MusicHelp.h"
+#import "PlayingController.h"
 
 
 @interface MusiclListController ()
+
+@property(nonatomic,strong)PlayingController * playingVC;
+
+
 
 @end
 
@@ -30,12 +35,8 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    
-    
-   
-   
-    
 }
+
 
 #pragma mark - Table view data source
 
@@ -46,10 +47,9 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
-   
     return [MusicHelp shareMusicHelp].mutArray.count;
 }
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 90;
@@ -62,6 +62,24 @@
     cell.model = [[MusicHelp shareMusicHelp]itemWithIndex:indexPath.row];
     return cell;
 }
+
+//点击cell会触发的方法
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    self.playingVC.index = indexPath.row;
+    
+    [self showDetailViewController:self.playingVC sender:nil];
+    
+}
+
+#pragma mark --lazy load--
+- (PlayingController *)playingVC{
+    if (_playingVC == nil) {
+        _playingVC = [PlayingController sharePlayingController];
+    }
+    return _playingVC;
+}
+
 
 
 /*

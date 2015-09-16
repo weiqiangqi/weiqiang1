@@ -35,6 +35,8 @@
 		C20D284C1BA6A4B00054A337 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C20D284B1BA6A4B00054A337 /* Images.xcassets */; };
 		C20D284F1BA6A4B00054A337 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C20D284D1BA6A4B00054A337 /* LaunchScreen.xib */; };
 		C20D285B1BA6A4B00054A337 /* WQMusicPlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C20D285A1BA6A4B00054A337 /* WQMusicPlayerTests.m */; };
+		C26D554E1BA846ED00B0C596 /* PlayingController.m in Sources */ = {isa = PBXBuildFile; fileRef = C26D554D1BA846ED00B0C596 /* PlayingController.m */; };
+		C2874D321BA8F6530045B429 /* AudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C2874D311BA8F6530045B429 /* AudioPlayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,10 +54,10 @@
 		C203CB6A1BA6B50900C9427F /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C203CB721BA6B83A00C9427F /* MusiclListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusiclListController.h; sourceTree = "<group>"; };
 		C203CB731BA6B83A00C9427F /* MusiclListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusiclListController.m; sourceTree = "<group>"; };
-		C203CB751BA6BEF100C9427F /* MusiclItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MusiclItemCell.h; path = Cells/MusiclItemCell.h; sourceTree = "<group>"; };
-		C203CB761BA6BEF100C9427F /* MusiclItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MusiclItemCell.m; path = Cells/MusiclItemCell.m; sourceTree = "<group>"; };
-		C203CB771BA6BEF100C9427F /* MusiclItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MusiclItemCell.xib; path = Cells/MusiclItemCell.xib; sourceTree = "<group>"; };
-		C203CB7F1BA6C3A800C9427F /* b.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = b.jpeg; sourceTree = "<group>"; };
+		C203CB751BA6BEF100C9427F /* MusiclItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusiclItemCell.h; sourceTree = "<group>"; };
+		C203CB761BA6BEF100C9427F /* MusiclItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusiclItemCell.m; sourceTree = "<group>"; };
+		C203CB771BA6BEF100C9427F /* MusiclItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MusiclItemCell.xib; sourceTree = "<group>"; };
+		C203CB7F1BA6C3A800C9427F /* b.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = b.jpeg; path = ../b.jpeg; sourceTree = "<group>"; };
 		C203CB811BA6C46900C9427F /* Url.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Url.h; sourceTree = "<group>"; };
 		C203CB821BA6C98700C9427F /* WQMusicPlayer.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WQMusicPlayer.pch; sourceTree = "<group>"; };
 		C203CB861BA6CE4900C9427F /* MusicHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicHelp.h; sourceTree = "<group>"; };
@@ -104,6 +106,10 @@
 		C20D28541BA6A4B00054A337 /* WQMusicPlayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WQMusicPlayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C20D28591BA6A4B00054A337 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C20D285A1BA6A4B00054A337 /* WQMusicPlayerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WQMusicPlayerTests.m; sourceTree = "<group>"; };
+		C26D554C1BA846ED00B0C596 /* PlayingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingController.h; sourceTree = "<group>"; };
+		C26D554D1BA846ED00B0C596 /* PlayingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingController.m; sourceTree = "<group>"; };
+		C2874D301BA8F6530045B429 /* AudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayer.h; sourceTree = "<group>"; };
+		C2874D311BA8F6530045B429 /* AudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,10 +172,6 @@
 		C203CB5D1BA6B23F00C9427F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C203CB751BA6BEF100C9427F /* MusiclItemCell.h */,
-				C203CB761BA6BEF100C9427F /* MusiclItemCell.m */,
-				C203CB771BA6BEF100C9427F /* MusiclItemCell.xib */,
-				C203CB7F1BA6C3A800C9427F /* b.jpeg */,
 				C203CB6C1BA6B69600C9427F /* Cells */,
 			);
 			path = Views;
@@ -180,6 +182,8 @@
 			children = (
 				C203CB861BA6CE4900C9427F /* MusicHelp.h */,
 				C203CB871BA6CE4900C9427F /* MusicHelp.m */,
+				C2874D301BA8F6530045B429 /* AudioPlayer.h */,
+				C2874D311BA8F6530045B429 /* AudioPlayer.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -229,6 +233,8 @@
 			children = (
 				C203CB721BA6B83A00C9427F /* MusiclListController.h */,
 				C203CB731BA6B83A00C9427F /* MusiclListController.m */,
+				C26D554C1BA846ED00B0C596 /* PlayingController.h */,
+				C26D554D1BA846ED00B0C596 /* PlayingController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -253,6 +259,10 @@
 		C203CB6C1BA6B69600C9427F /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				C203CB751BA6BEF100C9427F /* MusiclItemCell.h */,
+				C203CB761BA6BEF100C9427F /* MusiclItemCell.m */,
+				C203CB771BA6BEF100C9427F /* MusiclItemCell.xib */,
+				C203CB7F1BA6C3A800C9427F /* b.jpeg */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -461,7 +471,9 @@
 				C203CBB01BA6E6E700C9427F /* SDImageCache.m in Sources */,
 				C203CBB41BA6E6E700C9427F /* SDWebImageDownloaderOperation.m in Sources */,
 				C203CBBD1BA6E6E700C9427F /* UIView+WebCacheOperation.m in Sources */,
+				C26D554E1BA846ED00B0C596 /* PlayingController.m in Sources */,
 				C203CB8B1BA6D25600C9427F /* MusicItem.m in Sources */,
+				C2874D321BA8F6530045B429 /* AudioPlayer.m in Sources */,
 				C203CBB71BA6E6E700C9427F /* UIButton+WebCache.m in Sources */,
 				C203CBAF1BA6E6E700C9427F /* NSData+ImageContentType.m in Sources */,
 				C203CBB61BA6E6E700C9427F /* SDWebImagePrefetcher.m in Sources */,
