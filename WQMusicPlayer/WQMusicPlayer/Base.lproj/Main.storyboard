@@ -36,7 +36,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eEe-DV-35r">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <items>
                                     <navigationItem id="BrG-q1-bZM">
                                         <barButtonItem key="leftBarButtonItem" title="返回" id="DXg-2D-TBM">
@@ -48,7 +48,7 @@
                                 </items>
                             </navigationBar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Snl-UD-5Jm">
-                                <rect key="frame" x="0.0" y="44" width="600" height="250"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="250"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bHE-TF-5Fc">
                                         <rect key="frame" x="0.0" y="0.0" width="1200" height="250"/>
@@ -100,7 +100,7 @@
                                 </constraints>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eYw-am-9SW">
-                                <rect key="frame" x="0.0" y="294" width="600" height="306"/>
+                                <rect key="frame" x="0.0" y="314" width="600" height="286"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3hW-SB-YJf">
                                         <rect key="frame" x="261" y="119" width="78" height="46"/>
@@ -194,7 +194,7 @@
                             <constraint firstItem="eYw-am-9SW" firstAttribute="leading" secondItem="ayM-tb-urS" secondAttribute="leading" id="QhW-XU-iDF"/>
                             <constraint firstAttribute="trailing" secondItem="eYw-am-9SW" secondAttribute="trailing" id="UGF-Xh-uH0"/>
                             <constraint firstItem="LLu-U8-ntW" firstAttribute="top" secondItem="5R3-St-feo" secondAttribute="bottom" constant="39" id="WHd-NS-Eey"/>
-                            <constraint firstItem="eEe-DV-35r" firstAttribute="top" secondItem="ayM-tb-urS" secondAttribute="top" id="c45-PM-JnH"/>
+                            <constraint firstItem="eEe-DV-35r" firstAttribute="top" secondItem="ayM-tb-urS" secondAttribute="top" constant="20" id="c45-PM-JnH"/>
                             <constraint firstAttribute="trailing" secondItem="Snl-UD-5Jm" secondAttribute="trailing" id="c9j-0r-G65"/>
                             <constraint firstItem="Snl-UD-5Jm" firstAttribute="leading" secondItem="ayM-tb-urS" secondAttribute="leading" id="eKU-3x-xS8"/>
                             <constraint firstItem="Snl-UD-5Jm" firstAttribute="top" secondItem="eEe-DV-35r" secondAttribute="bottom" id="eTQ-vs-pct"/>
@@ -205,9 +205,9 @@
                     </view>
                     <connections>
                         <outlet property="img4Picture" destination="gmx-OG-m2a" id="S3D-1g-iXy"/>
-                        <outlet property="label4LastTime" destination="eYw-am-9SW" id="C2Z-uk-tzR"/>
+                        <outlet property="label4LastrTime" destination="ql4-GG-mZ7" id="sQp-Ci-56Y"/>
                         <outlet property="label4PlayedTime" destination="tVz-Dg-NkK" id="F9b-mw-ryF"/>
-                        <outlet property="slider4Playing" destination="eYw-am-9SW" id="gj0-Tn-ZBc"/>
+                        <outlet property="slider4Playing" destination="LLu-U8-ntW" id="wxJ-Rn-HpI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gBm-8W-r0a" userLabel="First Responder" sceneMemberID="firstResponder"/>

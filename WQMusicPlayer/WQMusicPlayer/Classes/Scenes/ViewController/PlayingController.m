@@ -12,7 +12,7 @@
 #import "MusicHelp.h"
 #import "MusicItem.h"
 #import "AudioPlayer.h"
-@interface PlayingController ()
+@interface PlayingController ()<AudioPlayerDelegate>
 
 @property(nonatomic,strong)MusicItem * currentModel;
 
@@ -48,6 +48,7 @@
     if(_index == _currentIndex){
         return ;
     }
+    
     _currentIndex = _index;
     [self startPlay];
 }
@@ -58,6 +59,9 @@
    
     self.img4Picture.layer.cornerRadius = 100;
     self.img4Picture.layer.masksToBounds = YES;
+   
+    [self.slider4Playing addTarget:self action:@selector(timeSliderAction:) forControlEvents:UIControlEventValueChanged];
+    
     
     // Do any additional setup after loading the view.
 }
@@ -81,7 +85,7 @@
 - (void)startPlay{
     [self upUI];
     [[AudioPlayer sharePlayer] setPrepareMusicWithURL:self.currentModel.mp3Url];
-  
+   [AudioPlayer sharePlayer].delegate = self;
 }
 
 #pragma mark --私有的方法--
@@ -90,8 +94,18 @@
     self.img4Picture.transform = CGAffineTransformMakeRotation(0);
     
     [self.img4Picture sd_setImageWithURL:[NSURL URLWithString:self.currentModel.picUrl]];
+    //更新进度条的最大值
+    self.slider4Playing.maximumValue = [self.currentModel.duration floatValue]/ 1000;
+}
+
+//滑动滑条拖动时间
+- (void)timeSliderAction:(UISlider*)sender{
+    
+    [[AudioPlayer sharePlayer]seekToTime:sender.value];
     
 }
+
+
 
 - (IBAction)button4NextAction:(UIButton *)sender {
     _currentIndex ++;
@@ -111,14 +125,48 @@
         _currentIndex = [MusicHelp shareMusicHelp].mutArray.count - 1;
     }
     [self startPlay];
+}
+//暂停播放按钮
+- (IBAction)buttont4StartAndPause:(UIButton *)sender {
+    UIButton * btm = sender;
+    if ([AudioPlayer sharePlayer].isPlaying) {
+        [[AudioPlayer sharePlayer]pause];
+        [btm setTitle:@"播放" forState:UIControlStateNormal];
+        
+    }else{
+        [[AudioPlayer sharePlayer]play];
+         [btm setTitle:@"暂停" forState:UIControlStateNormal];
+    }
+    
     
 }
 
-- (IBAction)buttont4StartAndPause:(UIButton *)sender {
-    UIButton * btm = sender;
+#pragma mark --AudioPlayerDelegate
+- (void)audioPlayerPlayingWith:(AudioPlayer *)audiopPlayer Progress:(float)progress{
+    NSLog(@"%f",progress);
+    self.img4Picture.transform = CGAffineTransformRotate(self.img4Picture.transform, M_PI /80);
+    //更新时间
+    //已经播放时间
+    int minute = (int)progress / 60;
+    int seconds = (int)progress % 60 ;
+    float last = [_currentModel.duration floatValue] / 1000 - progress;
+    //剩余时间
+    int minit2 = (int)last / 60 ;
+    int second2 = (int)last % 60;
+    self.label4PlayedTime.text = [NSString stringWithFormat:@"%d:%d",minute,seconds];
+    self.label4PlayedTime.textAlignment = NSTextAlignmentRight;
+    self.label4LastrTime.text = [NSString stringWithFormat:@"%d:%d",minit2,second2];
+    //更新进度条
+    
+    self.slider4Playing.value = progress;
     
     
     
+}
+
+- (void)audioPlayerDidfinishItem:(AudioPlayer *)audioPlayer{
+    
+    [self button4NextAction:nil];
 }
 
 

@@ -9,7 +9,19 @@
 #import <Foundation/Foundation.h>
 @class AudioPlayer;
 
+@protocol AudioPlayerDelegate <NSObject>
+//在播放中每秒都执行的事件
+- (void)audioPlayerPlayingWith:(AudioPlayer *)audiopPlayer Progress:(float)progress;
+//当一首歌播放完执行的方法
+- (void)audioPlayerDidfinishItem:(AudioPlayer *)audioPlayer;
+
+@end
+
 @interface AudioPlayer : NSObject
+
+@property(nonatomic,assign)id<AudioPlayerDelegate>  delegate;
+
+@property(nonatomic,assign)BOOL isPlaying;
 
 + (AudioPlayer*)sharePlayer;
 

@@ -13,9 +13,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *img4Picture;
 @property (weak, nonatomic) IBOutlet UILabel *label4PlayedTime;
 
-@property (weak, nonatomic) IBOutlet UIView *label4LastTime;
+@property (weak, nonatomic) IBOutlet UILabel *label4LastrTime;
 
-@property (weak, nonatomic) IBOutlet UIView *slider4Playing;
+@property (weak, nonatomic) IBOutlet UISlider *slider4Playing;
 
 
 
@@ -28,7 +28,7 @@
 
 
 
-//自己写的单例方法
+//自己写的方法
 @property(nonatomic,assign)NSInteger  index;
 
 + (PlayingController *)sharePlayingController;
