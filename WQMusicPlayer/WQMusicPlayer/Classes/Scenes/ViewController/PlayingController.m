@@ -14,7 +14,9 @@
 #import "AudioPlayer.h"
 #import "LyricHelp.h"
 #import "LyricModel.h"
-@interface PlayingController ()<AudioPlayerDelegate,UITableViewDataSource>
+@interface PlayingController ()<AudioPlayerDelegate,UITableViewDataSource,UIScrollViewDelegate>
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
 
 @property(nonatomic,strong)MusicItem * currentModel;
 
@@ -69,6 +71,12 @@
     [self.slider4Playing addTarget:self action:@selector(timeSliderAction:) forControlEvents:UIControlEventValueChanged];
     
     [self.lyricTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellID"];
+    self.scrollView.pagingEnabled = YES;
+    self.scrollView.bounces = NO;
+    self.scrollView.showsHorizontalScrollIndicator = NO;
+    
+    
+    
     
         
     // Do any additional setup after loading the view.
