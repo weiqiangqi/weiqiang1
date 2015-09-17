@@ -80,6 +80,15 @@
     return _playingVC;
 }
 
+//播放歌曲按钮
+
+- (IBAction)showDetaiViewController:(UIBarButtonItem *)sender {
+    
+    [self showDetailViewController:self.playingVC sender:nil];
+    
+}
+
+
 
 
 /*

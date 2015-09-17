@@ -45,10 +45,6 @@
         [self.mutArray addObject:lyModel];
     }
 
-    
-    
-    
-
 //    for (int i = 0; i < itemArray.count; i ++) {
 //     NSArray * tempArray =   [itemArray[i] componentsSeparatedByString:@"]"];
 //        if ([tempArray.firstObject length] < 1) {

@@ -24,6 +24,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *lyricTableView;
 
+@property (weak, nonatomic) IBOutlet UIImageView *imgView4blurPic;
 
 
 @end
@@ -75,10 +76,6 @@
     self.scrollView.bounces = NO;
     self.scrollView.showsHorizontalScrollIndicator = NO;
     
-    
-    
-    
-        
     // Do any additional setup after loading the view.
 }
 
@@ -112,9 +109,11 @@
 #pragma mark --私有的方法--
 - (void)upUI{
    //如果换歌的话,就让图片重新归位
-    self.img4Picture.transform = CGAffineTransformMakeRotation(0);
+ self.img4Picture.transform = CGAffineTransformMakeRotation(0);
+    [self.imgView4blurPic sd_setImageWithURL:[NSURL URLWithString:self.currentModel.blurPicUrl] placeholderImage:[UIImage imageNamed:@"b.jpeg"]];
+        [self.img4Picture sd_setImageWithURL:[NSURL URLWithString:self.currentModel.picUrl] placeholderImage:[UIImage imageNamed:@"b.jpeg"]];
     
-    [self.img4Picture sd_setImageWithURL:[NSURL URLWithString:self.currentModel.picUrl]];
+//    [self.img4Picture sd_setImageWithURL:[NSURL URLWithString:self.currentModel.picUrl]];
     //更新进度条的最大值
     self.slider4Playing.maximumValue = [self.currentModel.duration floatValue]/ 1000;
 }
@@ -164,6 +163,8 @@
 
 #pragma mark --AudioPlayerDelegate
 - (void)audioPlayerPlayingWith:(AudioPlayer *)audiopPlayer Progress:(float)progress{
+   
+    
     self.img4Picture.transform = CGAffineTransformRotate(self.img4Picture.transform, M_PI /80);
     //更新时间
     //已经播放时间
@@ -181,7 +182,7 @@
     //确定歌曲的行
     NSIndexPath * index = [NSIndexPath indexPathForRow:[[LyricHelp shareLyric] getIndexWithTime:progress]inSection:0];
     
-    [self.lyricTableView selectRowAtIndexPath:index animated:YES scrollPosition:UITableViewScrollPositionBottom];
+    [self.lyricTableView selectRowAtIndexPath:index animated:YES scrollPosition:UITableViewScrollPositionMiddle];
     
     
 }
@@ -208,11 +209,15 @@
 }
 
 
+
+
+
+
 #pragma mark --lazy load--
 - (MusicItem *)currentModel{
+    _index = _currentIndex;
+    _currentModel = [MusicHelp shareMusicHelp].mutArray[_currentIndex];
     
-         _currentModel = [MusicHelp shareMusicHelp].mutArray[_currentIndex];
-
     return _currentModel;
 }
 
