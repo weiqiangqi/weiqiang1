@@ -62,7 +62,6 @@
     cell.model = [[MusicHelp shareMusicHelp]itemWithIndex:indexPath.row];
     return cell;
 }
-
 //点击cell会触发的方法
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     

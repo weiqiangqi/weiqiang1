@@ -110,8 +110,8 @@
 - (void)upUI{
    //如果换歌的话,就让图片重新归位
  self.img4Picture.transform = CGAffineTransformMakeRotation(0);
-    [self.imgView4blurPic sd_setImageWithURL:[NSURL URLWithString:self.currentModel.blurPicUrl] placeholderImage:[UIImage imageNamed:@"b.jpeg"]];
-        [self.img4Picture sd_setImageWithURL:[NSURL URLWithString:self.currentModel.picUrl] placeholderImage:[UIImage imageNamed:@"b.jpeg"]];
+    [self.imgView4blurPic sd_setImageWithURL:[NSURL URLWithString:self.currentModel.blurPicUrl] placeholderImage:[UIImage imageNamed:@"2.png"]];
+        [self.img4Picture sd_setImageWithURL:[NSURL URLWithString:self.currentModel.picUrl] placeholderImage:[UIImage imageNamed:@"2.png"]];
     
 //    [self.img4Picture sd_setImageWithURL:[NSURL URLWithString:self.currentModel.picUrl]];
     //更新进度条的最大值

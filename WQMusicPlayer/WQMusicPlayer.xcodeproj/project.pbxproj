@@ -35,6 +35,7 @@
 		C20D284C1BA6A4B00054A337 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C20D284B1BA6A4B00054A337 /* Images.xcassets */; };
 		C20D284F1BA6A4B00054A337 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C20D284D1BA6A4B00054A337 /* LaunchScreen.xib */; };
 		C20D285B1BA6A4B00054A337 /* WQMusicPlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C20D285A1BA6A4B00054A337 /* WQMusicPlayerTests.m */; };
+		C22C172E1BAA5FA200E8640E /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = C22C172D1BAA5FA200E8640E /* 2.png */; };
 		C26D554E1BA846ED00B0C596 /* PlayingController.m in Sources */ = {isa = PBXBuildFile; fileRef = C26D554D1BA846ED00B0C596 /* PlayingController.m */; };
 		C2874D321BA8F6530045B429 /* AudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C2874D311BA8F6530045B429 /* AudioPlayer.m */; };
 		C2874D381BA98E650045B429 /* LyricModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2874D371BA98E650045B429 /* LyricModel.m */; };
@@ -108,6 +109,7 @@
 		C20D28541BA6A4B00054A337 /* WQMusicPlayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WQMusicPlayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C20D28591BA6A4B00054A337 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C20D285A1BA6A4B00054A337 /* WQMusicPlayerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WQMusicPlayerTests.m; sourceTree = "<group>"; };
+		C22C172D1BAA5FA200E8640E /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		C26D554C1BA846ED00B0C596 /* PlayingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingController.h; sourceTree = "<group>"; };
 		C26D554D1BA846ED00B0C596 /* PlayingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingController.m; sourceTree = "<group>"; };
 		C2874D301BA8F6530045B429 /* AudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayer.h; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				C203CB731BA6B83A00C9427F /* MusiclListController.m */,
 				C26D554C1BA846ED00B0C596 /* PlayingController.h */,
 				C26D554D1BA846ED00B0C596 /* PlayingController.m */,
+				C22C172D1BAA5FA200E8640E /* 2.png */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C22C172E1BAA5FA200E8640E /* 2.png in Resources */,
 				C203CB801BA6C3A800C9427F /* b.jpeg in Resources */,
 				C20D284A1BA6A4B00054A337 /* Main.storyboard in Resources */,
 				C20D284F1BA6A4B00054A337 /* LaunchScreen.xib in Resources */,
