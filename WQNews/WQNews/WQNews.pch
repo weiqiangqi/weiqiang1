@@ -1,0 +1,22 @@
+//
+//  WQNews.pch
+//  WQNews
+//
+//  Created by lanou3g on 15/9/21.
+//  Copyright (c) 2015年 齐伟强. All rights reserved.
+//
+
+#ifndef WQNews_WQNews_pch
+#define WQNews_WQNews_pch
+
+
+#define kScreenWidth [UIScreen mainScreen].bounds.size.width
+#define kScreenHeight [UIScreen mainScreen].bounds.size.height
+
+#define kAllURL @"http://api.sina.cn/sinago/navlistv3.json?modifytime=0&uid=f4e8fd0c674b1f09&from=6048195012&wm=b207&oldchwm=12030_0001&chwm=12030_0001&imei=864502025497611"
+
+
+
+
+
+#endif
