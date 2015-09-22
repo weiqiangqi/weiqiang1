@@ -28,10 +28,11 @@
     dispatch_once(&onceToken, ^{
         helper = [NewsListHelper new];
     });
+    
     return helper;
 }
 
-- (void)getAllURL{
+- (void)getAllURL:(void(^)())resultBlock{
     
    AFHTTPRequestOperationManager * myManager = [AFHTTPRequestOperationManager manager];
     
@@ -40,10 +41,11 @@
         
        NSDictionary * dict =  result[@"data"];
         NSDictionary * listDict = dict[@"forced_sub"];
+        
         NSDictionary * groupDict = dict[@"groups"];
         NSDictionary * hdpicDict1 = groupDict[@"hdpic2"];
         NSArray * hdpicArray1 = hdpicDict1[@"list"];
-    
+
         NSDictionary * videoDict = groupDict[@"video2"];
         NSArray * VLArray = videoDict[@"list"];
         
@@ -64,10 +66,13 @@
             [newsItem setValuesForKeysWithDictionary:VLDict];
             [self.mutVideoArray addObject:newsItem];
         }
+       
+        resultBlock();
     } failure:^void(AFHTTPRequestOperation * operation, NSError * error) {
         NSLog(@"出错了,错误是:%@",error);
     }];
     
+ 
 }
 
 #pragma mark --lazy load----

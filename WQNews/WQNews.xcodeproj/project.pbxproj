@@ -10,7 +10,6 @@
 		4643B002980E3B53216E3B25 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CDEB74FBAB3F49CBF7C894D /* libPods.a */; };
 		C26498421BAF8A0500C89B78 /* NewsListHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C26498411BAF8A0500C89B78 /* NewsListHelper.m */; };
 		C26498451BAF8A2900C89B78 /* NewsListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C26498441BAF8A2900C89B78 /* NewsListItem.m */; };
-		C264985C1BB03CE900C89B78 /* ScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = C264985B1BB03CE900C89B78 /* ScrollView.m */; };
 		C29B91FB1BAD98A2000364A5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C29B91FA1BAD98A2000364A5 /* main.m */; };
 		C29B91FE1BAD98A2000364A5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C29B91FD1BAD98A2000364A5 /* AppDelegate.m */; };
 		C29B92011BAD98A2000364A5 /* WQNews.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C29B91FF1BAD98A2000364A5 /* WQNews.xcdatamodeld */; };
@@ -21,6 +20,10 @@
 		C29B922E1BAD9CC8000364A5 /* PictureController.m in Sources */ = {isa = PBXBuildFile; fileRef = C29B922D1BAD9CC8000364A5 /* PictureController.m */; };
 		C29B92311BAD9CD9000364A5 /* VideoController.m in Sources */ = {isa = PBXBuildFile; fileRef = C29B92301BAD9CD9000364A5 /* VideoController.m */; };
 		C29B92341BAD9CE7000364A5 /* MyController.m in Sources */ = {isa = PBXBuildFile; fileRef = C29B92331BAD9CE7000364A5 /* MyController.m */; };
+		C2DEC15C1BB1434B008C7155 /* IanScrollImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DEC1581BB1434B008C7155 /* IanScrollImageView.m */; };
+		C2DEC15D1BB1434B008C7155 /* IanScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DEC15A1BB1434B008C7155 /* IanScrollView.m */; };
+		C2DEC15E1BB1434B008C7155 /* IanScrollViewDefault@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2DEC15B1BB1434B008C7155 /* IanScrollViewDefault@2x.png */; };
+		C2DEC1611BB15266008C7155 /* TouTiaoNews.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DEC1601BB15266008C7155 /* TouTiaoNews.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,8 +45,6 @@
 		C26498431BAF8A2900C89B78 /* NewsListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsListItem.h; sourceTree = "<group>"; };
 		C26498441BAF8A2900C89B78 /* NewsListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsListItem.m; sourceTree = "<group>"; };
 		C26498461BAFDFA900C89B78 /* WQNews.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WQNews.pch; sourceTree = "<group>"; };
-		C264985A1BB03CE900C89B78 /* ScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollView.h; sourceTree = "<group>"; };
-		C264985B1BB03CE900C89B78 /* ScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollView.m; sourceTree = "<group>"; };
 		C29B91F51BAD98A2000364A5 /* WQNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WQNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C29B91F91BAD98A2000364A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C29B91FA1BAD98A2000364A5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -63,6 +64,13 @@
 		C29B92301BAD9CD9000364A5 /* VideoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoController.m; sourceTree = "<group>"; };
 		C29B92321BAD9CE7000364A5 /* MyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyController.h; sourceTree = "<group>"; };
 		C29B92331BAD9CE7000364A5 /* MyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyController.m; sourceTree = "<group>"; };
+		C2DEC1571BB1434B008C7155 /* IanScrollImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IanScrollImageView.h; sourceTree = "<group>"; };
+		C2DEC1581BB1434B008C7155 /* IanScrollImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IanScrollImageView.m; sourceTree = "<group>"; };
+		C2DEC1591BB1434B008C7155 /* IanScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IanScrollView.h; sourceTree = "<group>"; };
+		C2DEC15A1BB1434B008C7155 /* IanScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IanScrollView.m; sourceTree = "<group>"; };
+		C2DEC15B1BB1434B008C7155 /* IanScrollViewDefault@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IanScrollViewDefault@2x.png"; sourceTree = "<group>"; };
+		C2DEC15F1BB15266008C7155 /* TouTiaoNews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouTiaoNews.h; sourceTree = "<group>"; };
+		C2DEC1601BB15266008C7155 /* TouTiaoNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouTiaoNews.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,8 +211,6 @@
 		C29B921F1BAD9AB9000364A5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				C264985A1BB03CE900C89B78 /* ScrollView.h */,
-				C264985B1BB03CE900C89B78 /* ScrollView.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -238,6 +244,8 @@
 			children = (
 				C26498431BAF8A2900C89B78 /* NewsListItem.h */,
 				C26498441BAF8A2900C89B78 /* NewsListItem.m */,
+				C2DEC15F1BB15266008C7155 /* TouTiaoNews.h */,
+				C2DEC1601BB15266008C7155 /* TouTiaoNews.m */,
 			);
 			path = Macro;
 			sourceTree = "<group>";
@@ -245,6 +253,7 @@
 		C29B92241BAD9AB9000364A5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C2DEC1561BB1434B008C7155 /* IanScrollViewLib */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -285,6 +294,18 @@
 			children = (
 			);
 			path = Vendors;
+			sourceTree = "<group>";
+		};
+		C2DEC1561BB1434B008C7155 /* IanScrollViewLib */ = {
+			isa = PBXGroup;
+			children = (
+				C2DEC1571BB1434B008C7155 /* IanScrollImageView.h */,
+				C2DEC1581BB1434B008C7155 /* IanScrollImageView.m */,
+				C2DEC1591BB1434B008C7155 /* IanScrollView.h */,
+				C2DEC15A1BB1434B008C7155 /* IanScrollView.m */,
+				C2DEC15B1BB1434B008C7155 /* IanScrollViewDefault@2x.png */,
+			);
+			path = IanScrollViewLib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -371,6 +392,7 @@
 			files = (
 				C29B92061BAD98A2000364A5 /* LaunchScreen.xib in Resources */,
 				C29B92031BAD98A2000364A5 /* Images.xcassets in Resources */,
+				C2DEC15E1BB1434B008C7155 /* IanScrollViewDefault@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,7 +443,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2DEC15C1BB1434B008C7155 /* IanScrollImageView.m in Sources */,
 				C26498451BAF8A2900C89B78 /* NewsListItem.m in Sources */,
+				C2DEC1611BB15266008C7155 /* TouTiaoNews.m in Sources */,
 				C29B922B1BAD9BA0000364A5 /* NewsListController.m in Sources */,
 				C29B92011BAD98A2000364A5 /* WQNews.xcdatamodeld in Sources */,
 				C29B922E1BAD9CC8000364A5 /* PictureController.m in Sources */,
@@ -430,7 +454,7 @@
 				C29B92341BAD9CE7000364A5 /* MyController.m in Sources */,
 				C29B91FE1BAD98A2000364A5 /* AppDelegate.m in Sources */,
 				C29B91FB1BAD98A2000364A5 /* main.m in Sources */,
-				C264985C1BB03CE900C89B78 /* ScrollView.m in Sources */,
+				C2DEC15D1BB1434B008C7155 /* IanScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

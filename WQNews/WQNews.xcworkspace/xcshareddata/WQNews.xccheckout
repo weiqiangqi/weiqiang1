@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A796AED0-94D2-43CD-9C04-FEAF2BC82AC3</string>
+	<key>IDESourceControlProjectName</key>
+	<string>WQNews</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>837B487ACB5F0636B11AABE18AD8D26330B1E60B</key>
+		<string>https://github.com/weiqiangqi/weiqiang1.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>WQNews/WQNews.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>837B487ACB5F0636B11AABE18AD8D26330B1E60B</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/weiqiangqi/weiqiang1.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>837B487ACB5F0636B11AABE18AD8D26330B1E60B</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>837B487ACB5F0636B11AABE18AD8D26330B1E60B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>weiqiang1</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -1,28 +1,25 @@
 //
-//  NewsListItem.m
+//  TouTiaoNews.m
 //  WQNews
 //
-//  Created by lanou3g on 15/9/21.
+//  Created by lanou3g on 15/9/22.
 //  Copyright (c) 2015年 齐伟强. All rights reserved.
 //
 
-#import "NewsListItem.h"
+#import "TouTiaoNews.h"
 
-@implementation NewsListItem
+@implementation TouTiaoNews
 
-
-//KVC
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key{
     if ([key isEqualToString:@"id"]) {
         _ID = value;
     }
-    NSLog(@"异常的key:%@",_ID);
+    NSLog(@"异常的key:%@",key);
 }
 
-//打印
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"%@", _name];
+    return [NSString stringWithFormat:@"%@", _title];
 }
 
 

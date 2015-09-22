@@ -8,8 +8,17 @@
 
 #import "NewsListController.h"
 #import "NewsListHelper.h"
+#import "IanScrollView.h"
+#import "AFNetworking.h"
+#import "NewsListItem.h"
+#import "TouTiaoNews.h"
 
-@interface NewsListController ()<UIScrollViewDelegate>
+
+@interface NewsListController ()
+//头条信息数组
+@property(nonatomic,strong)NSMutableArray * mutArray;
+@property(nonatomic,strong)NSMutableArray * LBMutArray;
+
 
 @end
 
@@ -19,8 +28,7 @@
 {
     self = [super init];
     if (self) {
-        
-       
+    
         self.title = @"新闻";
         
     }
@@ -31,14 +39,59 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
      [self drawButton];
-    [[NewsListHelper shareNewsListHerlper]getAllURL];
     
     
+    [[NewsListHelper shareNewsListHerlper]getAllURL:^{
+        //解析数据
+        NSArray * newsArray = [NewsListHelper shareNewsListHerlper].newsAray;
+        NewsListItem * toutiaoItem = newsArray[0];
+
+        NSString * toutiaoUrl = toutiaoItem.url;
+        AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
+        [manager GET:toutiaoUrl parameters:nil success:^void(AFHTTPRequestOperation * task, id result) {
+            NSDictionary * dataDict = result[@"data"];
+            NSArray * TTListArray = dataDict[@"list"];
+            //将数据转化成model类型保存到数组
+            for (NSDictionary * dict in TTListArray) {
+                TouTiaoNews * newsItem = [TouTiaoNews new];
+                [newsItem setValuesForKeysWithDictionary:dict];
+                [self.mutArray addObject:newsItem];
+            }
+            
+            [self drawScrollView];
+        } failure:^void(AFHTTPRequestOperation * operation, NSError * error) {
+            NSLog(@"错误是:%@",error);
+        }];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (void)drawScrollView{
+    IanScrollView * scrollView = [[IanScrollView alloc]initWithFrame:CGRectMake(0, 64, kScreenWidth, 150)];
+    NSMutableArray * LmutArray = [[NSMutableArray alloc]initWithCapacity:20];
+    //取去轮播图数组
+    for (TouTiaoNews * news in self.mutArray) {
+        
+        if ([news.category isEqualToString:@"hdpic"]) {
+            [self.LBMutArray addObject:news];
+        }
+        
+    }
+    for (TouTiaoNews * newsItem in self.LBMutArray) {
+        
+        [LmutArray addObject:newsItem.kpic];
+    }
+    scrollView.slideImagesArray = LmutArray;
+    
+    
+    
+    [scrollView startLoading];
+    [self.view addSubview:scrollView];
 }
 
 
@@ -105,8 +158,23 @@
 }
 
 
+#pragma mark --lazy load--
+- (NSMutableArray *)mutArray{
+    if (_mutArray == nil) {
+        _mutArray = [NSMutableArray array];
+    }
+    return _mutArray;
+}
 
-
+//轮播图数组
+- (NSMutableArray *)LBMutArray
+{
+    
+    if (_LBMutArray == nil) {
+        _LBMutArray = [NSMutableArray array];
+    }
+    return _LBMutArray;
+}
 
 
 
