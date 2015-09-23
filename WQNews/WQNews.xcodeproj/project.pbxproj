@@ -32,6 +32,8 @@
 		C2F91BA81BB284DD0053C73D /* picture.png in Resources */ = {isa = PBXBuildFile; fileRef = C2F91BA41BB284DD0053C73D /* picture.png */; };
 		C2F91BA91BB284DD0053C73D /* video.png in Resources */ = {isa = PBXBuildFile; fileRef = C2F91BA51BB284DD0053C73D /* video.png */; };
 		C2F91BAB1BB2862B0053C73D /* my.png in Resources */ = {isa = PBXBuildFile; fileRef = C2F91BAA1BB2862B0053C73D /* my.png */; };
+		C2F91BAF1BB298C60053C73D /* SubjectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F91BAD1BB298C60053C73D /* SubjectCell.m */; };
+		C2F91BB01BB298C60053C73D /* SubjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2F91BAE1BB298C60053C73D /* SubjectCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,9 @@
 		C2F91BA41BB284DD0053C73D /* picture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = picture.png; path = ../picture.png; sourceTree = "<group>"; };
 		C2F91BA51BB284DD0053C73D /* video.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = video.png; path = ../video.png; sourceTree = "<group>"; };
 		C2F91BAA1BB2862B0053C73D /* my.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = my.png; path = ../my.png; sourceTree = "<group>"; };
+		C2F91BAC1BB298C60053C73D /* SubjectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubjectCell.h; sourceTree = "<group>"; };
+		C2F91BAD1BB298C60053C73D /* SubjectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectCell.m; sourceTree = "<group>"; };
+		C2F91BAE1BB298C60053C73D /* SubjectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubjectCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,6 +248,9 @@
 		C29B92211BAD9AB9000364A5 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				C2F91BAC1BB298C60053C73D /* SubjectCell.h */,
+				C2F91BAD1BB298C60053C73D /* SubjectCell.m */,
+				C2F91BAE1BB298C60053C73D /* SubjectCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -430,6 +438,7 @@
 				C2F91BA91BB284DD0053C73D /* video.png in Resources */,
 				C2F91BAB1BB2862B0053C73D /* my.png in Resources */,
 				C2F91B9F1BB25B550053C73D /* back.png in Resources */,
+				C2F91BB01BB298C60053C73D /* SubjectCell.xib in Resources */,
 				C2F91BA11BB25B550053C73D /* star.png in Resources */,
 				C2DEC15E1BB1434B008C7155 /* IanScrollViewDefault@2x.png in Resources */,
 				C2F91BA01BB25B550053C73D /* mind.png in Resources */,
@@ -492,6 +501,7 @@
 				C29B922E1BAD9CC8000364A5 /* PictureController.m in Sources */,
 				C29B92311BAD9CD9000364A5 /* VideoController.m in Sources */,
 				C26498421BAF8A0500C89B78 /* NewsListHelper.m in Sources */,
+				C2F91BAF1BB298C60053C73D /* SubjectCell.m in Sources */,
 				C29B92341BAD9CE7000364A5 /* MyController.m in Sources */,
 				C29B91FE1BAD98A2000364A5 /* AppDelegate.m in Sources */,
 				C2F91B9A1BB24BF90053C73D /* LBViewController.m in Sources */,

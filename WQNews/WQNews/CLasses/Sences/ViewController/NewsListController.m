@@ -13,23 +13,27 @@
 #import "NewsListItem.h"
 #import "TouTiaoNews.h"
 #import "LBViewController.h"
+#import "SubjectCell.h"
 
 
 @interface NewsListController ()<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
 //头条信息数组
 @property(nonatomic,strong)NSMutableArray * mutArray;
+//轮播图信息
 @property(nonatomic,strong)NSMutableArray * LBMutArray;
-
+//存储cell的数组
+@property(nonatomic,strong)NSMutableArray * cellMutArray;
 
 @end
 
 @implementation NewsListController
+static  NSString * subjectCell = @"subjectCell";
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-    
+  
         self.title = @"新闻";
         self.tabBarItem.image = [UIImage imageNamed:@"news"];
     }
@@ -40,9 +44,9 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
      [self drawButton];
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellID"];
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
+//    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellID"];
+//    self.tableView.delegate = self;
+//    self.tableView.dataSource = self;
     
     
     //实现block
@@ -64,7 +68,6 @@
                 [self.mutArray addObject:newsItem];
             }
             [self drawmainScrollView];
-            [self drawScrollView];
             [self drawTableView];
             
         } failure:^void(AFHTTPRequestOperation * operation, NSError * error) {
@@ -101,16 +104,14 @@
         [self presentViewController:LBItem animated:YES completion:nil];
         
     };
-    
-    
     [scrollView startLoading];
-    [self.mainSccrollView addSubview:scrollView];
+    self.tableView.tableHeaderView = scrollView;
 }
 
 - (void)drawmainScrollView
 {
     self.mainSccrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight - 110)];
-    self.mainSccrollView.contentSize = CGSizeMake(kScreenWidth * 4, self.mainSccrollView.frame.size.height * 5);
+    self.mainSccrollView.contentSize = CGSizeMake(kScreenWidth * 4, self.mainSccrollView.frame.size.height);
     self.mainSccrollView.backgroundColor = [UIColor greenColor];
     _mainSccrollView.pagingEnabled = YES;
     self.mainSccrollView.showsHorizontalScrollIndicator = NO;
@@ -125,14 +126,39 @@
     
 }
 #pragma mark --- 绘制主界面tableView-----
+
 - (void)drawTableView
 {
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 180, kScreenWidth, kScreenHeight - 290) style:UITableViewStylePlain];
-    
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth , kScreenHeight -108 ) style:UITableViewStylePlain];
     [self.mainSccrollView addSubview:self.tableView];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    //解析数组
+//    for (TouTiaoNews * cellNews in self.mutArray) {
+//        self.cellMutArray = self.mutArray;
+//        [self.cellMutArray removeObjectsInArray:self.LBMutArray];
+//        if ([cellNews.category isEqualToString:@"ad"] || [cellNews.category isEqualToString:@"url"] || [cellNews.category isEqualToString:@"sponsor"] ) {
+//            
+//            [self.cellMutArray addObject:cellNews];
+//            NSLog(@"%ld",self.cellMutArray.count);
+//        }
+//
+//    }
     
+    
+    
+    
+    
+    //注册自定义cell
+    [self.tableView registerNib:[UINib nibWithNibName:@"SubjectCell" bundle:nil] forCellReuseIdentifier:subjectCell];
+    
+    
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellID"];
+    [self drawScrollView];
     
 }
+
+
 //tableView的分区数
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
@@ -141,17 +167,19 @@
 //TableView的行数
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 10;
+    return 100;
 }
 //设置cell
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cellID" forIndexPath:indexPath];
+    SubjectCell * cell = [tableView dequeueReusableCellWithIdentifier:subjectCell forIndexPath:indexPath];
     
-    cell.textLabel.text = @"测试一下";
     return cell;
     
 }
-
+//设置cell的高度
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 80;
+}
 
 
 #pragma  mark ---绘制主界面------
@@ -233,7 +261,13 @@
     }
     return _LBMutArray;
 }
-
+//cell数组
+- (NSMutableArray *)cellMutArray{
+    if (_cellMutArray == nil) {
+        _cellMutArray = [[NSMutableArray alloc]initWithCapacity:10];
+    }
+    return _cellMutArray;
+}
 
 
 
