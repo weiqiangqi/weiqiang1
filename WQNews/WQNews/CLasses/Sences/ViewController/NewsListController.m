@@ -134,16 +134,15 @@ static  NSString * subjectCell = @"subjectCell";
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     //解析数组
-//    for (TouTiaoNews * cellNews in self.mutArray) {
-//        self.cellMutArray = self.mutArray;
-//        [self.cellMutArray removeObjectsInArray:self.LBMutArray];
-//        if ([cellNews.category isEqualToString:@"ad"] || [cellNews.category isEqualToString:@"url"] || [cellNews.category isEqualToString:@"sponsor"] ) {
-//            
-//            [self.cellMutArray addObject:cellNews];
-//            NSLog(@"%ld",self.cellMutArray.count);
-//        }
-//
-//    }
+    for (TouTiaoNews * cellNews in self.mutArray) {
+        self.cellMutArray = [self.mutArray mutableCopy];
+    
+        if ([cellNews.category isEqualToString:@"ad"] || [cellNews.category isEqualToString:@"url"] || [cellNews.category isEqualToString:@"sponsor"] ) {
+            
+            [self.cellMutArray removeObject:cellNews];
+            NSLog(@"%ld",self.cellMutArray.count);
+        }
+    }
     
     
     
@@ -167,14 +166,12 @@ static  NSString * subjectCell = @"subjectCell";
 //TableView的行数
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 100;
+    return self.cellMutArray.count;
 }
 //设置cell
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     SubjectCell * cell = [tableView dequeueReusableCellWithIdentifier:subjectCell forIndexPath:indexPath];
-    
     return cell;
-    
 }
 //设置cell的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
