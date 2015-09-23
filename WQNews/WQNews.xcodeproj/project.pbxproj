@@ -34,6 +34,8 @@
 		C2F91BAB1BB2862B0053C73D /* my.png in Resources */ = {isa = PBXBuildFile; fileRef = C2F91BAA1BB2862B0053C73D /* my.png */; };
 		C2F91BAF1BB298C60053C73D /* SubjectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F91BAD1BB298C60053C73D /* SubjectCell.m */; };
 		C2F91BB01BB298C60053C73D /* SubjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2F91BAE1BB298C60053C73D /* SubjectCell.xib */; };
+		C2F91BB41BB2D3190053C73D /* VIdeoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F91BB21BB2D3190053C73D /* VIdeoCell.m */; };
+		C2F91BB51BB2D3190053C73D /* VIdeoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2F91BB31BB2D3190053C73D /* VIdeoCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +95,9 @@
 		C2F91BAC1BB298C60053C73D /* SubjectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubjectCell.h; sourceTree = "<group>"; };
 		C2F91BAD1BB298C60053C73D /* SubjectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectCell.m; sourceTree = "<group>"; };
 		C2F91BAE1BB298C60053C73D /* SubjectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubjectCell.xib; sourceTree = "<group>"; };
+		C2F91BB11BB2D3190053C73D /* VIdeoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VIdeoCell.h; sourceTree = "<group>"; };
+		C2F91BB21BB2D3190053C73D /* VIdeoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VIdeoCell.m; sourceTree = "<group>"; };
+		C2F91BB31BB2D3190053C73D /* VIdeoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VIdeoCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +256,9 @@
 				C2F91BAC1BB298C60053C73D /* SubjectCell.h */,
 				C2F91BAD1BB298C60053C73D /* SubjectCell.m */,
 				C2F91BAE1BB298C60053C73D /* SubjectCell.xib */,
+				C2F91BB11BB2D3190053C73D /* VIdeoCell.h */,
+				C2F91BB21BB2D3190053C73D /* VIdeoCell.m */,
+				C2F91BB31BB2D3190053C73D /* VIdeoCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -441,6 +449,7 @@
 				C2F91BB01BB298C60053C73D /* SubjectCell.xib in Resources */,
 				C2F91BA11BB25B550053C73D /* star.png in Resources */,
 				C2DEC15E1BB1434B008C7155 /* IanScrollViewDefault@2x.png in Resources */,
+				C2F91BB51BB2D3190053C73D /* VIdeoCell.xib in Resources */,
 				C2F91BA01BB25B550053C73D /* mind.png in Resources */,
 				C2F91BA81BB284DD0053C73D /* picture.png in Resources */,
 			);
@@ -505,6 +514,7 @@
 				C29B92341BAD9CE7000364A5 /* MyController.m in Sources */,
 				C29B91FE1BAD98A2000364A5 /* AppDelegate.m in Sources */,
 				C2F91B9A1BB24BF90053C73D /* LBViewController.m in Sources */,
+				C2F91BB41BB2D3190053C73D /* VIdeoCell.m in Sources */,
 				C29B91FB1BAD98A2000364A5 /* main.m in Sources */,
 				C2DEC15D1BB1434B008C7155 /* IanScrollView.m in Sources */,
 			);

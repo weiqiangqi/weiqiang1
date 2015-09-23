@@ -1,5 +1,5 @@
 //
-//  SubjectCell.h
+//  VIdeoCell.h
 //  WQNews
 //
 //  Created by lanou3g on 15/9/23.
@@ -9,16 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "TouTiaoNews.h"
 
-@interface SubjectCell : UITableViewCell
-
-@property (weak, nonatomic) IBOutlet UIImageView *imgView4image;
+@interface VIdeoCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *imgView4Video;
 @property (weak, nonatomic) IBOutlet UILabel *lable4Title;
-
 @property (weak, nonatomic) IBOutlet UILabel *lable4intro;
-@property (weak, nonatomic) IBOutlet UILabel *lable4comment;
-@property (weak, nonatomic) IBOutlet UILabel *lable4category;
 
+@property (weak, nonatomic) IBOutlet UILabel *lable4comment;
+
+//赋值方法
 - (void)setCellWithToutiaoNewsItem:(TouTiaoNews *)newsItem;
+
 
 
 

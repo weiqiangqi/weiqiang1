@@ -14,6 +14,7 @@
 #import "TouTiaoNews.h"
 #import "LBViewController.h"
 #import "SubjectCell.h"
+#import "VIdeoCell.h"
 
 
 @interface NewsListController ()<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
@@ -28,7 +29,7 @@
 
 @implementation NewsListController
 static  NSString * subjectCell = @"subjectCell";
-
+static  NSString * videoCell = @"videoCell";
 - (instancetype)init
 {
     self = [super init];
@@ -88,8 +89,8 @@ static  NSString * subjectCell = @"subjectCell";
     NSMutableArray * LmutArray = [[NSMutableArray alloc]initWithCapacity:20];
     //取轮播图数组
     for (TouTiaoNews * news in self.mutArray) {
-        
-        if (news.is_focus && [news.category isEqualToString:@"hdpic"]) {
+        //FIXME: 网络提供的数据有问题
+        if (news.is_focus && ([news.category isEqualToString:@"hdpic"] || [news.category isEqualToString:@"plan"])) {
             [self.LBMutArray addObject:news];
             [LmutArray addObject:news.kpic];
         }
@@ -134,23 +135,20 @@ static  NSString * subjectCell = @"subjectCell";
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     //解析数组
-    for (TouTiaoNews * cellNews in self.mutArray) {
-        self.cellMutArray = [self.mutArray mutableCopy];
-    
-        if ([cellNews.category isEqualToString:@"ad"] || [cellNews.category isEqualToString:@"url"] || [cellNews.category isEqualToString:@"sponsor"] ) {
+    for (TouTiaoNews  * CellNews in self.mutArray) {
+        if ([CellNews.category isEqualToString:@"subject"] || [CellNews.category isEqualToString:@"video"] || [CellNews.category isEqualToString:@"cms"] || ([CellNews.category isEqualToString:@"hdpic"] &&  (!(CellNews.is_focus))) ) {
             
-            [self.cellMutArray removeObject:cellNews];
-            NSLog(@"%ld",self.cellMutArray.count);
+            [self.cellMutArray addObject:CellNews];
         }
+        NSLog(@"%ld",self.cellMutArray.count);
     }
     
-    
-    
-    
+
+
     
     //注册自定义cell
     [self.tableView registerNib:[UINib nibWithNibName:@"SubjectCell" bundle:nil] forCellReuseIdentifier:subjectCell];
-    
+    [self.tableView registerNib:[UINib nibWithNibName:@"VIdeoCell" bundle:nil] forCellReuseIdentifier:videoCell];
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellID"];
     [self drawScrollView];
@@ -170,9 +168,21 @@ static  NSString * subjectCell = @"subjectCell";
 }
 //设置cell
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    SubjectCell * cell = [tableView dequeueReusableCellWithIdentifier:subjectCell forIndexPath:indexPath];
+    TouTiaoNews * CellNews = self.cellMutArray[indexPath.row];
+    if ([CellNews.category isEqualToString:@"subject" ]) {
+         SubjectCell * cell = [tableView dequeueReusableCellWithIdentifier:subjectCell forIndexPath:indexPath];
+        [cell setCellWithToutiaoNewsItem:CellNews];
+        cell.lable4category.text = @"专题";
+        return cell;
+    }else if ([CellNews.category isEqualToString:@"video"]){
+        VIdeoCell * cell = [tableView dequeueReusableCellWithIdentifier:videoCell forIndexPath:indexPath];
+        [cell setCellWithToutiaoNewsItem:CellNews];
+        return cell;
+    }
+   SubjectCell * cell = [tableView dequeueReusableCellWithIdentifier:subjectCell forIndexPath:indexPath];
     return cell;
 }
+
 //设置cell的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 80;
