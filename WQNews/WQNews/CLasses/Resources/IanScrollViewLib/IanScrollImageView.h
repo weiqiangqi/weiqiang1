@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-
 @interface IanScrollImageView : UIImageView
 @property (nonatomic, assign) id target;
 @property (nonatomic, assign) SEL action;

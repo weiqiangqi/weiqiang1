@@ -20,7 +20,7 @@
     if (self) {
         
         self.title = @"图片";
-        
+        self.tabBarItem.image = [UIImage imageNamed:@"picture"];
     }
     return self;
 }

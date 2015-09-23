@@ -31,7 +31,7 @@
     if (self) {
     
         self.title = @"新闻";
-        
+        self.tabBarItem.image = [UIImage imageNamed:@"news"];
     }
     return self;
 }
@@ -97,10 +97,9 @@
     scrollView.ianEcrollViewSelectAction = ^(NSInteger i){
         LBViewController * LBItem =[LBViewController new];
         LBItem.LBnews = self.LBMutArray[i];
+        LBItem.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         [self presentViewController:LBItem animated:YES completion:nil];
         
-        
-        NSLog(@"这是%ld",i);
     };
     
     
@@ -129,10 +128,6 @@
 - (void)drawTableView
 {
     self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 180, kScreenWidth, kScreenHeight - 290) style:UITableViewStylePlain];
-    
-   
-
-    
     
     [self.mainSccrollView addSubview:self.tableView];
     

@@ -19,8 +19,8 @@
     self = [super init];
     if (self) {
         
-        self.title = @"新闻";
-        
+        self.title = @"视频";
+        self.tabBarItem.image = [UIImage imageNamed:@"video"];
     }
     return self;
 }
