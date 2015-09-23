@@ -12,9 +12,10 @@
 #import "AFNetworking.h"
 #import "NewsListItem.h"
 #import "TouTiaoNews.h"
+#import "LBViewController.h"
 
 
-@interface NewsListController ()
+@interface NewsListController ()<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
 //头条信息数组
 @property(nonatomic,strong)NSMutableArray * mutArray;
 @property(nonatomic,strong)NSMutableArray * LBMutArray;
@@ -39,6 +40,10 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
      [self drawButton];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellID"];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
     
     //实现block
     [[NewsListHelper shareNewsListHerlper]getAllURL:^{
@@ -58,7 +63,10 @@
                 [newsItem setValuesForKeysWithDictionary:dict];
                 [self.mutArray addObject:newsItem];
             }
+            [self drawmainScrollView];
             [self drawScrollView];
+            [self drawTableView];
+            
         } failure:^void(AFHTTPRequestOperation * operation, NSError * error) {
             NSLog(@"错误是:%@",error);
         }];
@@ -70,27 +78,83 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+#pragma mark --绘制ScrollView----
 - (void)drawScrollView{
-    IanScrollView * scrollView = [[IanScrollView alloc]initWithFrame:CGRectMake(0, 60, kScreenWidth , 150)];
+    
+    IanScrollView * scrollView = [[IanScrollView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth , 188)];
     NSMutableArray * LmutArray = [[NSMutableArray alloc]initWithCapacity:20];
-    //取去轮播图数组
-    for (int i = 0; i < 4; i ++) {
-        TouTiaoNews * news = self.mutArray[i];
-        [self.LBMutArray addObject:news];
-        [LmutArray addObject:news.kpic];
+    //取轮播图数组
+    for (TouTiaoNews * news in self.mutArray) {
+        
+        if (news.is_focus && [news.category isEqualToString:@"hdpic"]) {
+            [self.LBMutArray addObject:news];
+            [LmutArray addObject:news.kpic];
+        }
     }
        scrollView.slideImagesArray = LmutArray;
     scrollView.withoutAutoScroll = YES;
-    //点击到的方法
+    //点击转到详细轮播
     scrollView.ianEcrollViewSelectAction = ^(NSInteger i){
+        LBViewController * LBItem =[LBViewController new];
+        LBItem.LBnews = self.LBMutArray[i];
+        [self presentViewController:LBItem animated:YES completion:nil];
         
-        NSLog(@"这是点击事件");
+        
+        NSLog(@"这是%ld",i);
     };
     
     
     [scrollView startLoading];
-    [self.view addSubview:scrollView];
+    [self.mainSccrollView addSubview:scrollView];
+}
+
+- (void)drawmainScrollView
+{
+    self.mainSccrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight - 110)];
+    self.mainSccrollView.contentSize = CGSizeMake(kScreenWidth * 4, self.mainSccrollView.frame.size.height * 5);
+    self.mainSccrollView.backgroundColor = [UIColor greenColor];
+    _mainSccrollView.pagingEnabled = YES;
+    self.mainSccrollView.showsHorizontalScrollIndicator = NO;
+    self.mainSccrollView.showsVerticalScrollIndicator = YES;
+    //这里有问题
+    //FIXME:
+    self.mainSccrollView.bounces = NO;
+    self.mainSccrollView.alwaysBounceHorizontal = NO;
+    self.mainSccrollView.alwaysBounceVertical = NO;
+    
+    [self.view addSubview:self.mainSccrollView];
+    
+}
+#pragma mark --- 绘制主界面tableView-----
+- (void)drawTableView
+{
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 180, kScreenWidth, kScreenHeight - 290) style:UITableViewStylePlain];
+    
+   
+
+    
+    
+    [self.mainSccrollView addSubview:self.tableView];
+    
+    
+}
+//tableView的分区数
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+//TableView的行数
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return 10;
+}
+//设置cell
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cellID" forIndexPath:indexPath];
+    
+    cell.textLabel.text = @"测试一下";
+    return cell;
+    
 }
 
 
@@ -174,6 +238,7 @@
     }
     return _LBMutArray;
 }
+
 
 
 

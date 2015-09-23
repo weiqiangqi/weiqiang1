@@ -24,6 +24,7 @@
 		C2DEC15D1BB1434B008C7155 /* IanScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DEC15A1BB1434B008C7155 /* IanScrollView.m */; };
 		C2DEC15E1BB1434B008C7155 /* IanScrollViewDefault@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2DEC15B1BB1434B008C7155 /* IanScrollViewDefault@2x.png */; };
 		C2DEC1611BB15266008C7155 /* TouTiaoNews.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DEC1601BB15266008C7155 /* TouTiaoNews.m */; };
+		C2F91B9A1BB24BF90053C73D /* LBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F91B991BB24BF90053C73D /* LBViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,8 @@
 		C2DEC15B1BB1434B008C7155 /* IanScrollViewDefault@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IanScrollViewDefault@2x.png"; sourceTree = "<group>"; };
 		C2DEC15F1BB15266008C7155 /* TouTiaoNews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouTiaoNews.h; sourceTree = "<group>"; };
 		C2DEC1601BB15266008C7155 /* TouTiaoNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouTiaoNews.m; sourceTree = "<group>"; };
+		C2F91B981BB24BF90053C73D /* LBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBViewController.h; sourceTree = "<group>"; };
+		C2F91B991BB24BF90053C73D /* LBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,6 +273,8 @@
 		C29B92261BAD9AB9000364A5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C2F91B981BB24BF90053C73D /* LBViewController.h */,
+				C2F91B991BB24BF90053C73D /* LBViewController.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -453,6 +458,7 @@
 				C26498421BAF8A0500C89B78 /* NewsListHelper.m in Sources */,
 				C29B92341BAD9CE7000364A5 /* MyController.m in Sources */,
 				C29B91FE1BAD98A2000364A5 /* AppDelegate.m in Sources */,
+				C2F91B9A1BB24BF90053C73D /* LBViewController.m in Sources */,
 				C29B91FB1BAD98A2000364A5 /* main.m in Sources */,
 				C2DEC15D1BB1434B008C7155 /* IanScrollView.m in Sources */,
 			);

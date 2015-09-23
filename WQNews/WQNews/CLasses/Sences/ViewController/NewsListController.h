@@ -18,7 +18,10 @@
 @property(nonatomic,strong)UIButton * button3;
 @property(nonatomic,strong)UIButton * button4;
 @property(nonatomic,strong)UIButton * button5;
-
+//主界面scrollView
+@property(nonatomic,strong)UIScrollView * mainSccrollView;
+//主界面tabeleView
+@property(nonatomic,strong)UITableView * tableView;
 
 
 
