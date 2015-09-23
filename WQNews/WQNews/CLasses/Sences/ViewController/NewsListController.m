@@ -40,7 +40,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
      [self drawButton];
     
-    
+    //实现block
     [[NewsListHelper shareNewsListHerlper]getAllURL:^{
         //解析数据
         NSArray * newsArray = [NewsListHelper shareNewsListHerlper].newsAray;
@@ -52,12 +52,12 @@
             NSDictionary * dataDict = result[@"data"];
             NSArray * TTListArray = dataDict[@"list"];
             //将数据转化成model类型保存到数组
-            for (NSDictionary * dict in TTListArray) {
-                TouTiaoNews * newsItem = [TouTiaoNews new];
+            for (int i = 0; i < TTListArray.count; i ++) {
+                NSDictionary * dict  = TTListArray[i];
+                                TouTiaoNews * newsItem = [TouTiaoNews new];
                 [newsItem setValuesForKeysWithDictionary:dict];
                 [self.mutArray addObject:newsItem];
             }
-            
             [self drawScrollView];
         } failure:^void(AFHTTPRequestOperation * operation, NSError * error) {
             NSLog(@"错误是:%@",error);
@@ -72,22 +72,21 @@
 
 
 - (void)drawScrollView{
-    IanScrollView * scrollView = [[IanScrollView alloc]initWithFrame:CGRectMake(0, 64, kScreenWidth, 150)];
+    IanScrollView * scrollView = [[IanScrollView alloc]initWithFrame:CGRectMake(0, 60, kScreenWidth , 150)];
     NSMutableArray * LmutArray = [[NSMutableArray alloc]initWithCapacity:20];
     //取去轮播图数组
-    for (TouTiaoNews * news in self.mutArray) {
-        
-        if ([news.category isEqualToString:@"hdpic"]) {
-            [self.LBMutArray addObject:news];
-        }
-        
+    for (int i = 0; i < 4; i ++) {
+        TouTiaoNews * news = self.mutArray[i];
+        [self.LBMutArray addObject:news];
+        [LmutArray addObject:news.kpic];
     }
-    for (TouTiaoNews * newsItem in self.LBMutArray) {
+       scrollView.slideImagesArray = LmutArray;
+    scrollView.withoutAutoScroll = YES;
+    //点击到的方法
+    scrollView.ianEcrollViewSelectAction = ^(NSInteger i){
         
-        [LmutArray addObject:newsItem.kpic];
-    }
-    scrollView.slideImagesArray = LmutArray;
-    
+        NSLog(@"这是点击事件");
+    };
     
     
     [scrollView startLoading];

@@ -17,6 +17,7 @@
 
 
 + (NewsListHelper *)shareNewsListHerlper;
+
 - (void)getAllURL:(void(^)())resultBlock;
 
 
