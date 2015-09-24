@@ -43,7 +43,6 @@
     titleLable.textAlignment = NSTextAlignmentCenter;
     [headerView addSubview:titleLable];
     [self.webView addSubview:headerView];
-    
 }
 //返回fangfa
 - (void)backAction

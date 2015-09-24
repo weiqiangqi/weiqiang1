@@ -13,6 +13,8 @@
 #import "Pictures3HCell.h"
 #import "WebViewController.h"
 #import "Pictures4PictCell.h"
+#import "Picture2PictCell.h"
+#import "Pictures3VCell.h"
 
 @interface PictureController ()<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
 //存储板块表头的数组
@@ -26,6 +28,9 @@
 @implementation PictureController
 static NSString * picturesCell = @"picturesCell";
 static NSString * pictures4PicCell = @"pictures4PicCell";
+static NSString * pictures2PicCell = @"pictures2PicCell";
+static NSString * pictures3VCell = @"pictures3VPicCell";
+
 - (instancetype)init
 {
     self = [super init];
@@ -78,6 +83,9 @@ static NSString * pictures4PicCell = @"pictures4PicCell";
     //注册自定义cell
     [self.PICStableVIew registerNib:[UINib nibWithNibName:@"Pictures3HCell" bundle:nil] forCellReuseIdentifier:picturesCell];
     [self.PICStableVIew registerNib:[UINib nibWithNibName:@"Pictures4PictCell" bundle:nil] forCellReuseIdentifier:pictures4PicCell];
+    [self.PICStableVIew registerNib:[UINib nibWithNibName:@"Picture2PictCell" bundle:nil] forCellReuseIdentifier:pictures2PicCell];
+    [self.PICStableVIew registerNib:[UINib nibWithNibName:@"Pictures3VCell" bundle:nil] forCellReuseIdentifier:pictures3VCell];
+    
     
     [self.view addSubview:self.PICStableVIew];
     
@@ -98,14 +106,21 @@ static NSString * pictures4PicCell = @"pictures4PicCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     HdpicPictures * picturesItem = self.cellMutArray[indexPath.row];
     NSDictionary * tempDict = picturesItem.pics;
-//    NSString * str =  tempDict[@"picTemplate"] ;
     NSString * str = [ NSString stringWithFormat:@"%@",tempDict[@"picTemplate"] ];
     if ([str isEqualToString:@"2"] ) {
         Pictures3HCell * cell = [tableView dequeueReusableCellWithIdentifier:picturesCell forIndexPath:indexPath];
         [cell setCellWithPicturesItem:picturesItem];
         return cell;
-    }else if ([str isEqualToString:@"1"]){
+    }else if ([str isEqualToString:@"4"]){
         Pictures4PictCell * cell = [tableView dequeueReusableCellWithIdentifier:pictures4PicCell forIndexPath:indexPath];
+        [cell setCellWithPicturesItem:picturesItem];
+        return cell;
+    }else if ([str isEqualToString:@"1"]){
+        Picture2PictCell * cell = [tableView dequeueReusableCellWithIdentifier:pictures2PicCell forIndexPath:indexPath];
+        [cell setCellWithPicturesItem:picturesItem];
+        return  cell;
+    }else if ([str isEqualToString:@"3"]){
+        Pictures3VCell * cell = [tableView dequeueReusableCellWithIdentifier:pictures3VCell forIndexPath:indexPath];
         [cell setCellWithPicturesItem:picturesItem];
         return cell;
     }
@@ -113,10 +128,17 @@ static NSString * pictures4PicCell = @"pictures4PicCell";
     Pictures3HCell * cell = [tableView dequeueReusableCellWithIdentifier:picturesCell forIndexPath:indexPath];
     [cell setCellWithPicturesItem:picturesItem];
     return cell;
-    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    HdpicPictures * picturesItem = self.cellMutArray[indexPath.row];
+    NSDictionary * tempDict = picturesItem.pics;
+    NSString * str = [ NSString stringWithFormat:@"%@",tempDict[@"picTemplate"] ];
+    if ([str isEqualToString:@"2"] ) {
+                return 440;
+    }else if ([str isEqualToString:@"1"] || [str isEqualToString:@"4"] || [str isEqualToString:@"3"]){
+        return 320;
+    }
     return 440;
 }
 //cell的点击事件
