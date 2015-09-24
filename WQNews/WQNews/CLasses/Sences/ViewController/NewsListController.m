@@ -15,6 +15,7 @@
 #import "LBViewController.h"
 #import "SubjectCell.h"
 #import "VIdeoCell.h"
+#import "CmsCell.h"
 
 
 @interface NewsListController ()<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
@@ -30,6 +31,7 @@
 @implementation NewsListController
 static  NSString * subjectCell = @"subjectCell";
 static  NSString * videoCell = @"videoCell";
+static  NSString * cmsCell = @"cmsCell";
 - (instancetype)init
 {
     self = [super init];
@@ -149,6 +151,7 @@ static  NSString * videoCell = @"videoCell";
     //注册自定义cell
     [self.tableView registerNib:[UINib nibWithNibName:@"SubjectCell" bundle:nil] forCellReuseIdentifier:subjectCell];
     [self.tableView registerNib:[UINib nibWithNibName:@"VIdeoCell" bundle:nil] forCellReuseIdentifier:videoCell];
+    [self.tableView registerNib:[UINib nibWithNibName:@"CmsCell" bundle:nil] forCellReuseIdentifier:cmsCell];
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellID"];
     [self drawScrollView];
@@ -178,8 +181,14 @@ static  NSString * videoCell = @"videoCell";
         VIdeoCell * cell = [tableView dequeueReusableCellWithIdentifier:videoCell forIndexPath:indexPath];
         [cell setCellWithToutiaoNewsItem:CellNews];
         return cell;
+    }else if ([CellNews.category isEqualToString:@"cms"]){
+        CmsCell * cell = [tableView dequeueReusableCellWithIdentifier:cmsCell forIndexPath:indexPath];
+        [cell setCellWithToutiaoNewsItem:CellNews];
+        return cell;
     }
+    //FIXME: 精读的选项还没有完善
    SubjectCell * cell = [tableView dequeueReusableCellWithIdentifier:subjectCell forIndexPath:indexPath];
+    
     return cell;
 }
 
