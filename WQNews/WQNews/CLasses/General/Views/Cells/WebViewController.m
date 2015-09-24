@@ -22,15 +22,15 @@
     self.view .backgroundColor = [UIColor colorWithRed:1.000 green:0.954 blue:0.450 alpha:1.000]
     ;
     
-    self.webView  = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 40)];
+    self.webView  = [[UIWebView alloc]initWithFrame:CGRectMake(0, -10, kScreenWidth, kScreenHeight - 40)];
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.URLStr]]];
     //设置代理
     self.webView.delegate = self;
     [self.view addSubview:self.webView];
     
     //绘制返回按钮
-    UIView * headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 40)];
-    headerView.backgroundColor = [UIColor greenColor];
+    UIView * headerView = [[UIView alloc]initWithFrame:CGRectMake(0,10, kScreenWidth, 40)];
+    headerView.backgroundColor = [UIColor colorWithRed:1.000 green:0.985 blue:0.472 alpha:1.000];
     UIButton * backButton = [UIButton buttonWithType:UIButtonTypeSystem];
     backButton.frame = CGRectMake(0, 20, 20, 15);
     [backButton setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
