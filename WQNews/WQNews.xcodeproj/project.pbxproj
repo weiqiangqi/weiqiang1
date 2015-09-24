@@ -10,6 +10,8 @@
 		4643B002980E3B53216E3B25 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CDEB74FBAB3F49CBF7C894D /* libPods.a */; };
 		C20B2E5B1BB39AEF00DC6C38 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C20B2E5A1BB39AEF00DC6C38 /* WebViewController.m */; };
 		C20B2E5E1BB3D7B100DC6C38 /* HdpicPictures.m in Sources */ = {isa = PBXBuildFile; fileRef = C20B2E5D1BB3D7B100DC6C38 /* HdpicPictures.m */; };
+		C20B2E671BB3E7E400DC6C38 /* Pictures3HCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C20B2E651BB3E7E400DC6C38 /* Pictures3HCell.m */; };
+		C20B2E681BB3E7E400DC6C38 /* Pictures3HCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C20B2E661BB3E7E400DC6C38 /* Pictures3HCell.xib */; };
 		C26498421BAF8A0500C89B78 /* NewsListHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C26498411BAF8A0500C89B78 /* NewsListHelper.m */; };
 		C26498451BAF8A2900C89B78 /* NewsListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C26498441BAF8A2900C89B78 /* NewsListItem.m */; };
 		C297F0BD1BB2DB18004E2780 /* CmsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C297F0BB1BB2DB18004E2780 /* CmsCell.m */; };
@@ -62,6 +64,9 @@
 		C20B2E5A1BB39AEF00DC6C38 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebViewController.m; path = WQNews/CLasses/General/Views/Cells/WebViewController.m; sourceTree = SOURCE_ROOT; };
 		C20B2E5C1BB3D7B100DC6C38 /* HdpicPictures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HdpicPictures.h; sourceTree = "<group>"; };
 		C20B2E5D1BB3D7B100DC6C38 /* HdpicPictures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HdpicPictures.m; sourceTree = "<group>"; };
+		C20B2E641BB3E7E400DC6C38 /* Pictures3HCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pictures3HCell.h; sourceTree = "<group>"; };
+		C20B2E651BB3E7E400DC6C38 /* Pictures3HCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pictures3HCell.m; sourceTree = "<group>"; };
+		C20B2E661BB3E7E400DC6C38 /* Pictures3HCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Pictures3HCell.xib; sourceTree = "<group>"; };
 		C26498401BAF8A0500C89B78 /* NewsListHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsListHelper.h; sourceTree = "<group>"; };
 		C26498411BAF8A0500C89B78 /* NewsListHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsListHelper.m; sourceTree = "<group>"; };
 		C26498431BAF8A2900C89B78 /* NewsListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsListItem.h; sourceTree = "<group>"; };
@@ -283,6 +288,9 @@
 				C297F0BF1BB2E871004E2780 /* HdpicCell.h */,
 				C297F0C01BB2E871004E2780 /* HdpicCell.m */,
 				C297F0C11BB2E871004E2780 /* HdpicCell.xib */,
+				C20B2E641BB3E7E400DC6C38 /* Pictures3HCell.h */,
+				C20B2E651BB3E7E400DC6C38 /* Pictures3HCell.m */,
+				C20B2E661BB3E7E400DC6C38 /* Pictures3HCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -473,6 +481,7 @@
 				C2F91BA91BB284DD0053C73D /* video.png in Resources */,
 				C2F91BAB1BB2862B0053C73D /* my.png in Resources */,
 				C297F0BE1BB2DB18004E2780 /* CmsCell.xib in Resources */,
+				C20B2E681BB3E7E400DC6C38 /* Pictures3HCell.xib in Resources */,
 				C2F91B9F1BB25B550053C73D /* back.png in Resources */,
 				C2F91BB01BB298C60053C73D /* SubjectCell.xib in Resources */,
 				C2F91BA11BB25B550053C73D /* star.png in Resources */,
@@ -543,6 +552,7 @@
 				C297F0C21BB2E871004E2780 /* HdpicCell.m in Sources */,
 				C2F91BAF1BB298C60053C73D /* SubjectCell.m in Sources */,
 				C29B92341BAD9CE7000364A5 /* MyController.m in Sources */,
+				C20B2E671BB3E7E400DC6C38 /* Pictures3HCell.m in Sources */,
 				C29B91FE1BAD98A2000364A5 /* AppDelegate.m in Sources */,
 				C20B2E5B1BB39AEF00DC6C38 /* WebViewController.m in Sources */,
 				C2F91B9A1BB24BF90053C73D /* LBViewController.m in Sources */,

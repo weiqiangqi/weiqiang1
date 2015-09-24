@@ -13,7 +13,4 @@
 
 @property(nonatomic,strong)TouTiaoNews * LBnews;
 
-
-
-
 @end
