@@ -7,6 +7,7 @@
 //
 
 #import "HdpicCell.h"
+#import "UIImageView+WebCache.h"
 
 @implementation HdpicCell
 
@@ -19,5 +20,25 @@
 
     // Configure the view for the selected state
 }
+//赋值
+- (void)setCellWithToutiaoNewsItem:(TouTiaoNews *)newsItem{
+    NSDictionary * picsDict = [NSDictionary new];
+       picsDict = newsItem.pics;
+    NSArray * picsArray = [NSArray array];
+   picsArray = picsDict[@"list"];
+    NSMutableArray * URLStrArray = [[NSMutableArray alloc]initWithCapacity:8];
+    for ( int i = 0; i < 3; i ++) {
+        NSDictionary * dict = [NSDictionary new];
+         dict = picsArray[i];
+        NSString * URLStr = dict[@"kpic"];
+        [URLStrArray addObject:URLStr];
+    }
+    [self.imgView4First sd_setImageWithURL:[NSURL URLWithString:URLStrArray[0]]];
+    [self.imagView4Second sd_setImageWithURL:[NSURL URLWithString:URLStrArray[1]]];
+    [self.imgView4Third sd_setImageWithURL:[NSURL URLWithString:URLStrArray[2]]];
+    
+}
+
+
 
 @end

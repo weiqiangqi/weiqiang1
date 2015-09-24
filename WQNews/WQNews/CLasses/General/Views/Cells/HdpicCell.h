@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TouTiaoNews.h"
 
 @interface HdpicCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *imgView4First;
+
+@property (weak, nonatomic) IBOutlet UIImageView *imagView4Second;
+@property (weak, nonatomic) IBOutlet UIImageView *imgView4Third;
+
+- (void)setCellWithToutiaoNewsItem:(TouTiaoNews *)newsItem;
+
 
 @end

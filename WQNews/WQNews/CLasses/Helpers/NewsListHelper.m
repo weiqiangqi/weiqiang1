@@ -41,6 +41,7 @@
         
        NSDictionary * dict =  result[@"data"];
         NSDictionary * listDict = dict[@"forced_sub"];
+        NSArray * listArray = listDict[@"list"];
         
         NSDictionary * groupDict = dict[@"groups"];
         NSDictionary * hdpicDict1 = groupDict[@"hdpic2"];
@@ -49,7 +50,7 @@
         NSDictionary * videoDict = groupDict[@"video2"];
         NSArray * VLArray = videoDict[@"list"];
         
-        NSArray * listArray = listDict[@"list"];
+        
         for (NSDictionary * dict1 in listArray) {
             NewsListItem * NewsItem = [NewsListItem new];
             [NewsItem setValuesForKeysWithDictionary:dict1];

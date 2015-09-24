@@ -16,6 +16,8 @@
 #import "SubjectCell.h"
 #import "VIdeoCell.h"
 #import "CmsCell.h"
+#import "HdpicCell.h"
+#import "WebViewController.h"
 
 
 @interface NewsListController ()<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
@@ -32,6 +34,7 @@
 static  NSString * subjectCell = @"subjectCell";
 static  NSString * videoCell = @"videoCell";
 static  NSString * cmsCell = @"cmsCell";
+static  NSString * hdpicCell = @"hdpicCell";
 - (instancetype)init
 {
     self = [super init];
@@ -55,10 +58,11 @@ static  NSString * cmsCell = @"cmsCell";
     //实现block
     [[NewsListHelper shareNewsListHerlper]getAllURL:^{
         //解析数据
-        NSArray * newsArray = [NewsListHelper shareNewsListHerlper].newsAray;
-        NewsListItem * toutiaoItem = newsArray[0];
-
-        NSString * toutiaoUrl = toutiaoItem.url;
+//        NSArray * newsArray = [NewsListHelper shareNewsListHerlper].newsAray;
+//        NewsListItem * toutiaoItem = newsArray[0];
+//        NSString * toutiaoUrl = toutiaoItem.url;
+        
+        NSString * toutiaoUrl = kTOUTIAOURL;
         AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
         [manager GET:toutiaoUrl parameters:nil success:^void(AFHTTPRequestOperation * task, id result) {
             NSDictionary * dataDict = result[@"data"];
@@ -66,7 +70,7 @@ static  NSString * cmsCell = @"cmsCell";
             //将数据转化成model类型保存到数组
             for (int i = 0; i < TTListArray.count; i ++) {
                 NSDictionary * dict  = TTListArray[i];
-                                TouTiaoNews * newsItem = [TouTiaoNews new];
+                TouTiaoNews * newsItem = [TouTiaoNews new];
                 [newsItem setValuesForKeysWithDictionary:dict];
                 [self.mutArray addObject:newsItem];
             }
@@ -105,7 +109,6 @@ static  NSString * cmsCell = @"cmsCell";
         LBItem.LBnews = self.LBMutArray[i];
         LBItem.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         [self presentViewController:LBItem animated:YES completion:nil];
-        
     };
     [scrollView startLoading];
     self.tableView.tableHeaderView = scrollView;
@@ -138,22 +141,18 @@ static  NSString * cmsCell = @"cmsCell";
     self.tableView.dataSource = self;
     //解析数组
     for (TouTiaoNews  * CellNews in self.mutArray) {
-        if ([CellNews.category isEqualToString:@"subject"] || [CellNews.category isEqualToString:@"video"] || [CellNews.category isEqualToString:@"cms"] || ([CellNews.category isEqualToString:@"hdpic"] &&  (!(CellNews.is_focus))) ) {
-            
+        if ([CellNews.category isEqualToString:@"subject"] || [CellNews.category isEqualToString:@"video"] || [CellNews.category isEqualToString:@"cms"] || ([CellNews.category isEqualToString:@"hdpic"] &&  (!(CellNews.is_focus))) || [CellNews.category isEqualToString:@"consice"] ) {
             [self.cellMutArray addObject:CellNews];
         }
-        NSLog(@"%ld",self.cellMutArray.count);
     }
-    
-
-
     
     //注册自定义cell
     [self.tableView registerNib:[UINib nibWithNibName:@"SubjectCell" bundle:nil] forCellReuseIdentifier:subjectCell];
     [self.tableView registerNib:[UINib nibWithNibName:@"VIdeoCell" bundle:nil] forCellReuseIdentifier:videoCell];
     [self.tableView registerNib:[UINib nibWithNibName:@"CmsCell" bundle:nil] forCellReuseIdentifier:cmsCell];
+    [self.tableView registerNib:[UINib nibWithNibName:@"HdpicCell" bundle:nil] forCellReuseIdentifier:hdpicCell];
     
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellID"];
+
     [self drawScrollView];
     
 }
@@ -185,6 +184,13 @@ static  NSString * cmsCell = @"cmsCell";
         CmsCell * cell = [tableView dequeueReusableCellWithIdentifier:cmsCell forIndexPath:indexPath];
         [cell setCellWithToutiaoNewsItem:CellNews];
         return cell;
+    }else if ([CellNews.category isEqualToString:@"consice"]){
+           SubjectCell * cell = [tableView dequeueReusableCellWithIdentifier:subjectCell forIndexPath:indexPath];
+        [cell setCellWithToutiaoNewsItem:CellNews];
+    }else if ([CellNews.category isEqualToString:@"hdpic"] ){
+        HdpicCell * cell = [tableView dequeueReusableCellWithIdentifier:hdpicCell forIndexPath:indexPath];
+        [cell setCellWithToutiaoNewsItem:CellNews];
+        
     }
     //FIXME: 精读的选项还没有完善
    SubjectCell * cell = [tableView dequeueReusableCellWithIdentifier:subjectCell forIndexPath:indexPath];
@@ -196,6 +202,23 @@ static  NSString * cmsCell = @"cmsCell";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 80;
 }
+
+//点击cell时触发的事件
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    TouTiaoNews * CellNews = self.cellMutArray[indexPath.row];
+    WebViewController * webView = [WebViewController new];
+    if ([CellNews.category isEqualToString:@"hdpic"]) {
+        LBViewController * LBItem = [[LBViewController alloc]init];
+        LBItem.LBnews = CellNews;
+        LBItem.modalPresentationStyle = UIModalTransitionStyleCrossDissolve ;
+        [self presentViewController:LBItem animated:YES completion:nil];
+        
+    }else{
+    webView.URLStr = CellNews.link;
+    [self presentViewController:webView animated:YES completion:nil];
+    }
+}
+
 
 
 #pragma  mark ---绘制主界面------
