@@ -12,6 +12,8 @@
 		C20B2E5E1BB3D7B100DC6C38 /* HdpicPictures.m in Sources */ = {isa = PBXBuildFile; fileRef = C20B2E5D1BB3D7B100DC6C38 /* HdpicPictures.m */; };
 		C20B2E671BB3E7E400DC6C38 /* Pictures3HCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C20B2E651BB3E7E400DC6C38 /* Pictures3HCell.m */; };
 		C20B2E681BB3E7E400DC6C38 /* Pictures3HCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C20B2E661BB3E7E400DC6C38 /* Pictures3HCell.xib */; };
+		C20B2E6C1BB4013B00DC6C38 /* Pictures4PictCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C20B2E6A1BB4013B00DC6C38 /* Pictures4PictCell.m */; };
+		C20B2E6D1BB4013B00DC6C38 /* Pictures4PictCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C20B2E6B1BB4013B00DC6C38 /* Pictures4PictCell.xib */; };
 		C26498421BAF8A0500C89B78 /* NewsListHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C26498411BAF8A0500C89B78 /* NewsListHelper.m */; };
 		C26498451BAF8A2900C89B78 /* NewsListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C26498441BAF8A2900C89B78 /* NewsListItem.m */; };
 		C297F0BD1BB2DB18004E2780 /* CmsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C297F0BB1BB2DB18004E2780 /* CmsCell.m */; };
@@ -67,6 +69,9 @@
 		C20B2E641BB3E7E400DC6C38 /* Pictures3HCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pictures3HCell.h; sourceTree = "<group>"; };
 		C20B2E651BB3E7E400DC6C38 /* Pictures3HCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pictures3HCell.m; sourceTree = "<group>"; };
 		C20B2E661BB3E7E400DC6C38 /* Pictures3HCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Pictures3HCell.xib; sourceTree = "<group>"; };
+		C20B2E691BB4013B00DC6C38 /* Pictures4PictCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pictures4PictCell.h; sourceTree = "<group>"; };
+		C20B2E6A1BB4013B00DC6C38 /* Pictures4PictCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pictures4PictCell.m; sourceTree = "<group>"; };
+		C20B2E6B1BB4013B00DC6C38 /* Pictures4PictCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Pictures4PictCell.xib; sourceTree = "<group>"; };
 		C26498401BAF8A0500C89B78 /* NewsListHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsListHelper.h; sourceTree = "<group>"; };
 		C26498411BAF8A0500C89B78 /* NewsListHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsListHelper.m; sourceTree = "<group>"; };
 		C26498431BAF8A2900C89B78 /* NewsListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsListItem.h; sourceTree = "<group>"; };
@@ -291,6 +296,9 @@
 				C20B2E641BB3E7E400DC6C38 /* Pictures3HCell.h */,
 				C20B2E651BB3E7E400DC6C38 /* Pictures3HCell.m */,
 				C20B2E661BB3E7E400DC6C38 /* Pictures3HCell.xib */,
+				C20B2E691BB4013B00DC6C38 /* Pictures4PictCell.h */,
+				C20B2E6A1BB4013B00DC6C38 /* Pictures4PictCell.m */,
+				C20B2E6B1BB4013B00DC6C38 /* Pictures4PictCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -483,6 +491,7 @@
 				C297F0BE1BB2DB18004E2780 /* CmsCell.xib in Resources */,
 				C20B2E681BB3E7E400DC6C38 /* Pictures3HCell.xib in Resources */,
 				C2F91B9F1BB25B550053C73D /* back.png in Resources */,
+				C20B2E6D1BB4013B00DC6C38 /* Pictures4PictCell.xib in Resources */,
 				C2F91BB01BB298C60053C73D /* SubjectCell.xib in Resources */,
 				C2F91BA11BB25B550053C73D /* star.png in Resources */,
 				C2DEC15E1BB1434B008C7155 /* IanScrollViewDefault@2x.png in Resources */,
@@ -557,6 +566,7 @@
 				C20B2E5B1BB39AEF00DC6C38 /* WebViewController.m in Sources */,
 				C2F91B9A1BB24BF90053C73D /* LBViewController.m in Sources */,
 				C2F91BB41BB2D3190053C73D /* VIdeoCell.m in Sources */,
+				C20B2E6C1BB4013B00DC6C38 /* Pictures4PictCell.m in Sources */,
 				C29B91FB1BAD98A2000364A5 /* main.m in Sources */,
 				C2DEC15D1BB1434B008C7155 /* IanScrollView.m in Sources */,
 			);

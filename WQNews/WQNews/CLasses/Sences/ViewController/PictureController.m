@@ -11,6 +11,8 @@
 #import "AFNetworking.h"
 #import "HdpicPictures.h"
 #import "Pictures3HCell.h"
+#import "WebViewController.h"
+#import "Pictures4PictCell.h"
 
 @interface PictureController ()<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
 //存储板块表头的数组
@@ -23,6 +25,7 @@
 
 @implementation PictureController
 static NSString * picturesCell = @"picturesCell";
+static NSString * pictures4PicCell = @"pictures4PicCell";
 - (instancetype)init
 {
     self = [super init];
@@ -74,7 +77,7 @@ static NSString * picturesCell = @"picturesCell";
     self.PICStableVIew.dataSource = self;
     //注册自定义cell
     [self.PICStableVIew registerNib:[UINib nibWithNibName:@"Pictures3HCell" bundle:nil] forCellReuseIdentifier:picturesCell];
-    
+    [self.PICStableVIew registerNib:[UINib nibWithNibName:@"Pictures4PictCell" bundle:nil] forCellReuseIdentifier:pictures4PicCell];
     
     [self.view addSubview:self.PICStableVIew];
     
@@ -94,9 +97,21 @@ static NSString * picturesCell = @"picturesCell";
 //设置cell
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     HdpicPictures * picturesItem = self.cellMutArray[indexPath.row];
+    NSDictionary * tempDict = picturesItem.pics;
+//    NSString * str =  tempDict[@"picTemplate"] ;
+    NSString * str = [ NSString stringWithFormat:@"%@",tempDict[@"picTemplate"] ];
+    if ([str isEqualToString:@"2"] ) {
+        Pictures3HCell * cell = [tableView dequeueReusableCellWithIdentifier:picturesCell forIndexPath:indexPath];
+        [cell setCellWithPicturesItem:picturesItem];
+        return cell;
+    }else if ([str isEqualToString:@"1"]){
+        Pictures4PictCell * cell = [tableView dequeueReusableCellWithIdentifier:pictures4PicCell forIndexPath:indexPath];
+        [cell setCellWithPicturesItem:picturesItem];
+        return cell;
+    }
+    
     Pictures3HCell * cell = [tableView dequeueReusableCellWithIdentifier:picturesCell forIndexPath:indexPath];
     [cell setCellWithPicturesItem:picturesItem];
-    
     return cell;
     
 }
@@ -104,6 +119,17 @@ static NSString * picturesCell = @"picturesCell";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 440;
 }
+//cell的点击事件
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    WebViewController * webViewVC = [WebViewController new];
+    webViewVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+     HdpicPictures * picturesItem = self.cellMutArray[indexPath.row];
+    webViewVC.URLStr = picturesItem.link;
+    webViewVC.Title = picturesItem.title;
+    
+    [self presentViewController:webViewVC animated:YES completion:nil];
+}
+
 
 #pragma mark ---lazy load--
 - (NSMutableArray *)TitleMutArray{
@@ -119,8 +145,6 @@ static NSString * picturesCell = @"picturesCell";
     }
     return _cellMutArray;
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

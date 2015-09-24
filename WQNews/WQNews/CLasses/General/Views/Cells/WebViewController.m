@@ -36,6 +36,12 @@
     [backButton setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
     [headerView addSubview:backButton];
+    //绘制title
+    UILabel * titleLable = [[UILabel alloc]initWithFrame:CGRectMake(30, 17, kScreenWidth - 60, 20)];
+    titleLable.text = self.Title;
+    titleLable.font = [UIFont systemFontOfSize:15];
+    titleLable.textAlignment = NSTextAlignmentCenter;
+    [headerView addSubview:titleLable];
     [self.webView addSubview:headerView];
     
 }
