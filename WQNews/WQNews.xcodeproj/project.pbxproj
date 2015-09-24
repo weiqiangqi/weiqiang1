@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4643B002980E3B53216E3B25 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CDEB74FBAB3F49CBF7C894D /* libPods.a */; };
 		C20B2E5B1BB39AEF00DC6C38 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C20B2E5A1BB39AEF00DC6C38 /* WebViewController.m */; };
+		C20B2E5E1BB3D7B100DC6C38 /* HdpicPictures.m in Sources */ = {isa = PBXBuildFile; fileRef = C20B2E5D1BB3D7B100DC6C38 /* HdpicPictures.m */; };
 		C26498421BAF8A0500C89B78 /* NewsListHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C26498411BAF8A0500C89B78 /* NewsListHelper.m */; };
 		C26498451BAF8A2900C89B78 /* NewsListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C26498441BAF8A2900C89B78 /* NewsListItem.m */; };
 		C297F0BD1BB2DB18004E2780 /* CmsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C297F0BB1BB2DB18004E2780 /* CmsCell.m */; };
@@ -59,6 +60,8 @@
 		B1C8A8C148D31A732369856B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C20B2E591BB39AEF00DC6C38 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebViewController.h; path = WQNews/CLasses/General/Views/Cells/WebViewController.h; sourceTree = SOURCE_ROOT; };
 		C20B2E5A1BB39AEF00DC6C38 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebViewController.m; path = WQNews/CLasses/General/Views/Cells/WebViewController.m; sourceTree = SOURCE_ROOT; };
+		C20B2E5C1BB3D7B100DC6C38 /* HdpicPictures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HdpicPictures.h; sourceTree = "<group>"; };
+		C20B2E5D1BB3D7B100DC6C38 /* HdpicPictures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HdpicPictures.m; sourceTree = "<group>"; };
 		C26498401BAF8A0500C89B78 /* NewsListHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsListHelper.h; sourceTree = "<group>"; };
 		C26498411BAF8A0500C89B78 /* NewsListHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsListHelper.m; sourceTree = "<group>"; };
 		C26498431BAF8A2900C89B78 /* NewsListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsListItem.h; sourceTree = "<group>"; };
@@ -300,6 +303,8 @@
 				C26498441BAF8A2900C89B78 /* NewsListItem.m */,
 				C2DEC15F1BB15266008C7155 /* TouTiaoNews.h */,
 				C2DEC1601BB15266008C7155 /* TouTiaoNews.m */,
+				C20B2E5C1BB3D7B100DC6C38 /* HdpicPictures.h */,
+				C20B2E5D1BB3D7B100DC6C38 /* HdpicPictures.m */,
 			);
 			path = Macro;
 			sourceTree = "<group>";
@@ -529,6 +534,7 @@
 				C26498451BAF8A2900C89B78 /* NewsListItem.m in Sources */,
 				C2DEC1611BB15266008C7155 /* TouTiaoNews.m in Sources */,
 				C29B922B1BAD9BA0000364A5 /* NewsListController.m in Sources */,
+				C20B2E5E1BB3D7B100DC6C38 /* HdpicPictures.m in Sources */,
 				C29B92011BAD98A2000364A5 /* WQNews.xcdatamodeld in Sources */,
 				C29B922E1BAD9CC8000364A5 /* PictureController.m in Sources */,
 				C29B92311BAD9CD9000364A5 /* VideoController.m in Sources */,

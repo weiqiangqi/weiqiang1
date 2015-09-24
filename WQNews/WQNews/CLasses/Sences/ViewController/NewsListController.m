@@ -90,7 +90,6 @@ static  NSString * hdpicCell = @"hdpicCell";
 
 #pragma mark --绘制ScrollView----
 - (void)drawScrollView{
-    
     IanScrollView * scrollView = [[IanScrollView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth , 188)];
     NSMutableArray * LmutArray = [[NSMutableArray alloc]initWithCapacity:20];
     //取轮播图数组

@@ -38,10 +38,6 @@
     [headerView addSubview:backButton];
     [self.webView addSubview:headerView];
     
-    
-    
-    
-    
 }
 //返回fangfa
 - (void)backAction
@@ -54,10 +50,19 @@
 
 #pragma mark --UIWebViewDelegate的代理方法----
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
+    [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitTouchCallout='none';"];
+    
     
     
 }
 
+//- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+//    
+//    if (navigationType == UIWebViewNavigationTypeLinkClicked) {
+//        return NO;
+//    }
+//    return YES;
+//}
 
 
 - (void)didReceiveMemoryWarning {

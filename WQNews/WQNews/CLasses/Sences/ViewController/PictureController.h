@@ -10,4 +10,6 @@
 
 @interface PictureController : UIViewController
 
+@property(nonatomic,strong)UIScrollView * mainScrollView;
+
 @end
