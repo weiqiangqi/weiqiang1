@@ -18,7 +18,6 @@
 {
     self = [super init];
     if (self) {
-        
         self.title = @"视频";
         self.tabBarItem.image = [UIImage imageNamed:@"video"];
     }

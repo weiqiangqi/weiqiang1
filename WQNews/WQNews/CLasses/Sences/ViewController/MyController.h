@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface MyController : UIViewController
+
+@property(nonatomic,strong)UITableView * maintableView;
+
+
+
+
 
 @end

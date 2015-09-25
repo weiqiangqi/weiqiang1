@@ -8,7 +8,9 @@
 
 #import "MyController.h"
 
-@interface MyController ()
+@interface MyController ()<UITableViewDelegate,UITableViewDataSource>
+
+@property(nonatomic,strong)UIScreen * scrollView;
 
 @end
 
@@ -18,7 +20,6 @@
 {
     self = [super init];
     if (self) {
-        
         self.title = @"我的";
         self.tabBarItem.image = [UIImage imageNamed:@"my"];
     }
