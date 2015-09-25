@@ -37,6 +37,7 @@
 		C29B922E1BAD9CC8000364A5 /* PictureController.m in Sources */ = {isa = PBXBuildFile; fileRef = C29B922D1BAD9CC8000364A5 /* PictureController.m */; };
 		C29B92311BAD9CD9000364A5 /* VideoController.m in Sources */ = {isa = PBXBuildFile; fileRef = C29B92301BAD9CD9000364A5 /* VideoController.m */; };
 		C29B92341BAD9CE7000364A5 /* MyController.m in Sources */ = {isa = PBXBuildFile; fileRef = C29B92331BAD9CE7000364A5 /* MyController.m */; };
+		C2B2964C1BB4FA990091B5B3 /* BigVideo.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B2964B1BB4FA990091B5B3 /* BigVideo.png */; };
 		C2DEC15C1BB1434B008C7155 /* IanScrollImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DEC1581BB1434B008C7155 /* IanScrollImageView.m */; };
 		C2DEC15D1BB1434B008C7155 /* IanScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DEC15A1BB1434B008C7155 /* IanScrollView.m */; };
 		C2DEC15E1BB1434B008C7155 /* IanScrollViewDefault@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2DEC15B1BB1434B008C7155 /* IanScrollViewDefault@2x.png */; };
@@ -120,6 +121,7 @@
 		C29B92301BAD9CD9000364A5 /* VideoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoController.m; sourceTree = "<group>"; };
 		C29B92321BAD9CE7000364A5 /* MyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyController.h; sourceTree = "<group>"; };
 		C29B92331BAD9CE7000364A5 /* MyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyController.m; sourceTree = "<group>"; };
+		C2B2964B1BB4FA990091B5B3 /* BigVideo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BigVideo.png; sourceTree = "<group>"; };
 		C2DEC1571BB1434B008C7155 /* IanScrollImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IanScrollImageView.h; sourceTree = "<group>"; };
 		C2DEC1581BB1434B008C7155 /* IanScrollImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IanScrollImageView.m; sourceTree = "<group>"; };
 		C2DEC1591BB1434B008C7155 /* IanScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IanScrollView.h; sourceTree = "<group>"; };
@@ -418,6 +420,7 @@
 		C2F91B9B1BB25B550053C73D /* MyPictures */ = {
 			isa = PBXGroup;
 			children = (
+				C2B2964B1BB4FA990091B5B3 /* BigVideo.png */,
 				C2F91BA31BB284DD0053C73D /* news.png */,
 				C2F91BA41BB284DD0053C73D /* picture.png */,
 				C2F91BA51BB284DD0053C73D /* video.png */,
@@ -527,6 +530,7 @@
 				C2F91BA11BB25B550053C73D /* star.png in Resources */,
 				C2DEC15E1BB1434B008C7155 /* IanScrollViewDefault@2x.png in Resources */,
 				C2F91BB51BB2D3190053C73D /* VIdeoCell.xib in Resources */,
+				C2B2964C1BB4FA990091B5B3 /* BigVideo.png in Resources */,
 				C20B2E771BB424AE00DC6C38 /* Pictures3VCell.xib in Resources */,
 				C2F91BA01BB25B550053C73D /* mind.png in Resources */,
 				C2F91BA81BB284DD0053C73D /* picture.png in Resources */,
