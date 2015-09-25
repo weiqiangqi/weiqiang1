@@ -30,6 +30,7 @@
     PictureController * pictureVC = [[PictureController alloc]init];
     //视频列表
  VideoController * videoVC = [[VideoController alloc]init];
+//    UINavigationController * videoNC = [[UINavigationController alloc]initWithRootViewController:videoVC];
     //我的列表
  MyController * myVC = [[MyController alloc]init];
     

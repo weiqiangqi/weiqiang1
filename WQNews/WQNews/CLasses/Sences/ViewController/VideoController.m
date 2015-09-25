@@ -13,6 +13,7 @@
 #import "NewsListItem.h"
 #import "VideoItem.h"
 #import "WebViewController.h"
+#import "PlayerHelper.h"
 
 
 @interface VideoController ()<UITableViewDelegate,UITableViewDataSource>
@@ -37,6 +38,7 @@ static   NSString *  videolistCell = @"videolistCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
    
+    [[NewsListHelper shareNewsListHerlper]getAllURL:^{
     
     //网址分析
     NSArray * videoArray =  [[NewsListHelper shareNewsListHerlper].videoArray mutableCopy];
@@ -67,6 +69,7 @@ static   NSString *  videolistCell = @"videolistCell";
     
 }];
     
+}];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -118,15 +121,21 @@ static   NSString *  videolistCell = @"videolistCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     VideoItem * modelVideo = self.VideoMutArray[indexPath.row];
     //点击跳转到webView页面
-    WebViewController * webView = [WebViewController new];
-    webView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+//    WebViewController * webView = [WebViewController new];
+//    webView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+//    NSDictionary * VideoDict = modelVideo.video_info;
+//    NSString * URL = VideoDict[@"video_id"];
+//    webView.URLStr = URL;
+//    webView.Title = modelVideo.title;
+
+//    [self presentViewController:webView animated:YES completion:nil];
+    
     NSDictionary * VideoDict = modelVideo.video_info;
     NSString * URL = VideoDict[@"video_id"];
-    webView.URLStr = URL;
+     [[PlayerHelper shareVideoPlayer] setVideoWithURLStr:URL];
+    PlayerHelper * player = [PlayerHelper shareVideoPlayer];
     
-    webView.Title = modelVideo.title;
-    [self presentViewController:webView animated:YES completion:nil];
-    
+    self.view = player;
 }
 
 

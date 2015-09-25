@@ -38,6 +38,7 @@
 		C29B92311BAD9CD9000364A5 /* VideoController.m in Sources */ = {isa = PBXBuildFile; fileRef = C29B92301BAD9CD9000364A5 /* VideoController.m */; };
 		C29B92341BAD9CE7000364A5 /* MyController.m in Sources */ = {isa = PBXBuildFile; fileRef = C29B92331BAD9CE7000364A5 /* MyController.m */; };
 		C2B2964C1BB4FA990091B5B3 /* BigVideo.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B2964B1BB4FA990091B5B3 /* BigVideo.png */; };
+		C2B296551BB5817B0091B5B3 /* PlayerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B296541BB5817B0091B5B3 /* PlayerHelper.m */; };
 		C2DEC15C1BB1434B008C7155 /* IanScrollImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DEC1581BB1434B008C7155 /* IanScrollImageView.m */; };
 		C2DEC15D1BB1434B008C7155 /* IanScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DEC15A1BB1434B008C7155 /* IanScrollView.m */; };
 		C2DEC15E1BB1434B008C7155 /* IanScrollViewDefault@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2DEC15B1BB1434B008C7155 /* IanScrollViewDefault@2x.png */; };
@@ -122,6 +123,8 @@
 		C29B92321BAD9CE7000364A5 /* MyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyController.h; sourceTree = "<group>"; };
 		C29B92331BAD9CE7000364A5 /* MyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyController.m; sourceTree = "<group>"; };
 		C2B2964B1BB4FA990091B5B3 /* BigVideo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BigVideo.png; sourceTree = "<group>"; };
+		C2B296531BB5817B0091B5B3 /* PlayerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerHelper.h; sourceTree = "<group>"; };
+		C2B296541BB5817B0091B5B3 /* PlayerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerHelper.m; sourceTree = "<group>"; };
 		C2DEC1571BB1434B008C7155 /* IanScrollImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IanScrollImageView.h; sourceTree = "<group>"; };
 		C2DEC1581BB1434B008C7155 /* IanScrollImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IanScrollImageView.m; sourceTree = "<group>"; };
 		C2DEC1591BB1434B008C7155 /* IanScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IanScrollView.h; sourceTree = "<group>"; };
@@ -337,6 +340,8 @@
 			children = (
 				C26498401BAF8A0500C89B78 /* NewsListHelper.h */,
 				C26498411BAF8A0500C89B78 /* NewsListHelper.m */,
+				C2B296531BB5817B0091B5B3 /* PlayerHelper.h */,
+				C2B296541BB5817B0091B5B3 /* PlayerHelper.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -589,6 +594,7 @@
 				C2DEC1611BB15266008C7155 /* TouTiaoNews.m in Sources */,
 				C29B922B1BAD9BA0000364A5 /* NewsListController.m in Sources */,
 				C20B2E7A1BB433C500DC6C38 /* VideoItem.m in Sources */,
+				C2B296551BB5817B0091B5B3 /* PlayerHelper.m in Sources */,
 				C20B2E5E1BB3D7B100DC6C38 /* HdpicPictures.m in Sources */,
 				C29B92011BAD98A2000364A5 /* WQNews.xcdatamodeld in Sources */,
 				C29B922E1BAD9CC8000364A5 /* PictureController.m in Sources */,
