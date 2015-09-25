@@ -213,6 +213,7 @@ static  NSString * hdpicCell = @"hdpicCell";
         [self presentViewController:LBItem animated:YES completion:nil];
         
     }else{
+        
     webView.URLStr = CellNews.link;
     [self presentViewController:webView animated:YES completion:nil];
     }

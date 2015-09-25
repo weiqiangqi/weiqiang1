@@ -10,4 +10,6 @@
 
 @interface VideoController : UIViewController
 
+@property(nonatomic,strong)UITableView * maintableView;
+
 @end

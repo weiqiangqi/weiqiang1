@@ -11,9 +11,6 @@
 
 @interface MyController : UIViewController
 
-@property(nonatomic,strong)UITableView * maintableView;
-
-
 
 
 

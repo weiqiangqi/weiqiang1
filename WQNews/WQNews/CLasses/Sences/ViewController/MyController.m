@@ -8,18 +8,21 @@
 
 #import "MyController.h"
 
-@interface MyController ()<UITableViewDelegate,UITableViewDataSource>
 
-@property(nonatomic,strong)UIScreen * scrollView;
+@interface MyController ()
+
+
 
 @end
 
 @implementation MyController
+static   NSString *  videolistCell = @"videolistCell";
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
+     
         self.title = @"我的";
         self.tabBarItem.image = [UIImage imageNamed:@"my"];
     }
@@ -35,6 +38,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
+
 
 /*
 #pragma mark - Navigation
