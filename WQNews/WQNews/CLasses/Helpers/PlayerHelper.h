@@ -15,5 +15,6 @@
 
 - (void)setVideoWithURLStr:(NSString *)urlStr;
 
+- (void)videoPause;
 
 @end
