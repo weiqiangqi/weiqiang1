@@ -10,6 +10,8 @@
 
 
 @interface MyController ()
+//登陆头像
+@property(nonatomic,strong)UIImageView * imgView;
 
 
 
@@ -22,7 +24,6 @@ static   NSString *  videolistCell = @"videolistCell";
 {
     self = [super init];
     if (self) {
-     
         self.title = @"我的";
         self.tabBarItem.image = [UIImage imageNamed:@"my"];
     }
@@ -31,12 +32,32 @@ static   NSString *  videolistCell = @"videolistCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    
 }
+
+- (void)drawheader{
+    UIView * headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 160)];
+  
+    
+    
+    [self.view addSubview:headerView];
+    
+}
+
+
+
+
+
+
+
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
 }
 
 

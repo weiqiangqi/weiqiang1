@@ -13,6 +13,9 @@
 @property(nonatomic,strong)NSArray * newsAray;
 @property(nonatomic,strong)NSArray * hdpicArray;
 @property(nonatomic,strong)NSArray * videoArray;
+//可供选择的订阅列表
+@property(nonatomic,strong)NSArray * chooseArray;
+
 
 
 

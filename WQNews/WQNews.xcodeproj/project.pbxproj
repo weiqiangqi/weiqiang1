@@ -23,6 +23,9 @@
 		C20B2E7F1BB4350800DC6C38 /* VideoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C20B2E7D1BB4350800DC6C38 /* VideoListCell.xib */; };
 		C20E8E251BB6A03B003FB179 /* allScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = C20E8E231BB6A03B003FB179 /* allScreen.png */; };
 		C20E8E261BB6A03B003FB179 /* backScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = C20E8E241BB6A03B003FB179 /* backScreen.png */; };
+		C240D8981BB927150067DAF4 /* ChooseController.m in Sources */ = {isa = PBXBuildFile; fileRef = C240D8971BB927150067DAF4 /* ChooseController.m */; };
+		C240D89C1BB92DBC0067DAF4 /* TItleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C240D89A1BB92DBC0067DAF4 /* TItleCell.m */; };
+		C240D89D1BB92DBC0067DAF4 /* TItleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C240D89B1BB92DBC0067DAF4 /* TItleCell.xib */; };
 		C26498421BAF8A0500C89B78 /* NewsListHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C26498411BAF8A0500C89B78 /* NewsListHelper.m */; };
 		C26498451BAF8A2900C89B78 /* NewsListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C26498441BAF8A2900C89B78 /* NewsListItem.m */; };
 		C297F0BD1BB2DB18004E2780 /* CmsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C297F0BB1BB2DB18004E2780 /* CmsCell.m */; };
@@ -96,6 +99,11 @@
 		C20B2E7D1BB4350800DC6C38 /* VideoListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoListCell.xib; sourceTree = "<group>"; };
 		C20E8E231BB6A03B003FB179 /* allScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = allScreen.png; sourceTree = "<group>"; };
 		C20E8E241BB6A03B003FB179 /* backScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backScreen.png; sourceTree = "<group>"; };
+		C240D8961BB927150067DAF4 /* ChooseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseController.h; sourceTree = "<group>"; };
+		C240D8971BB927150067DAF4 /* ChooseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseController.m; sourceTree = "<group>"; };
+		C240D8991BB92DBC0067DAF4 /* TItleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TItleCell.h; sourceTree = "<group>"; };
+		C240D89A1BB92DBC0067DAF4 /* TItleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TItleCell.m; sourceTree = "<group>"; };
+		C240D89B1BB92DBC0067DAF4 /* TItleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TItleCell.xib; sourceTree = "<group>"; };
 		C26498401BAF8A0500C89B78 /* NewsListHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsListHelper.h; sourceTree = "<group>"; };
 		C26498411BAF8A0500C89B78 /* NewsListHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsListHelper.m; sourceTree = "<group>"; };
 		C26498431BAF8A2900C89B78 /* NewsListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsListItem.h; sourceTree = "<group>"; };
@@ -335,6 +343,9 @@
 				C20B2E7B1BB4350800DC6C38 /* VideoListCell.h */,
 				C20B2E7C1BB4350800DC6C38 /* VideoListCell.m */,
 				C20B2E7D1BB4350800DC6C38 /* VideoListCell.xib */,
+				C240D8991BB92DBC0067DAF4 /* TItleCell.h */,
+				C240D89A1BB92DBC0067DAF4 /* TItleCell.m */,
+				C240D89B1BB92DBC0067DAF4 /* TItleCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -403,6 +414,8 @@
 				C29B92301BAD9CD9000364A5 /* VideoController.m */,
 				C29B92321BAD9CE7000364A5 /* MyController.h */,
 				C29B92331BAD9CE7000364A5 /* MyController.m */,
+				C240D8961BB927150067DAF4 /* ChooseController.h */,
+				C240D8971BB927150067DAF4 /* ChooseController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -527,6 +540,7 @@
 			files = (
 				C297F0C31BB2E871004E2780 /* HdpicCell.xib in Resources */,
 				C2F91BA71BB284DD0053C73D /* news.png in Resources */,
+				C240D89D1BB92DBC0067DAF4 /* TItleCell.xib in Resources */,
 				C29B92061BAD98A2000364A5 /* LaunchScreen.xib in Resources */,
 				C20B2E7F1BB4350800DC6C38 /* VideoListCell.xib in Resources */,
 				C20E8E261BB6A03B003FB179 /* backScreen.png in Resources */,
@@ -609,6 +623,7 @@
 				C20B2E711BB41E7500DC6C38 /* Picture2PictCell.m in Sources */,
 				C29B92311BAD9CD9000364A5 /* VideoController.m in Sources */,
 				C20B2E761BB424AE00DC6C38 /* Pictures3VCell.m in Sources */,
+				C240D89C1BB92DBC0067DAF4 /* TItleCell.m in Sources */,
 				C297F0BD1BB2DB18004E2780 /* CmsCell.m in Sources */,
 				C20B2E7E1BB4350800DC6C38 /* VideoListCell.m in Sources */,
 				C26498421BAF8A0500C89B78 /* NewsListHelper.m in Sources */,
@@ -621,6 +636,7 @@
 				C2F91B9A1BB24BF90053C73D /* LBViewController.m in Sources */,
 				C2F91BB41BB2D3190053C73D /* VIdeoCell.m in Sources */,
 				C20B2E6C1BB4013B00DC6C38 /* Pictures4PictCell.m in Sources */,
+				C240D8981BB927150067DAF4 /* ChooseController.m in Sources */,
 				C29B91FB1BAD98A2000364A5 /* main.m in Sources */,
 				C2DEC15D1BB1434B008C7155 /* IanScrollView.m in Sources */,
 			);

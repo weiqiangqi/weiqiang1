@@ -28,6 +28,10 @@
 @property(nonatomic,strong)NSString * comment;
 @property(nonatomic,strong)NSDictionary * comment_count_info;
 
+//编辑是需要的额外加的属性
+@property(nonatomic,strong)NSString * shortIntro;
+@property(nonatomic,strong)NSString * type;
+@property(nonatomic,strong)NSString * name;
 
 
 

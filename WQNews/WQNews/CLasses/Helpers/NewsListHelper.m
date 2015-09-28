@@ -9,6 +9,7 @@
 #import "NewsListHelper.h"
 #import "AFNetworking.h"
 #import "NewsListItem.h"
+#import "TouTiaoNews.h"
 
 @interface NewsListHelper ()
 //导航列表
@@ -17,6 +18,8 @@
 @property(nonatomic,strong)NSMutableArray   * mutHdpicArray;
 //视频列表
 @property(nonatomic,strong)NSMutableArray * mutVideoArray;
+
+
 
 @end
 
@@ -34,22 +37,36 @@
 
 - (void)getAllURL:(void(^)())resultBlock{
     
-   AFHTTPRequestOperationManager * myManager = [AFHTTPRequestOperationManager manager];
+    AFHTTPRequestOperationManager * myManager = [AFHTTPRequestOperationManager manager];
     
     
     [myManager GET:kAllURL parameters:nil success:^void(AFHTTPRequestOperation * task, id result) {
         
-       NSDictionary * dict =  result[@"data"];
+        NSDictionary * dict =  result[@"data"];
+        
         NSDictionary * listDict = dict[@"forced_sub"];
         NSArray * listArray = listDict[@"list"];
         
         NSDictionary * groupDict = dict[@"groups"];
         NSDictionary * hdpicDict1 = groupDict[@"hdpic2"];
         NSArray * hdpicArray1 = hdpicDict1[@"list"];
-
+        
         NSDictionary * videoDict = groupDict[@"video2"];
         NSArray * VLArray = videoDict[@"list"];
         
+        
+        
+        NSDictionary * chooseDict = groupDict[@"news2"];
+        NSDictionary * headlinesDict = chooseDict[@"headlines"];
+        NSArray * chooseArray = headlinesDict[@"list"];
+        
+        NSMutableArray * chMutArray = [[NSMutableArray alloc]initWithCapacity:25];
+        for (NSDictionary * chDit in chooseArray) {
+            TouTiaoNews * NewsItem = [TouTiaoNews new];
+            [NewsItem setValuesForKeysWithDictionary:chDit];
+            [chMutArray addObject:NewsItem];
+        }
+        self.chooseArray = [chMutArray mutableCopy];
         
         for (NSDictionary * dict1 in listArray) {
             NewsListItem * NewsItem = [NewsListItem new];
@@ -67,16 +84,25 @@
             [newsItem setValuesForKeysWithDictionary:VLDict];
             [self.mutVideoArray addObject:newsItem];
         }
-       
+        
+        
+        
         resultBlock();
     } failure:^void(AFHTTPRequestOperation * operation, NSError * error) {
         NSLog(@"出错了,错误是:%@",error);
     }];
     
- 
+    
 }
 
 #pragma mark --lazy load----
+- (NSArray *)chooseArray{
+    if (_chooseArray == nil) {
+        _chooseArray = [NSMutableArray array];
+    }
+    return _chooseArray;
+}
+
 - (NSMutableArray *)mutArray{
     if (_mutArray == nil) {
         _mutArray = [NSMutableArray new];
