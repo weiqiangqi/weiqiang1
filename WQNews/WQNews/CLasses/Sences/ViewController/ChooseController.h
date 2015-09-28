@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "TouTiaoNews.h"
 
+typedef void(^reloadUI)(NSMutableArray *);
+
 @interface ChooseController : UIViewController
 
 @property(nonatomic,strong)NSArray * titleArray;
@@ -16,6 +18,8 @@
 - (void)backAction:(void(^)())reloadUI;
 
 @property(nonatomic,strong)NSMutableArray * likingArray;
+
+//@property(nonatomic,strong)reloadUI * relodView;
 
 //@property(nonatomic,strong)TouTiaoNews * titleModel;
 
