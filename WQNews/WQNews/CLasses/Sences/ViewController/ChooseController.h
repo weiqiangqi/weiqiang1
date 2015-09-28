@@ -13,6 +13,10 @@
 
 @property(nonatomic,strong)NSArray * titleArray;
 
+- (void)backAction:(void(^)())reloadUI;
+
+@property(nonatomic,strong)NSMutableArray * likingArray;
+
 //@property(nonatomic,strong)TouTiaoNews * titleModel;
 
 

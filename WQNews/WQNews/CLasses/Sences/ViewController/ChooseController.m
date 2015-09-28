@@ -45,20 +45,25 @@ static NSString * titleCell = @"titleCell";
     UIButton * backButton = [UIButton buttonWithType:UIButtonTypeSystem];
     backButton.frame = CGRectMake(0, 20, 60, 30);
     [backButton setTitle:@"确定" forState:UIControlStateNormal];
-    [backButton addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
+    [backButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
     
     [headerView addSubview:backButton];
     
-    
     [self.view addSubview:headerView];
+    
 }
 
+
 #pragma mark---按钮事件---
-- (void)backAction{
+- (void)backAction:(void(^)())reloadUI{
+    
     [self dismissViewControllerAnimated:nil completion:nil];
     
     
+    reloadUI();
 }
+
+
 
 #pragma mark --dlegate , datasouse 事件---
 
@@ -86,11 +91,7 @@ static NSString * titleCell = @"titleCell";
     return 64;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-   
-    
-    
-}
+
 
 
 //懒加载
@@ -102,7 +103,12 @@ static NSString * titleCell = @"titleCell";
     
 }
 
-
+- (NSMutableArray *)likingArray{
+    if (_likingArray == nil) {
+        _likingArray = [NSMutableArray array];
+    }
+    return _likingArray;
+}
 
 
 

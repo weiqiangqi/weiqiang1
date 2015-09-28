@@ -19,6 +19,7 @@
 #import "HdpicCell.h"
 #import "WebViewController.h"
 #import "ChooseController.h"
+#import "TItleCell.h"
 
 
 @interface NewsListController ()<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
@@ -55,6 +56,9 @@ static  NSString * hdpicCell = @"hdpicCell";
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [self drawButton];
+    //注册一下cell
+  
+    
     //    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellID"];
     //    self.tableView.delegate = self;
     //    self.tableView.dataSource = self;
@@ -487,7 +491,22 @@ static  NSString * hdpicCell = @"hdpicCell";
     
     [self presentViewController:chooseVC animated:YES completion:nil];
     
+    
+    
+    [chooseVC backAction:^{
+        
+        
+//      TItleCell * cell = []
+        
+        
+        
+        
+        [self drawmainScrollView];
+        [self drawTableView];
+    }];
+    
 }
+
 
 
 

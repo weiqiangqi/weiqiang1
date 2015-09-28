@@ -21,7 +21,7 @@
 
 @property(nonatomic,strong)TouTiaoNews * titleModel;
 //存储感兴趣的数组
-@property(nonatomic,strong)NSMutableArray * subscriptionArray;
+@property(nonatomic,strong)NSMutableArray * likingArray;
 
 
 //赋值方法
