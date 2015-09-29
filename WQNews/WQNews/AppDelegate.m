@@ -80,6 +80,7 @@
  @param response 具体的响应对象
  */
 - (void)didReceiveWeiboResponse:(WBBaseResponse *)response{
+  NSDictionary * Dict =  response.userInfo;
     
     if ([response isKindOfClass:WBSendMessageToWeiboResponse.class]) {
         NSString * title =  NSLocalizedString(@"发送结果", nil);
@@ -139,8 +140,6 @@
         
     }
 
-    
-    
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
