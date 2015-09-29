@@ -16,7 +16,7 @@
     if ([key isEqualToString:@"id"]) {
         _ID = value;
     }
-    NSLog(@"异常的key:%@",_ID);
+   
 }
 
 //打印

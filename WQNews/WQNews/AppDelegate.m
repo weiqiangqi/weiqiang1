@@ -11,8 +11,7 @@
 #import "PictureController.h"
 #import "VideoController.h"
 #import "MyController.h"
-
-
+#import <AVOSCloud/AVOSCloud.h>
 
 
 @interface AppDelegate ()
@@ -23,8 +22,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    //这是leanCloud的方法
+    [AVOSCloud setApplicationId:@"{{appid}}"
+                      clientKey:@"{{appkey}}"];
+    [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
-    
+    //这是微博的方法
     [WeiboSDK enableDebugMode:YES];
     [WeiboSDK registerApp:kAppKey];
     
@@ -81,6 +84,8 @@
  */
 - (void)didReceiveWeiboResponse:(WBBaseResponse *)response{
   NSDictionary * Dict =  response.userInfo;
+    NSLog(@"++++++++++++++++++++++++");
+    NSLog(@"%@",Dict);
     
     if ([response isKindOfClass:WBSendMessageToWeiboResponse.class]) {
         NSString * title =  NSLocalizedString(@"发送结果", nil);
@@ -102,8 +107,12 @@
         [alert show];
     }
     else if ([response isKindOfClass:WBAuthorizeResponse.class]){
-        NSString *title = NSLocalizedString(@"认证结果", nil);
+        NSString *title = NSLocalizedString(@"登陆状态", nil);
         NSString *message = [NSString stringWithFormat:@"%@: %d\nresponse.userId: %@\nresponse.accessToken: %@\n%@: %@\n%@: %@", NSLocalizedString(@"响应状态", nil), (int)response.statusCode,[(WBAuthorizeResponse *)response userID], [(WBAuthorizeResponse *)response accessToken],  NSLocalizedString(@"响应UserInfo数据", nil), response.userInfo, NSLocalizedString(@"原请求UserInfo数据", nil), response.requestUserInfo];
+        
+//        if (response.statusCode == 0 ) {
+//        }
+        
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
                                                         message:message
                                                        delegate:nil

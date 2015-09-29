@@ -20,6 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.6.0):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - AVOSCloud (3.1.4)
   - SDWebImage (3.7.3):
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
@@ -27,6 +28,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
+  - AVOSCloud
   - SDWebImage (~> 3.7)
   - WeiboSDK (from `https://github.com/sinaweibosdk/weibo_ios_sdk.git`)
 
@@ -41,6 +43,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: 79f7eb1a0fcfa7beb409332b2ca49afe9ce53b05
+  AVOSCloud: 2be1640178facaac8343d67ed4d5348f4dffecd7
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   WeiboSDK: 5f2a707c4569a64f4641f4171acd712016f24342
 
