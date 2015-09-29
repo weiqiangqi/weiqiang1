@@ -48,6 +48,9 @@
 		C2DEC15D1BB1434B008C7155 /* IanScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DEC15A1BB1434B008C7155 /* IanScrollView.m */; };
 		C2DEC15E1BB1434B008C7155 /* IanScrollViewDefault@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2DEC15B1BB1434B008C7155 /* IanScrollViewDefault@2x.png */; };
 		C2DEC1611BB15266008C7155 /* TouTiaoNews.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DEC1601BB15266008C7155 /* TouTiaoNews.m */; };
+		C2F3D7351BBA3DAD008365B5 /* comment.png in Resources */ = {isa = PBXBuildFile; fileRef = C2F3D7321BBA3DAD008365B5 /* comment.png */; };
+		C2F3D7361BBA3DAD008365B5 /* login.png in Resources */ = {isa = PBXBuildFile; fileRef = C2F3D7331BBA3DAD008365B5 /* login.png */; };
+		C2F3D7371BBA3DAD008365B5 /* lover.png in Resources */ = {isa = PBXBuildFile; fileRef = C2F3D7341BBA3DAD008365B5 /* lover.png */; };
 		C2F91B9A1BB24BF90053C73D /* LBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F91B991BB24BF90053C73D /* LBViewController.m */; };
 		C2F91B9F1BB25B550053C73D /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = C2F91B9C1BB25B550053C73D /* back.png */; };
 		C2F91BA01BB25B550053C73D /* mind.png in Resources */ = {isa = PBXBuildFile; fileRef = C2F91B9D1BB25B550053C73D /* mind.png */; };
@@ -144,6 +147,9 @@
 		C2DEC15B1BB1434B008C7155 /* IanScrollViewDefault@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IanScrollViewDefault@2x.png"; sourceTree = "<group>"; };
 		C2DEC15F1BB15266008C7155 /* TouTiaoNews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouTiaoNews.h; sourceTree = "<group>"; };
 		C2DEC1601BB15266008C7155 /* TouTiaoNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouTiaoNews.m; sourceTree = "<group>"; };
+		C2F3D7321BBA3DAD008365B5 /* comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comment.png; sourceTree = "<group>"; };
+		C2F3D7331BBA3DAD008365B5 /* login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login.png; sourceTree = "<group>"; };
+		C2F3D7341BBA3DAD008365B5 /* lover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lover.png; sourceTree = "<group>"; };
 		C2F91B981BB24BF90053C73D /* LBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBViewController.h; sourceTree = "<group>"; };
 		C2F91B991BB24BF90053C73D /* LBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBViewController.m; sourceTree = "<group>"; };
 		C2F91B9C1BB25B550053C73D /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
@@ -452,6 +458,9 @@
 				C2F91B9C1BB25B550053C73D /* back.png */,
 				C2F91B9D1BB25B550053C73D /* mind.png */,
 				C2F91B9E1BB25B550053C73D /* star.png */,
+				C2F3D7321BBA3DAD008365B5 /* comment.png */,
+				C2F3D7331BBA3DAD008365B5 /* login.png */,
+				C2F3D7341BBA3DAD008365B5 /* lover.png */,
 			);
 			path = MyPictures;
 			sourceTree = "<group>";
@@ -539,6 +548,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C297F0C31BB2E871004E2780 /* HdpicCell.xib in Resources */,
+				C2F3D7351BBA3DAD008365B5 /* comment.png in Resources */,
 				C2F91BA71BB284DD0053C73D /* news.png in Resources */,
 				C240D89D1BB92DBC0067DAF4 /* TItleCell.xib in Resources */,
 				C29B92061BAD98A2000364A5 /* LaunchScreen.xib in Resources */,
@@ -551,7 +561,9 @@
 				C297F0BE1BB2DB18004E2780 /* CmsCell.xib in Resources */,
 				C20B2E721BB41E7500DC6C38 /* Picture2PictCell.xib in Resources */,
 				C20B2E681BB3E7E400DC6C38 /* Pictures3HCell.xib in Resources */,
+				C2F3D7361BBA3DAD008365B5 /* login.png in Resources */,
 				C2F91B9F1BB25B550053C73D /* back.png in Resources */,
+				C2F3D7371BBA3DAD008365B5 /* lover.png in Resources */,
 				C20B2E6D1BB4013B00DC6C38 /* Pictures4PictCell.xib in Resources */,
 				C2F91BB01BB298C60053C73D /* SubjectCell.xib in Resources */,
 				C2F91BA11BB25B550053C73D /* star.png in Resources */,

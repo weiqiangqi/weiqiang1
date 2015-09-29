@@ -91,8 +91,6 @@ static   NSString *  videolistCell = @"videolistCell";
             
             [self drawTableView];
         } failure:^void(AFHTTPRequestOperation * opration, NSError * error) {
-            
-            
         }];
         
     }];
@@ -150,7 +148,6 @@ static   NSString *  videolistCell = @"videolistCell";
     _segCV.selectedSegmentIndex = 0;
     [self.view addSubview:_segCV];
 }
-
 
 - (void)changeAction{
     self.index = _segCV.selectedSegmentIndex;

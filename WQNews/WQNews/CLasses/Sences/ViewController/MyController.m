@@ -11,7 +11,7 @@
 
 @interface MyController ()
 //登陆头像
-@property(nonatomic,strong)UIImageView * imgView;
+//@property(nonatomic,strong)UIImageView * imgView;
 
 
 
@@ -32,21 +32,42 @@ static   NSString *  videolistCell = @"videolistCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self drawheader];
     
     
 }
 
 - (void)drawheader{
     UIView * headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 160)];
-  
+    headerView.backgroundColor = [UIColor colorWithRed:0.768 green:1.000 blue:0.572 alpha:1.000]
+    ;
+    self.imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 80, 80)];
+    self.imgView.image = [UIImage imageNamed:@"login"];
     
+    UIButton * sinaLogIn = [UIButton buttonWithType:UIButtonTypeSystem];
+    sinaLogIn.frame = CGRectMake(0, 0, 150, 30) ;
+    [sinaLogIn setTitle:@"新浪登陆" forState:UIControlStateNormal];
+    sinaLogIn.titleLabel.textAlignment = NSTextAlignmentCenter;
+
+    sinaLogIn.center =CGPointMake(headerView.center.x, headerView.center.y + 60);
+    [sinaLogIn addTarget:self action:@selector(Loginbysina) forControlEvents:UIControlEventTouchUpInside];
+    
+    [headerView addSubview:sinaLogIn];
+    
+    [headerView addSubview:self.imgView];
+    self.imgView.center = headerView.center;
+    self.imgView.layer.cornerRadius = 40;
+    self.imgView.layer.masksToBounds = YES;
     
     [self.view addSubview:headerView];
-    
 }
 
 
-
+#pragma mark ---按钮点击事件--
+- (void)Loginbysina{
+    
+    
+}
 
 
 

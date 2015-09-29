@@ -11,6 +11,7 @@
 
 @interface MyController : UIViewController
 
+@property(nonatomic,strong)UIImageView * imgView;
 
 
 

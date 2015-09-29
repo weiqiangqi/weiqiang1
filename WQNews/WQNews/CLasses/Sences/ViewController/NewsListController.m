@@ -94,6 +94,8 @@ static  NSString * hdpicCell = @"hdpicCell";
             NSLog(@"错误是:%@",error);
         }];
     }];
+    
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -491,21 +493,22 @@ static  NSString * hdpicCell = @"hdpicCell";
     
     [self presentViewController:chooseVC animated:YES completion:nil];
     
+//    [chooseVC backAction:^{
+//        
+//        
+////      TItleCell * cell = []
+//        
+//        
+//        
+//        
+//        [self drawmainScrollView];
+//        [self drawTableView];
+//    }];
     
-    
-    [chooseVC backAction:^{
-        
-        
-//      TItleCell * cell = []
-        
-        
-        
-        
-        [self drawmainScrollView];
-        [self drawTableView];
-    }];
-    
+
 }
+
+
 
 
 
