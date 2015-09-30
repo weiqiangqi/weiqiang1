@@ -10,7 +10,8 @@
 #import "AppDelegate.h"
 #import "MoreCell.h"
 #import "LoginController.h"
-
+#import "RigisterController.h"
+#import "FindController.h"
 
 @interface MyController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -119,7 +120,7 @@ static NSString * moreCell = @"moreCell";
 
 - (void)drawTableView{
     
-    self.TitleArray = @[@"注册账号",@"登陆",@"离线下载",@"清理缓存",@"收藏",@"应用中心"];
+    self.TitleArray = @[@"注册账号",@"登陆",@"找回密码",@"清理缓存",@"收藏",@"应用中心"];
     self.tableView = [[UITableView alloc]initWithFrame: CGRectMake(0, 0, kScreenWidth, kScreenHeight - 48) style:UITableViewStylePlain];
     
     self.view.backgroundColor = [UIColor colorWithRed:0.677 green:1.000 blue:0.200 alpha:1.000];
@@ -169,6 +170,12 @@ static NSString * moreCell = @"moreCell";
         LoginController * loginVC = [LoginController new];
         [self presentViewController:loginVC animated:YES completion:nil];
         
+    }else if ([self.TitleArray[indexPath.row] isEqualToString:@"注册账号"] ){
+        RigisterController * rigisterVC = [[RigisterController alloc]init];
+        [self presentViewController:rigisterVC animated:YES completion:nil];
+    }else if ([self.TitleArray[indexPath.row] isEqualToString:@"找回密码"]){
+        FindController * findVC = [[FindController alloc]init];
+        [self presentViewController:findVC animated:YES completion:nil];
     }
     
 }

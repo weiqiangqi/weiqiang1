@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <AVOSCloud/AVOSCloud.h>
 @interface RigisterController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *text4Name;

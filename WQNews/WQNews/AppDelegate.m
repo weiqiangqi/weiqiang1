@@ -11,7 +11,7 @@
 #import "PictureController.h"
 #import "VideoController.h"
 #import "MyController.h"
-#import <AVOSCloud/AVOSCloud.h>
+
 
 
 @interface AppDelegate ()
@@ -23,8 +23,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     //这是leanCloud的方法
-    [AVOSCloud setApplicationId:@"{{appid}}"
-                      clientKey:@"{{appkey}}"];
+    [AVOSCloud setApplicationId:@"j41gtQVT0BXEcpj6FmV0L21X"
+                      clientKey:@"RUAIOYDkvSYP3bWi4AdIsMTY"];
     [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     //这是微博的方法

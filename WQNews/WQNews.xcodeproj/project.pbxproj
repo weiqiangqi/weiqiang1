@@ -55,6 +55,8 @@
 		C2DEC15D1BB1434B008C7155 /* IanScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DEC15A1BB1434B008C7155 /* IanScrollView.m */; };
 		C2DEC15E1BB1434B008C7155 /* IanScrollViewDefault@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2DEC15B1BB1434B008C7155 /* IanScrollViewDefault@2x.png */; };
 		C2DEC1611BB15266008C7155 /* TouTiaoNews.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DEC1601BB15266008C7155 /* TouTiaoNews.m */; };
+		C2EE0D8C1BBBA4E1000FAA89 /* FindController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EE0D8A1BBBA4E1000FAA89 /* FindController.m */; };
+		C2EE0D8D1BBBA4E1000FAA89 /* FindController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2EE0D8B1BBBA4E1000FAA89 /* FindController.xib */; };
 		C2F3D7351BBA3DAD008365B5 /* comment.png in Resources */ = {isa = PBXBuildFile; fileRef = C2F3D7321BBA3DAD008365B5 /* comment.png */; };
 		C2F3D7361BBA3DAD008365B5 /* login.png in Resources */ = {isa = PBXBuildFile; fileRef = C2F3D7331BBA3DAD008365B5 /* login.png */; };
 		C2F3D7371BBA3DAD008365B5 /* lover.png in Resources */ = {isa = PBXBuildFile; fileRef = C2F3D7341BBA3DAD008365B5 /* lover.png */; };
@@ -164,6 +166,9 @@
 		C2DEC15B1BB1434B008C7155 /* IanScrollViewDefault@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IanScrollViewDefault@2x.png"; sourceTree = "<group>"; };
 		C2DEC15F1BB15266008C7155 /* TouTiaoNews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouTiaoNews.h; sourceTree = "<group>"; };
 		C2DEC1601BB15266008C7155 /* TouTiaoNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouTiaoNews.m; sourceTree = "<group>"; };
+		C2EE0D891BBBA4E1000FAA89 /* FindController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindController.h; sourceTree = "<group>"; };
+		C2EE0D8A1BBBA4E1000FAA89 /* FindController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindController.m; sourceTree = "<group>"; };
+		C2EE0D8B1BBBA4E1000FAA89 /* FindController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindController.xib; sourceTree = "<group>"; };
 		C2F3D7321BBA3DAD008365B5 /* comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comment.png; sourceTree = "<group>"; };
 		C2F3D7331BBA3DAD008365B5 /* login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login.png; sourceTree = "<group>"; };
 		C2F3D7341BBA3DAD008365B5 /* lover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lover.png; sourceTree = "<group>"; };
@@ -431,6 +436,9 @@
 				C233B0A01BBAC4BF00ED7A99 /* RigisterController.h */,
 				C233B0A11BBAC4BF00ED7A99 /* RigisterController.m */,
 				C233B0A21BBAC4BF00ED7A99 /* RigisterController.xib */,
+				C2EE0D891BBBA4E1000FAA89 /* FindController.h */,
+				C2EE0D8A1BBBA4E1000FAA89 /* FindController.m */,
+				C2EE0D8B1BBBA4E1000FAA89 /* FindController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -588,6 +596,7 @@
 				C2F91BA91BB284DD0053C73D /* video.png in Resources */,
 				C2F91BAB1BB2862B0053C73D /* my.png in Resources */,
 				C297F0BE1BB2DB18004E2780 /* CmsCell.xib in Resources */,
+				C2EE0D8D1BBBA4E1000FAA89 /* FindController.xib in Resources */,
 				C233B09F1BBAC30500ED7A99 /* LoginController.xib in Resources */,
 				C20B2E721BB41E7500DC6C38 /* Picture2PictCell.xib in Resources */,
 				C20B2E681BB3E7E400DC6C38 /* Pictures3HCell.xib in Resources */,
@@ -670,6 +679,7 @@
 				C240D89C1BB92DBC0067DAF4 /* TItleCell.m in Sources */,
 				C297F0BD1BB2DB18004E2780 /* CmsCell.m in Sources */,
 				C20B2E7E1BB4350800DC6C38 /* VideoListCell.m in Sources */,
+				C2EE0D8C1BBBA4E1000FAA89 /* FindController.m in Sources */,
 				C26498421BAF8A0500C89B78 /* NewsListHelper.m in Sources */,
 				C297F0C21BB2E871004E2780 /* HdpicCell.m in Sources */,
 				C2F91BAF1BB298C60053C73D /* SubjectCell.m in Sources */,

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "WeiboSDK.h"
 
+
 @interface MyController : UIViewController<WBHttpRequestDelegate>
 
 @property(nonatomic,strong)UIImageView * imgView;

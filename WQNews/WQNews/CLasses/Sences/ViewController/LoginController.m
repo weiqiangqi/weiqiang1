@@ -41,11 +41,18 @@
 */
 
 - (IBAction)loginAction:(UIButton *)sender {
-//    if ([self.text4Name.text isEqualToString:@""] && [self.text4Pwd.text isEqualToString:@""]  ) {
-//        
-//        
-//        
-//    }
+    
+    [AVUser logInWithUsernameInBackground:self.text4Name.text password:self.text4Pwd.text block:^(AVUser *user, NSError *error) {
+        if (user != nil) {
+
+            UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"登录成功" message:@"已经登录" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            
+            [alert show];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        } else {
+            
+        }
+    }];
     
 }
 

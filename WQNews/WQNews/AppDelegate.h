@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 #import "WeiboSDK.h"
+#import <AVOSCloud/AVOSCloud.h>
 
 @class MyController;
 
