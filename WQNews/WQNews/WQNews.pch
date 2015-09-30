@@ -19,7 +19,12 @@
 
 #define kAppKey @"3998436771"
 #define kRedirectURL @"https://api.weibo.com/oauth2/default.html"
-
+//宏定义
+#define kLoginNotice @"loginSuccess"
+#define kLoginState  @"loginState"
+#define kUserName  @"userName"
+#define kUserPwd  @"userPwd"
+#define kUserEmailAddress  @"emailAddress"
 
 
 #endif

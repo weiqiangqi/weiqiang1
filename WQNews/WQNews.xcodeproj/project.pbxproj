@@ -57,6 +57,7 @@
 		C2DEC1611BB15266008C7155 /* TouTiaoNews.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DEC1601BB15266008C7155 /* TouTiaoNews.m */; };
 		C2EE0D8C1BBBA4E1000FAA89 /* FindController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EE0D8A1BBBA4E1000FAA89 /* FindController.m */; };
 		C2EE0D8D1BBBA4E1000FAA89 /* FindController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2EE0D8B1BBBA4E1000FAA89 /* FindController.xib */; };
+		C2EE0D901BBC03A0000FAA89 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C2EE0D8F1BBC03A0000FAA89 /* UserManager.m */; };
 		C2F3D7351BBA3DAD008365B5 /* comment.png in Resources */ = {isa = PBXBuildFile; fileRef = C2F3D7321BBA3DAD008365B5 /* comment.png */; };
 		C2F3D7361BBA3DAD008365B5 /* login.png in Resources */ = {isa = PBXBuildFile; fileRef = C2F3D7331BBA3DAD008365B5 /* login.png */; };
 		C2F3D7371BBA3DAD008365B5 /* lover.png in Resources */ = {isa = PBXBuildFile; fileRef = C2F3D7341BBA3DAD008365B5 /* lover.png */; };
@@ -169,6 +170,8 @@
 		C2EE0D891BBBA4E1000FAA89 /* FindController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindController.h; sourceTree = "<group>"; };
 		C2EE0D8A1BBBA4E1000FAA89 /* FindController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindController.m; sourceTree = "<group>"; };
 		C2EE0D8B1BBBA4E1000FAA89 /* FindController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindController.xib; sourceTree = "<group>"; };
+		C2EE0D8E1BBC03A0000FAA89 /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
+		C2EE0D8F1BBC03A0000FAA89 /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
 		C2F3D7321BBA3DAD008365B5 /* comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comment.png; sourceTree = "<group>"; };
 		C2F3D7331BBA3DAD008365B5 /* login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login.png; sourceTree = "<group>"; };
 		C2F3D7341BBA3DAD008365B5 /* lover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lover.png; sourceTree = "<group>"; };
@@ -388,6 +391,8 @@
 				C26498411BAF8A0500C89B78 /* NewsListHelper.m */,
 				C2B296531BB5817B0091B5B3 /* PlayerHelper.h */,
 				C2B296541BB5817B0091B5B3 /* PlayerHelper.m */,
+				C2EE0D8E1BBC03A0000FAA89 /* UserManager.h */,
+				C2EE0D8F1BBC03A0000FAA89 /* UserManager.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -667,6 +672,7 @@
 				C26498451BAF8A2900C89B78 /* NewsListItem.m in Sources */,
 				C2DEC1611BB15266008C7155 /* TouTiaoNews.m in Sources */,
 				C29B922B1BAD9BA0000364A5 /* NewsListController.m in Sources */,
+				C2EE0D901BBC03A0000FAA89 /* UserManager.m in Sources */,
 				C20B2E7A1BB433C500DC6C38 /* VideoItem.m in Sources */,
 				C233B09E1BBAC30500ED7A99 /* LoginController.m in Sources */,
 				C2B296551BB5817B0091B5B3 /* PlayerHelper.m in Sources */,

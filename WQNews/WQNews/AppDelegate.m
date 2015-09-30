@@ -73,7 +73,7 @@
  */
 - (void)didReceiveWeiboRequest:(WBBaseRequest *)request{
     
-    NSLog(@"%@",request);
+
 }
 
 /**
@@ -83,9 +83,8 @@
  @param response 具体的响应对象
  */
 - (void)didReceiveWeiboResponse:(WBBaseResponse *)response{
-  NSDictionary * Dict =  response.userInfo;
-    NSLog(@"++++++++++++++++++++++++");
-    NSLog(@"%@",Dict);
+  
+
     
     if ([response isKindOfClass:WBSendMessageToWeiboResponse.class]) {
         NSString * title =  NSLocalizedString(@"发送结果", nil);

@@ -42,12 +42,10 @@
             [alert show];
             [self dismissViewControllerAnimated:YES completion:nil];
         } else {
-            UIAlertView * alert =[ [UIAlertView alloc]initWithTitle:@"找回失败" message:@"请重新输入邮箱" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            UIAlertView * alert =[ [UIAlertView alloc]initWithTitle:@"找回失败" message:@"输入的邮箱有误\n请重新输入邮箱" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
             [alert show];
         }
     }];
-    
-    
 }
 
 - (IBAction)cancelAction:(UIButton *)sender {
