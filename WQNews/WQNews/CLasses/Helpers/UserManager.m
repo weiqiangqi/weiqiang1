@@ -19,9 +19,11 @@
 }
 //同步
 - (void)synchronize{
-
-    [[NSUserDefaults standardUserDefaults]synchronize];
-    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+         [[NSUserDefaults standardUserDefaults]synchronize];
+    });
+   
 }
 //设置登录状态
 - (void)setLoginState:(BOOL) isLogin{
@@ -31,7 +33,6 @@
 
 - (void)setUserName:(NSString *)userName{
     [[NSUserDefaults standardUserDefaults] setValue:userName forKey:kUserName];
-    
 }
 -(void)setUserPassWorld:(NSString *)pwd{
         [[NSUserDefaults standardUserDefaults] setObject:pwd forKey:kUserPwd];

@@ -14,7 +14,7 @@
 #import "FindController.h"
 #import "UserManager.h"
 
-@interface MyController ()<UITableViewDelegate,UITableViewDataSource>
+@interface MyController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 
 @property(nonatomic,strong)UITableView * tableView;
 
@@ -71,7 +71,7 @@ static NSString * moreCell = @"moreCell";
     _loginButton.frame = CGRectMake(0, 0, 150, 30) ;
     [_loginButton setTitle:@"登陆" forState:UIControlStateNormal];
     _loginButton.tag = 1000;
-//    loginButton.tintColor = [UIColor blackColor];
+
     _loginButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     
     _loginButton.center =CGPointMake(headerView.center.x, headerView.center.y + 60);
@@ -86,22 +86,32 @@ static NSString * moreCell = @"moreCell";
     
     [headerView addGestureRecognizer:tapGesture];
     self.tableView.tableHeaderView = headerView;
-//    [self.view addSubview:headerView];
+
     
 }
 
 
-#pragma mark ---按钮点击事件--
+#pragma mark ---登录点击事件--
+
 - (void)loginAction{
-    if ([_loginButton.titleLabel.text isEqualToString:@"取消登录"]) {
-        [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
-        [[UserManager shareUserManager] setLoginState:NO];
-        
+    NSString * userName = [[UserManager shareUserManager]userName];
+    if ([_loginButton.titleLabel.text isEqualToString:userName]) {
+        UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"退出登录" message:@"你确定退出登录吗?" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+        [alert show];
     }else{
     LoginController * loginVC = [LoginController new];
     [self presentViewController:loginVC animated:YES completion:nil];
     }
 }
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 0) {
+        [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
+        [[UserManager shareUserManager] setLoginState:NO];
+    }
+}
+
+
 
 #pragma mark --绘制tableView--
 
@@ -118,7 +128,6 @@ static NSString * moreCell = @"moreCell";
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 
-//    self.tableView.
     
     [self.view addSubview:self.tableView];
     
@@ -139,7 +148,7 @@ static NSString * moreCell = @"moreCell";
 - (UITableViewCell * )tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     MoreCell * cell = [tableView dequeueReusableCellWithIdentifier:moreCell forIndexPath:indexPath];
-  
+    
     cell.lable4Title.text = self.TitleArray[indexPath.row];
     
 
@@ -179,8 +188,9 @@ static NSString * moreCell = @"moreCell";
 }
 
 - (void)loginSuccessAction:(NSNotification *)notice{
+    NSString * userName = [[UserManager shareUserManager]userName];
     UIButton * loginbutton = (UIButton *)[self.view viewWithTag:1000];
-    [loginbutton setTitle:@"取消登录" forState:UIControlStateNormal];
+    [loginbutton setTitle:userName forState:UIControlStateNormal];
     
 }
 

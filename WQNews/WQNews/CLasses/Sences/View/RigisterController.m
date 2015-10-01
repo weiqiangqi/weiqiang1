@@ -7,6 +7,7 @@
 //
 
 #import "RigisterController.h"
+#import "UserManager.h"
 
 @interface RigisterController ()
 
@@ -50,26 +51,29 @@
             user.username = self.text4Name.text;
             user.password =  self.text4Pwd.text;
             user.email = self.text4Emailaddress.text;
+            
         }else{
             user.username = self.text4Name.text;
             user.password =  self.text4Pwd.text;
         }
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
-                NSUserDefaults * userDefaut = [NSUserDefaults standardUserDefaults];
-                [userDefaut setObject:self.text4Name.text forKey:@"userName"];
-                [userDefaut setObject:self.text4Pwd.text forKey:@"userPwd"];
-                [userDefaut setObject:self.text4Emailaddress.text forKey:@"userEmailAddress"];
+//                [[UserManager shareUserManager]synchronize];
+                [[UserManager shareUserManager]setLoginState:YES];
+                [[UserManager shareUserManager]setUserPassWorld:self.text4Pwd.text];
+                [[UserManager shareUserManager]setUserName:self.text4Name.text];
             } else {
                 
                 
             }
         }];
         
-        
+        //发出提示框
         UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"注册成功" message:@"已经登录" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alert show];
-        
+        [alert dismissWithClickedButtonIndex:0 animated:YES];
+        //发出通知
+         [[NSNotificationCenter defaultCenter]postNotificationName:@"loginSuccess" object:nil];
         
         [self dismissViewControllerAnimated:YES completion:nil];
     }else if ([self.text4Name.text isEqualToString:@""] || [self.text4Pwd.text isEqualToString:@""]){
