@@ -23,6 +23,10 @@
 //登录按钮
 @property(nonatomic,strong) UIButton * loginButton;
 
+//退出登录的提醒
+@property(nonatomic,strong )UIAlertView * alertLG;
+
+
 @end
 
 @implementation MyController
@@ -40,6 +44,8 @@ static NSString * moreCell = @"moreCell";
         
 //        注册通知
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccessAction:) name:@"loginSuccess" object:nil];
+//        注册另一通知
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(registerSuccessAction:) name:kRegisterSucces object:nil];
         
     }
     return self;
@@ -86,8 +92,6 @@ static NSString * moreCell = @"moreCell";
     
     [headerView addGestureRecognizer:tapGesture];
     self.tableView.tableHeaderView = headerView;
-
-    
 }
 
 
@@ -96,8 +100,9 @@ static NSString * moreCell = @"moreCell";
 - (void)loginAction{
     NSString * userName = [[UserManager shareUserManager]userName];
     if ([_loginButton.titleLabel.text isEqualToString:userName]) {
-        UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"退出登录" message:@"你确定退出登录吗?" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
-        [alert show];
+        _alertLG = [[UIAlertView alloc]initWithTitle:@"退出登录" message:@"你确定退出登录吗?" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+        [_alertLG show];
+//        alertLG.tag = 1001;
     }else{
     LoginController * loginVC = [LoginController new];
     [self presentViewController:loginVC animated:YES completion:nil];
@@ -105,7 +110,8 @@ static NSString * moreCell = @"moreCell";
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (buttonIndex == 0) {
+//    UIAlertView * alerLG = (UIAlertView *)[self.view viewWithTag:1001];
+    if (buttonIndex == 0 && [_alertLG.title isEqualToString:alertView.title] ) {
         [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
         [[UserManager shareUserManager] setLoginState:NO];
     }
@@ -186,7 +192,7 @@ static NSString * moreCell = @"moreCell";
     [super didReceiveMemoryWarning];
     
 }
-
+#pragma mark ---通知事件
 - (void)loginSuccessAction:(NSNotification *)notice{
     NSString * userName = [[UserManager shareUserManager]userName];
     UIButton * loginbutton = (UIButton *)[self.view viewWithTag:1000];
@@ -194,13 +200,21 @@ static NSString * moreCell = @"moreCell";
     
 }
 
+- (void)registerSuccessAction:(NSNotification *)notice{
+    [self loginSuccessAction:notice];
+    
+    UIAlertView * alertRG = [[UIAlertView alloc]initWithTitle:@"注册成功" message:@"恭喜您注册成功\n已经登录" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    [alertRG show];
+  
+    
+    
+}
 #pragma mark --lazy load---
 - (NSArray *)TitleArray{
     if (_TitleArray == nil) {
         _TitleArray = [NSArray array];
     }
     return _TitleArray;
-    
 }
 
 

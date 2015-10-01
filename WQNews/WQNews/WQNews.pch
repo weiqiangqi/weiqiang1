@@ -25,6 +25,6 @@
 #define kUserName  @"userName"
 #define kUserPwd  @"userPwd"
 #define kUserEmailAddress  @"emailAddress"
-
+#define kRegisterSucces @"registerSuccess"
 
 #endif

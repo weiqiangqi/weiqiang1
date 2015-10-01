@@ -58,24 +58,32 @@
         }
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
-//                [[UserManager shareUserManager]synchronize];
+                //                [[UserManager shareUserManager]synchronize];
                 [[UserManager shareUserManager]setLoginState:YES];
                 [[UserManager shareUserManager]setUserPassWorld:self.text4Pwd.text];
                 [[UserManager shareUserManager]setUserName:self.text4Name.text];
+                //注册成功后执行的方法
+                //发出提示框
+                UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"注册成功" message:@"已经登录" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [alert show];
+                [alert dismissWithClickedButtonIndex:0 animated:YES];
+                //发出通知
+                [[NSNotificationCenter defaultCenter]postNotificationName:kRegisterSucces object:nil];
+                
+                [self dismissViewControllerAnimated:YES completion:nil];
+                
             } else {
-                
-                
+                //注册失败执行
+                self.text4Name.text = @"";
+                self.text4Pwd.text = @"";
+                self.text4PwdAgain.text =@"";
+                self.text4Emailaddress.text = @"";
+                UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"注册失败" message:@"用户名或邮箱已经注册过\n请重新输入" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [alert show];
             }
         }];
         
-        //发出提示框
-        UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"注册成功" message:@"已经登录" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        [alert show];
-        [alert dismissWithClickedButtonIndex:0 animated:YES];
-        //发出通知
-         [[NSNotificationCenter defaultCenter]postNotificationName:@"loginSuccess" object:nil];
         
-        [self dismissViewControllerAnimated:YES completion:nil];
     }else if ([self.text4Name.text isEqualToString:@""] || [self.text4Pwd.text isEqualToString:@""]){
         UIAlertView * alert1 = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"姓名或密码不能为空" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alert1 show];

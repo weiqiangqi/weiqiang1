@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>35A2C9A8-47A7-4209-ABDC-A45FB80C3962</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>WQMusicPlayer</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>837B487ACB5F0636B11AABE18AD8D26330B1E60B</key>
 		<string>https://github.com/weiqiangqi/weiqiang1.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>WQMusicPlayer/WQMusicPlayer.xcodeproj/project.xcworkspace</string>
+	<string>WQMusicPlayer/WQMusicPlayer.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>837B487ACB5F0636B11AABE18AD8D26330B1E60B</key>
