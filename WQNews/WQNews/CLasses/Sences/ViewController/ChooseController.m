@@ -78,12 +78,16 @@ static NSString * titleCell = @"titleCell";
     return self.titleArray.count;
 }
 
+
 - (UITableViewCell * )tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    TItleCell * cell = [tableView dequeueReusableCellWithIdentifier:titleCell];
+    
+        TItleCell * cell = [tableView dequeueReusableCellWithIdentifier:titleCell forIndexPath:indexPath];
+
+    cell.tag = 1000 +indexPath.row;
+ 
     TouTiaoNews * modelTitle = self.titleArray[indexPath.row];
     [cell setCellWithTitleItem:modelTitle];
-    
-//    cell.textLabel.text = @"测试一下";
+
     return cell;
 }
 
@@ -92,6 +96,29 @@ static NSString * titleCell = @"titleCell";
     return 64;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    TItleCell * cell = (TItleCell *)[self.view viewWithTag:(indexPath.row + 1000)];
+    TouTiaoNews * modelTitle = self.titleArray[indexPath.row];
+    if (self.likingArray.count >3 && [cell.lable4Choose.text isEqualToString:@"订阅"]) {
+        
+        
+        UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"太多了" message:@"你的阅读兴趣比较广\n很抱歉你多选的将不能被展示\n您可以取消别的选项" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+    }else if( self.likingArray.count <3 && [cell.lable4Choose.text isEqualToString:@"订阅"]){
+        
+         cell.lable4Choose.text = @"取消";
+        [self.likingArray  addObject:modelTitle];
+    }else if ([cell.lable4Choose.text isEqualToString:@"取消"]){
+        for (int i = 0; i < self.likingArray.count; i ++) {
+            TouTiaoNews * model = self.titleArray[i];
+            if ([model.name isEqualToString:modelTitle.name]) {
+                [self.likingArray removeObjectAtIndex:i];
+            }
+        }
+    }
+ 
+    
+}
 
 
 

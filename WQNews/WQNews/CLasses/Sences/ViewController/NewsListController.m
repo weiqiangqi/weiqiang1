@@ -72,10 +72,12 @@ static  NSString * hdpicCell = @"hdpicCell";
     //实现block
     [[NewsListHelper shareNewsListHerlper]getAllURL:^{
         //解析数据
-        [self.chooseArray removeLastObject];
+//        [self.chooseArray removeLastObject];
         self.newsArray = [[NewsListHelper shareNewsListHerlper].newsAray mutableCopy];
         self.chooseArray = [[NewsListHelper shareNewsListHerlper].chooseArray mutableCopy];
         [self.chooseArray removeObjectAtIndex:0];
+        NSLog(@"%@",self.chooseArray);
+        
         //        NewsListItem * toutiaoItem = newsArray[0];
         //        NSString * toutiaoUrl = toutiaoItem.url;
         
@@ -502,7 +504,8 @@ static  NSString * hdpicCell = @"hdpicCell";
 }
 
 - (void)chooseAction:(NSNotification*)notice{
-    self.chooseArray = notice.userInfo[@"likingArray"];
+    
+//    NSMutableArray * mutArray = [notice.userInfo[@"likingArray"] mutableCopy];
     
 
 }

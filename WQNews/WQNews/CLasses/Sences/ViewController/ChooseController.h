@@ -19,7 +19,7 @@ typedef void(^reloadBlock)(NSMutableArray *);
 
 @property(nonatomic,strong)NSMutableArray * likingArray;
 
-@property(nonatomic,copy)reloadBlock likingBlock;
+//@property(nonatomic,copy)reloadBlock likingBlock;
 
 
 
