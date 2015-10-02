@@ -33,6 +33,8 @@
 @property(nonatomic,strong)NSArray * newsArray;
 
 @property(nonatomic,strong)NSMutableArray * chooseArray;
+//选择界面
+@property(nonatomic,strong)ChooseController * chooseVC;
 
 @end
 
@@ -48,6 +50,9 @@ static  NSString * hdpicCell = @"hdpicCell";
         
         self.title = @"新闻";
         self.tabBarItem.image = [UIImage imageNamed:@"news"];
+        //注册通知
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(chooseAction:) name:kChooseInterest object:nil];
+        
     }
     return self;
 }
@@ -493,21 +498,14 @@ static  NSString * hdpicCell = @"hdpicCell";
     
     [self presentViewController:chooseVC animated:YES completion:nil];
     
-//    [chooseVC backAction:^{
-//        
-//        
-////      TItleCell * cell = []
-//        
-//        
-//        
-//        
-//        [self drawmainScrollView];
-//        [self drawTableView];
-//    }];
-    
 
 }
 
+- (void)chooseAction:(NSNotification*)notice{
+    self.chooseArray = notice.userInfo[@"likingArray"];
+    
+
+}
 
 
 

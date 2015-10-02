@@ -206,8 +206,6 @@ static NSString * moreCell = @"moreCell";
     UIAlertView * alertRG = [[UIAlertView alloc]initWithTitle:@"注册成功" message:@"恭喜您注册成功\n已经登录" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
     [alertRG show];
   
-    
-    
 }
 #pragma mark --lazy load---
 - (NSArray *)TitleArray{

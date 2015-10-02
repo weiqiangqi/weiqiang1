@@ -9,21 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "TouTiaoNews.h"
 
-typedef void(^reload)(NSMutableArray * );
+typedef void(^reloadBlock)(NSMutableArray *);
 
 @interface ChooseController : UIViewController
 
 @property(nonatomic,strong)NSArray * titleArray;
 
-//- (void)backAction:(void(^)())reloadUI;
 
-- (void)backToMainScreen:(reload)reloadUI;
 
 @property(nonatomic,strong)NSMutableArray * likingArray;
 
-//@property(nonatomic,strong)reloadUI * relodView;
+@property(nonatomic,copy)reloadBlock likingBlock;
 
-//@property(nonatomic,strong)TouTiaoNews * titleModel;
 
 
 

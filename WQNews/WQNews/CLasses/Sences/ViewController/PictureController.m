@@ -66,7 +66,6 @@ static NSString * pictures3VCell = @"pictures3VPicCell";
                [pictureItem setValuesForKeysWithDictionary:tempDict];
                [self.cellMutArray addObject:pictureItem];
            }
-           
            [self drawTableView];
         } failure:^void(AFHTTPRequestOperation * opration, NSError * error) {
             NSLog(@"数据请求出错了");
@@ -74,6 +73,7 @@ static NSString * pictures3VCell = @"pictures3VPicCell";
         
     }];
 }
+
 #pragma mark ---绘制TableView-----
 - (void)drawTableView
 {

@@ -52,13 +52,17 @@
                 [self.likingArray removeObjectAtIndex:i];
             }
         }
-        
-        
     }
+    [self chooseYourItem];
+}
+
+- (void)chooseYourItem{
     
-    
+    NSLog(@"%@",self.likingArray);
+
     
 }
+
 
 #pragma mark --lazy load---
 - (NSMutableArray *)likingArray{
