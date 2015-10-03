@@ -8,6 +8,7 @@
 
 #import "ChooseController.h"
 #import "TItleCell.h"
+#import "NewsListItem.h"
 
 @interface ChooseController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -29,7 +30,7 @@ static NSString * titleCell = @"titleCell";
     self.tableView.dataSource = self;
     //注册cell
     [self.tableView registerNib:[UINib nibWithNibName:@"TItleCell" bundle:nil] forCellReuseIdentifier:titleCell];
-
+    
     
     [self.view addSubview:self.tableView];
 }
@@ -55,39 +56,43 @@ static NSString * titleCell = @"titleCell";
 
 - (void)backToMainScreen{
     //发出通知
-    [self.likingArray addObject:@"hahha"];
-    [[NSNotificationCenter defaultCenter]postNotificationName:kChooseInterest object:nil userInfo:@{@"likingArray":self.likingArray}];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if (self.likingArray.count >= 3) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:kChooseInterest object:nil userInfo:@{@"likingArray":self.likingArray}];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }else{
+        UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"你选则的太少了" message:@"你换可以在选几个" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+    }
 }
-
-
-
-
 
 
 #pragma mark --dlegate , datasouse 事件---
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-
+    
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-   
+    
     return self.titleArray.count;
 }
 
 
 - (UITableViewCell * )tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-        TItleCell * cell = [tableView dequeueReusableCellWithIdentifier:titleCell forIndexPath:indexPath];
-
+    TItleCell * cell = [tableView dequeueReusableCellWithIdentifier:titleCell forIndexPath:indexPath];
+    
     cell.tag = 1000 +indexPath.row;
- 
-    TouTiaoNews * modelTitle = self.titleArray[indexPath.row];
+    NewsListItem * modelTitle = self.titleArray[indexPath.row];
+    for (NewsListItem * model in self.likingArray) {
+        if ([model.name isEqualToString:modelTitle.name]) {
+            cell.lable4Choose.text = @"取消";
+        }
+    }
+    
     [cell setCellWithTitleItem:modelTitle];
-
+    
     return cell;
 }
 
@@ -98,25 +103,26 @@ static NSString * titleCell = @"titleCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     TItleCell * cell = (TItleCell *)[self.view viewWithTag:(indexPath.row + 1000)];
-    TouTiaoNews * modelTitle = self.titleArray[indexPath.row];
-    if (self.likingArray.count >3 && [cell.lable4Choose.text isEqualToString:@"订阅"]) {
-        
+    NewsListItem * modelTitle = self.titleArray[indexPath.row];
+    if (self.likingArray.count >= 3 && [cell.lable4Choose.text isEqualToString:@"订阅"]) {
         
         UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"太多了" message:@"你的阅读兴趣比较广\n很抱歉你多选的将不能被展示\n您可以取消别的选项" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alert show];
+        cell.lable4Choose.text = @"取消";
+        [self.likingArray addObject:modelTitle];
     }else if( self.likingArray.count <3 && [cell.lable4Choose.text isEqualToString:@"订阅"]){
         
-         cell.lable4Choose.text = @"取消";
+        cell.lable4Choose.text = @"取消";
         [self.likingArray  addObject:modelTitle];
     }else if ([cell.lable4Choose.text isEqualToString:@"取消"]){
+        cell.lable4Choose.text = @"订阅";
         for (int i = 0; i < self.likingArray.count; i ++) {
-            TouTiaoNews * model = self.titleArray[i];
+            TouTiaoNews * model = self.likingArray[i];
             if ([model.name isEqualToString:modelTitle.name]) {
                 [self.likingArray removeObjectAtIndex:i];
             }
         }
     }
- 
     
 }
 
@@ -148,13 +154,13 @@ static NSString * titleCell = @"titleCell";
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

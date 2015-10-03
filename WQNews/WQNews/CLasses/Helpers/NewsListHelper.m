@@ -62,7 +62,7 @@
         
         NSMutableArray * chMutArray = [[NSMutableArray alloc]initWithCapacity:25];
         for (NSDictionary * chDit in chooseArray) {
-            TouTiaoNews * NewsItem = [TouTiaoNews new];
+            NewsListItem * NewsItem = [NewsListItem new];
             [NewsItem setValuesForKeysWithDictionary:chDit];
             [chMutArray addObject:NewsItem];
         }

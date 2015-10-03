@@ -36,6 +36,8 @@
 //选择界面
 @property(nonatomic,strong)ChooseController * chooseVC;
 
+@property(nonatomic,strong)NSMutableArray * likingArray;
+
 @end
 
 @implementation NewsListController
@@ -60,7 +62,7 @@ static  NSString * hdpicCell = @"hdpicCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    [self drawButton];
+   
     //注册一下cell
   
     
@@ -76,8 +78,8 @@ static  NSString * hdpicCell = @"hdpicCell";
         self.newsArray = [[NewsListHelper shareNewsListHerlper].newsAray mutableCopy];
         self.chooseArray = [[NewsListHelper shareNewsListHerlper].chooseArray mutableCopy];
         [self.chooseArray removeObjectAtIndex:0];
-        NSLog(@"%@",self.chooseArray);
-        
+        //初始化自己喜欢的数组
+        [self choooseYourLikingArray];
         //        NewsListItem * toutiaoItem = newsArray[0];
         //        NSString * toutiaoUrl = toutiaoItem.url;
         
@@ -94,6 +96,7 @@ static  NSString * hdpicCell = @"hdpicCell";
                 [newsItem setValuesForKeysWithDictionary:dict];
                 [self.mutArray addObject:newsItem];
             }
+             [self drawButton];
             [self drawmainScrollView];
             [self drawTableView];
             
@@ -103,6 +106,17 @@ static  NSString * hdpicCell = @"hdpicCell";
     }];
     
 
+}
+
+
+#pragma mark ---设置自己喜欢的数组---
+- (void)choooseYourLikingArray{
+    for (NewsListItem * item in self.chooseArray) {
+        if ([item.name isEqualToString:@"娱乐"] || [item.name isEqualToString:@"体育"] || [item.name isEqualToString:@"财经"]) {
+            [self.likingArray addObject:item];
+        }
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -155,6 +169,7 @@ static  NSString * hdpicCell = @"hdpicCell";
 
 - (void)drawmainScrollView
 {
+    
     self.mainSccrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight - 110)];
     self.mainSccrollView.contentSize = CGSizeMake(kScreenWidth * 4, self.mainSccrollView.frame.size.height);
     self.mainSccrollView.backgroundColor = [UIColor greenColor];
@@ -269,6 +284,7 @@ static  NSString * hdpicCell = @"hdpicCell";
 - (void)drawButton{
     
     UIView * buttonView = [[UIView alloc]initWithFrame:CGRectMake(20, 20, kScreenWidth - 40, 44)];
+    buttonView.tag = 2001;
     //头条新闻
     self.firstButton = [UIButton buttonWithType:UIButtonTypeSystem];
     self.firstButton.frame = CGRectMake(0, 0, (kScreenWidth - 40) / 5, 40);
@@ -280,22 +296,24 @@ static  NSString * hdpicCell = @"hdpicCell";
     //第二个button
     self.button2 = [UIButton buttonWithType:UIButtonTypeSystem];
     self.button2.frame = CGRectMake( (kScreenWidth - 40) / 5,0, (kScreenWidth - 40) / 5, 40);
+    NewsListItem * yuleItem = self.likingArray[0];
     
-    [self.button2 setTitle:@"娱乐" forState:UIControlStateNormal];
+    [self.button2 setTitle:yuleItem.name forState:UIControlStateNormal];
     self.button2.titleLabel.textAlignment =NSTextAlignmentCenter;
     self.button2.tintColor = [UIColor blackColor];
     //    第三个button
     self.button3 = [UIButton buttonWithType:UIButtonTypeSystem];
     self.button3.frame = CGRectMake( 2 * (kScreenWidth - 40) / 5,0, (kScreenWidth - 40) / 5, 40);
-    
-    [self.button3 setTitle:@"体育" forState:UIControlStateNormal];
+    NewsListItem * tiyuItem = self.likingArray[1];
+    [self.button3 setTitle:tiyuItem.name forState:UIControlStateNormal];
     self.button3.titleLabel.textAlignment =NSTextAlignmentCenter;
     self.button3.tintColor = [UIColor blackColor];
     //    第四个
     self.button4 = [UIButton buttonWithType:UIButtonTypeSystem];
     self.button4.frame = CGRectMake( 3 * (kScreenWidth - 40) / 5,0, (kScreenWidth - 40) / 5, 40);
     
-    [self.button4 setTitle:@"财经" forState:UIControlStateNormal];
+    NewsListItem * caijingItem = self.likingArray[2];
+    [self.button4 setTitle:caijingItem.name forState:UIControlStateNormal];
     self.button4.titleLabel.textAlignment =NSTextAlignmentCenter;
     self.button4.tintColor = [UIColor blackColor];
     
@@ -350,6 +368,10 @@ static  NSString * hdpicCell = @"hdpicCell";
             [newsItem setValuesForKeysWithDictionary:dict];
             [self.mutArray addObject:newsItem];
         }
+        //从原来的视图上移除再添加
+        [self.mainSccrollView removeFromSuperview];
+        [self.tableView removeFromSuperview];
+        
         [self drawmainScrollView];
         [self drawTableView];
         
@@ -372,12 +394,14 @@ static  NSString * hdpicCell = @"hdpicCell";
     
     [self.mutArray removeAllObjects];
     NSString * yuleStr;
-    for (NewsListItem * yuleItem in self.newsArray) {
-                if ([yuleItem.name isEqualToString:@"娱乐"]) {
-                    yuleStr = yuleItem.url;
-        }
-        
-    }
+//    for (NewsListItem * yuleItem in self.newsArray) {
+//                if ([yuleItem.name isEqualToString:@"娱乐"]) {
+//                    yuleStr = yuleItem.url;
+//        }
+//        
+//    }
+    NewsListItem * yuleItem = self.likingArray[0];
+    yuleStr = yuleItem.url;
     
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
     [manager GET:yuleStr parameters:nil success:^void(AFHTTPRequestOperation * task, id result) {
@@ -392,13 +416,14 @@ static  NSString * hdpicCell = @"hdpicCell";
             [newsItem setValuesForKeysWithDictionary:dict];
             [self.mutArray addObject:newsItem];
         }
+        //从原来的视图上移除再添加
+        [self.mainSccrollView removeFromSuperview];
+        [self.tableView removeFromSuperview];
                 [self drawmainScrollView];
-//        [self.tableView reloadData];
                 [self drawTableView];
         
         
     } failure:^void(AFHTTPRequestOperation *operation, NSError * error) {
-        
         NSLog(@"%@",error);
     }];
     
@@ -415,12 +440,14 @@ static  NSString * hdpicCell = @"hdpicCell";
     
     [self.mutArray removeAllObjects];
     NSString * tiyuStr;
-    for (NewsListItem * tiyuItem in self.newsArray) {
-        if ([tiyuItem.name isEqualToString:@"体育"]) {
-            tiyuStr = tiyuItem.url;
-        }
-        
-    }
+//    for (NewsListItem * tiyuItem in self.newsArray) {
+//        if ([tiyuItem.name isEqualToString:@"体育"]) {
+//            tiyuStr = tiyuItem.url;
+//        }
+//        
+//    }
+    NewsListItem * tiyuItem = self.likingArray[1];
+    tiyuStr = tiyuItem.url;
     
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
     [manager GET:tiyuStr parameters:nil success:^void(AFHTTPRequestOperation * task, id result) {
@@ -435,6 +462,10 @@ static  NSString * hdpicCell = @"hdpicCell";
             [newsItem setValuesForKeysWithDictionary:dict];
             [self.mutArray addObject:newsItem];
         }
+        //从原来的视图上移除再添加
+        [self.mainSccrollView removeFromSuperview];
+        [self.tableView removeFromSuperview];
+        
         [self drawmainScrollView];
         [self drawTableView];
         
@@ -456,12 +487,13 @@ static  NSString * hdpicCell = @"hdpicCell";
     
     [self.mutArray removeAllObjects];
     NSString * caijingStr;
-    for (NewsListItem * caijingItem in self.newsArray) {
-        if ([caijingItem.name isEqualToString:@"财经"]) {
-            caijingStr = caijingItem.url;
-        }
-        
-    }
+//    for (NewsListItem * caijingItem in self.newsArray) {
+//        if ([caijingItem.name isEqualToString:@"财经"]) {
+//            caijingStr = caijingItem.url;
+//        }
+//    }
+    NewsListItem * caijingItem = self.likingArray[2];
+    caijingStr = caijingItem.url;
     
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
     [manager GET:caijingStr parameters:nil success:^void(AFHTTPRequestOperation * task, id result) {
@@ -476,8 +508,12 @@ static  NSString * hdpicCell = @"hdpicCell";
             [newsItem setValuesForKeysWithDictionary:dict];
             [self.mutArray addObject:newsItem];
         }
-        [self drawmainScrollView];
         
+        //从原来的视图上移除再添加
+        [self.mainSccrollView removeFromSuperview];
+        [self.tableView removeFromSuperview];
+        
+        [self drawmainScrollView];
         [self drawTableView];
         
         
@@ -498,16 +534,23 @@ static  NSString * hdpicCell = @"hdpicCell";
     
     chooseVC.titleArray = [self.chooseArray mutableCopy];
     
+    
+    [chooseVC.likingArray removeAllObjects];
+    [chooseVC.likingArray addObjectsFromArray: [self.likingArray mutableCopy]];
     [self presentViewController:chooseVC animated:YES completion:nil];
     
 
 }
 
 - (void)chooseAction:(NSNotification*)notice{
-    
+    //移除之前的视图
+    UIView * view = (UIView *)[self.view viewWithTag:2001];
+    [view removeFromSuperview];
 //    NSMutableArray * mutArray = [notice.userInfo[@"likingArray"] mutableCopy];
+    [self.likingArray removeAllObjects];
+    [self.likingArray addObjectsFromArray: [notice.userInfo[@"likingArray"] mutableCopy]];
     
-
+    [self drawButton];
 }
 
 
@@ -527,6 +570,13 @@ static  NSString * hdpicCell = @"hdpicCell";
         _mutArray = [NSMutableArray array];
     }
     return _mutArray;
+}
+//自己喜欢的数组
+- (NSMutableArray *)likingArray{
+    if (_likingArray == nil) {
+        _likingArray = [NSMutableArray array];
+    }
+    return _likingArray;
 }
 
 //轮播图数组

@@ -17,12 +17,12 @@
 
 
 //赋值
-- (void)setCellWithTitleItem:(TouTiaoNews *)titleModel{
+- (void)setCellWithTitleItem:(NewsListItem *)titleModel{
 //    self.titleModel = titleModel;
     [self.imgView4Title sd_setImageWithURL: [NSURL URLWithString:[NSString stringWithFormat:@"%@",titleModel.pic]] ];
     self.lable4Title.text = titleModel.name ;
     self.lable4Intro.text = titleModel.shortIntro;
-    self.lable4Choose.text = @"订阅";
+   
 }
 
 //- (IBAction)subscription4YorLiking:(UIButton *)sender {

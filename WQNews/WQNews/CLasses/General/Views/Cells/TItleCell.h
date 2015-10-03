@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TouTiaoNews.h"
+#import "NewsListItem.h"
 
 @interface TItleCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imgView4Title;
@@ -27,7 +28,7 @@
 //@property(nonatomic,strong)NSMutableArray * likingArray;
 
 //赋值方法
-- (void)setCellWithTitleItem:(TouTiaoNews *)titleModel;
+- (void)setCellWithTitleItem:(NewsListItem *)titleModel;
 
 
 
