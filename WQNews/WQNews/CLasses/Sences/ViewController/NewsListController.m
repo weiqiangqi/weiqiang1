@@ -23,6 +23,11 @@
 #import <SVPullToRefresh.h>
 
 @interface NewsListController ()<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
+
+{
+    NSInteger pageNumber;
+}
+
 //头条信息数组
 @property(nonatomic,strong)NSMutableArray * mutArray;
 //轮播图信息
@@ -42,6 +47,7 @@
 @property(nonatomic,assign)NSInteger  currentPage;
 
 
+
 @end
 
 @implementation NewsListController
@@ -53,6 +59,7 @@ static  NSString * hdpicCell = @"hdpicCell";
 {
     self = [super init];
     if (self) {
+        pageNumber = 1;
         self.currentPage = 1;
         self.title = @"新闻";
         self.tabBarItem.image = [UIImage imageNamed:@"news"];
@@ -192,21 +199,17 @@ static  NSString * hdpicCell = @"hdpicCell";
     [self.mainSccrollView addSubview:self.tableView];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    
+    //上拉刷新
     __weak NewsListController * weakSelf = self;
     [self.tableView addPullToRefreshWithActionHandler:^{
         
-        if (self.currentPage == 1) {
-            [weakSelf button1Action];
-        }else if (self.currentPage == 2){
-            [weakSelf button2Action];
-        }else if (self.currentPage == 3){
-            [weakSelf button3Action];
-        }else if (self.currentPage == 4){
-            [weakSelf button4Action];
-        }
+        [weakSelf pullAndReleaseForRefresh];
     }];
-    
+    //下拉加载
+    [self.tableView addInfiniteScrollingWithActionHandler:^{
+        [weakSelf pullAndReleaseBottom];
+        
+    }];
     
     //在重新加载之前先清理掉之前的数据
     [self.cellMutArray removeAllObjects];
@@ -572,9 +575,54 @@ static  NSString * hdpicCell = @"hdpicCell";
     [self drawButton];
 }
 
+#pragma mark --上拉刷新下拉加载的方法---
+
+- (void)pullAndReleaseForRefresh{
+    __weak NewsListController * weakSelf = self;
+    if (self.currentPage == 1) {
+        [weakSelf button1Action];
+    }else if (self.currentPage == 2){
+        [weakSelf button2Action];
+    }else if (self.currentPage == 3){
+        [weakSelf button3Action];
+    }else if (self.currentPage == 4){
+        [weakSelf button4Action];
+    }
+
+    
+}
+
+- (void)pullAndReleaseBottom{
+//     __weak NewsListController * weakSelf = self;
+    if (_currentPage == 1) {
+    pageNumber ++;
+    NSString * AddURL = [NSString stringWithFormat:@"http://api.sina.cn/sinago/list.json?uid=f4e8fd0c674b1f09&loading_ad_timestamp=0&platfrom_version=4.4.2&wm=b207&imei=864502025497611&from=6048195012&connection_type=2&chwm=12030_0001&AndroidID=ec0fd8e3601d5a55dcf7c6ffe0eeaf35&v=1&s=20&IMEI=f10426ec3f30043c6798dae6fe0cbf0d&p=%ld&MAC=c08f509cfc8e818f8482d523edf1ee84&channel=news_toutiao",pageNumber];
+    AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:AddURL parameters:nil success:^void(AFHTTPRequestOperation * task, id result) {
+        NSDictionary * dataDict = result[@"data"];
+        NSArray * TTListArray = dataDict[@"list"];
+        //将数据转化成model类型保存到数组
+        for (int i = 0; i < TTListArray.count; i ++) {
+            NSDictionary * dict  = TTListArray[i];
+            TouTiaoNews * newsItem = [TouTiaoNews new];
+            [newsItem setValuesForKeysWithDictionary:dict];
+            [self.mutArray addObject:newsItem];
+        }
+        [self.tableView removeFromSuperview];
+        [self.mainSccrollView removeFromSuperview];
+        
+        [self drawmainScrollView];
+        [self drawTableView];
+        
+    } failure:^void(AFHTTPRequestOperation * operation, NSError * error) {
+        NSLog(@"错误是:%@",error);
+    }];
+        
+    }
 
 
 
+}
 
 
 #pragma mark --lazy load--
