@@ -13,6 +13,9 @@
 #import "RigisterController.h"
 #import "FindController.h"
 #import "UserManager.h"
+#import <AFNetworking.h>
+#import <UIImageView+WebCache.h>
+
 
 @interface MyController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 
@@ -46,6 +49,8 @@ static NSString * moreCell = @"moreCell";
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccessAction:) name:@"loginSuccess" object:nil];
 //        注册另一通知
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(registerSuccessAction:) name:kRegisterSucces object:nil];
+        //注册新浪登陆成功按钮
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(sinaLoginSuccess:) name:kSinaLogin object:nil];
         
     }
     return self;
@@ -54,11 +59,9 @@ static NSString * moreCell = @"moreCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
- 
     [self drawTableView];
     [self drawheader];
 
-    
 }
 
 - (void)drawheader{
@@ -197,7 +200,8 @@ static NSString * moreCell = @"moreCell";
     NSString * userName = [[UserManager shareUserManager]userName];
     UIButton * loginbutton = (UIButton *)[self.view viewWithTag:1000];
     [loginbutton setTitle:userName forState:UIControlStateNormal];
-    
+  
+    self.imgView.image = [UIImage imageNamed:@"login"];
 }
 
 - (void)registerSuccessAction:(NSNotification *)notice{
@@ -205,8 +209,33 @@ static NSString * moreCell = @"moreCell";
     
     UIAlertView * alertRG = [[UIAlertView alloc]initWithTitle:@"注册成功" message:@"恭喜您注册成功\n已经登录" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
     [alertRG show];
+    
+    self.imgView.image = [UIImage imageNamed:@"login"];
   
 }
+- (void)sinaLoginSuccess:(NSNotification *)notice{
+    NSString * URL = notice.userInfo[@"sinaURL"];
+    AFHTTPRequestOperationManager * sinaManager = [AFHTTPRequestOperationManager manager];
+   [ sinaManager GET:URL parameters:nil success:^void(AFHTTPRequestOperation * task, id result) {
+       NSString * name = result[@"name"];
+       NSString * picURL = result[@"profile_image_url"];
+       [self.loginButton setTitle:name forState:UIControlStateNormal];
+       [self.imgView sd_setImageWithURL:[NSURL URLWithString:picURL]];
+       
+       UIAlertView * alertRG = [[UIAlertView alloc]initWithTitle:@"新浪登陆成功" message:@"恭喜您用第三方新浪登陆成功\n已经登录" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+       [alertRG show];
+    } failure:^void(AFHTTPRequestOperation * oparation, NSError * error) {
+        NSLog(@"%@",error);
+        
+        UIAlertView * alertRG = [[UIAlertView alloc]initWithTitle:@"登陆失败" message:@"登陆失败" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alertRG show];
+        
+    }];
+    
+}
+
+
+
 #pragma mark --lazy load---
 - (NSArray *)TitleArray{
     if (_TitleArray == nil) {

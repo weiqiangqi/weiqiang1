@@ -26,7 +26,8 @@
 @property(nonatomic,strong)NSString * webCurrentUserID;
 @property(nonatomic,strong)MyController * myVC;
 
-//https://api.weibo.com/2/users/show.json?access_token=2.00YOnjNGfDCb3E32a3340cf90inyGN&uid=5699803378
+@property(nonatomic,strong)NSString * sinaURL;
+
 
 
 

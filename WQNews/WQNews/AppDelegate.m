@@ -83,8 +83,15 @@
  @param response 具体的响应对象
  */
 - (void)didReceiveWeiboResponse:(WBBaseResponse *)response{
-  
 
+    NSDictionary * userDic = response.userInfo;
+    NSString * access_token = userDic[@"access_token"];
+    NSString * uid = userDic[@"uid"];
+    NSString * url = [NSString stringWithFormat:@"https://api.weibo.com/2/users/show.json?access_token=%@&uid=%@",access_token,uid];
+    NSLog(@"%@",url);
+    //发布新浪登陆成功通知
+      [[NSNotificationCenter defaultCenter]postNotificationName:kSinaLogin object:nil userInfo:@{@"sinaURL":url}];
+    
     
     if ([response isKindOfClass:WBSendMessageToWeiboResponse.class]) {
         NSString * title =  NSLocalizedString(@"发送结果", nil);
@@ -106,22 +113,19 @@
         [alert show];
     }
     else if ([response isKindOfClass:WBAuthorizeResponse.class]){
-        NSString *title = NSLocalizedString(@"登陆状态", nil);
-        NSString *message = [NSString stringWithFormat:@"%@: %d\nresponse.userId: %@\nresponse.accessToken: %@\n%@: %@\n%@: %@", NSLocalizedString(@"响应状态", nil), (int)response.statusCode,[(WBAuthorizeResponse *)response userID], [(WBAuthorizeResponse *)response accessToken],  NSLocalizedString(@"响应UserInfo数据", nil), response.userInfo, NSLocalizedString(@"原请求UserInfo数据", nil), response.requestUserInfo];
+//        NSString *title = NSLocalizedString(@"登陆状态", nil);
+//        NSString *message = [NSString stringWithFormat:@"%@: %d\nresponse.userId: %@\nresponse.accessToken: %@\n%@: %@\n%@: %@", NSLocalizedString(@"响应状态", nil), (int)response.statusCode,[(WBAuthorizeResponse *)response userID], [(WBAuthorizeResponse *)response accessToken],  NSLocalizedString(@"响应UserInfo数据", nil), response.userInfo, NSLocalizedString(@"原请求UserInfo数据", nil), response.requestUserInfo];
         
-//        if (response.statusCode == 0 ) {
-//        }
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
-                                                        message:message
-                                                       delegate:nil
-                                              cancelButtonTitle:NSLocalizedString(@"确定", nil)
-                                              otherButtonTitles:nil];
-        
-        self.wbtoken =[(WBAuthorizeResponse *)response accessToken];
-        self.webCurrentUserID = [(WBAuthorizeResponse *)response userID];
-        self.wbRefreshToken = [(WBAuthorizeResponse *)response refreshToken];
-        [alert show];
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
+//                                                        message:message
+//                                                       delegate:nil
+//                                              cancelButtonTitle:NSLocalizedString(@"确定", nil)
+//                                              otherButtonTitles:nil];
+//        
+//        self.wbtoken =[(WBAuthorizeResponse *)response accessToken];
+//        self.webCurrentUserID = [(WBAuthorizeResponse *)response userID];
+//        self.wbRefreshToken = [(WBAuthorizeResponse *)response refreshToken];
+//        [alert show];
         
     }
     else if ([response isKindOfClass:WBPaymentResponse.class])

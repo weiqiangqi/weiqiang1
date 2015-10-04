@@ -72,12 +72,22 @@ static NSString * pictures3VCell = @"pictures3VPicCell";
         }];
         
     }];
+    [self drawHeader];
+}
+
+#pragma mark --画表头---
+- (void)drawHeader{
+    UILabel * titleLable = [[UILabel alloc]initWithFrame:CGRectMake(0, 20, kScreenWidth, 20)];
+    titleLable.textAlignment = NSTextAlignmentCenter;
+    titleLable.text = @"图片";
+    [self.view addSubview:titleLable];
+    
 }
 
 #pragma mark ---绘制TableView-----
 - (void)drawTableView
 {
-    self.PICStableVIew = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight - 113)];
+    self.PICStableVIew = [[UITableView alloc]initWithFrame:CGRectMake(0, 50, kScreenWidth, kScreenHeight - 113)];
     self.PICStableVIew.delegate = self;
     self.PICStableVIew.dataSource = self;
     //注册自定义cell

@@ -27,4 +27,9 @@
 #define kUserEmailAddress  @"emailAddress"
 #define kRegisterSucces @"registerSuccess"
 #define kChooseInterest  @"ChooseInterest"
+#define kSinaLogin  @"SinaLogin"
+
+
+
+
 #endif

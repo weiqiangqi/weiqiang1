@@ -20,7 +20,7 @@
 #import "WebViewController.h"
 #import "ChooseController.h"
 #import "TItleCell.h"
-
+#import <SVPullToRefresh.h>
 
 @interface NewsListController ()<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
 //头条信息数组
@@ -59,17 +59,21 @@ static  NSString * hdpicCell = @"hdpicCell";
     return self;
 }
 
+
+- (void)viewDidAppear:(BOOL)animated{
+    [self.tableView triggerPullToRefresh];
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.view.backgroundColor = [UIColor whiteColor];
-   
-    //注册一下cell
-  
     
-    //    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellID"];
-    //    self.tableView.delegate = self;
-    //    self.tableView.dataSource = self;
-    
+    __weak NewsListController * weakSelf = self;
+ [self.tableView addPullToRefreshWithActionHandler:^{
+     
+     [weakSelf drawmainScrollView];
+ }];
     
     //实现block
     [[NewsListHelper shareNewsListHerlper]getAllURL:^{

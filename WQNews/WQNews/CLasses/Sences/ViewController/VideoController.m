@@ -51,7 +51,7 @@ static   NSString *  videolistCell = @"videolistCell";
     
     [self analysysData];
     
-   }
+}
 
 - (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
@@ -61,7 +61,7 @@ static   NSString *  videolistCell = @"videolistCell";
 
 #pragma mark ---解析shuju--
 - (void)analysysData{
-
+    
     
     [[NewsListHelper shareNewsListHerlper]getAllURL:^{
         
@@ -94,7 +94,7 @@ static   NSString *  videolistCell = @"videolistCell";
         }];
         
     }];
-
+    
     
 }
 
@@ -140,7 +140,8 @@ static   NSString *  videolistCell = @"videolistCell";
 #pragma mark -- 绘制segmenttedcontroll --
 
 - (void)drawSegmenttedControlView{
-  _segCV = [[UISegmentedControl alloc]initWithItems:@[@"笑cry",@"暖心",@"八卦",@"震惊"]];
+    
+    _segCV = [[UISegmentedControl alloc]initWithItems:@[@"笑cry",@"暖心",@"八卦",@"震惊"]];
     _segCV.frame = CGRectMake(50, 25, kScreenWidth - 100, 30);
     _segCV.tintColor = [UIColor colorWithRed:0.993 green:0.021 blue:0.159 alpha:1.000];
     _segCV.backgroundColor = [UIColor whiteColor];
@@ -151,6 +152,7 @@ static   NSString *  videolistCell = @"videolistCell";
 
 - (void)changeAction{
     self.index = _segCV.selectedSegmentIndex;
+    [self.maintableView removeFromSuperview];
     [self analysysData];
     
 }
@@ -169,19 +171,19 @@ static   NSString *  videolistCell = @"videolistCell";
 //cell的点击事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     VideoItem * modelVideo = self.VideoMutArray[indexPath.row];
+    
     //点击跳转到webView页面
-//    WebViewController * webView = [WebViewController new];
-//    webView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-//    NSDictionary * VideoDict = modelVideo.video_info;
-//    NSString * URL = VideoDict[@"video_id"];
-//    webView.URLStr = URL;
-//    webView.Title = modelVideo.title;
-
-//    [self presentViewController:webView animated:YES completion:nil];
+    //    WebViewController * webView = [WebViewController new];
+    //    webView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    //    NSDictionary * VideoDict = modelVideo.video_info;
+    //    NSString * URL = VideoDict[@"video_id"];
+    //    webView.URLStr = URL;
+    //    webView.Title = modelVideo.title;
+    //    [self presentViewController:webView animated:YES completion:nil];
     
     NSDictionary * VideoDict = modelVideo.video_info;
     NSString * URL = VideoDict[@"url"];
-     [[PlayerHelper shareVideoPlayer] setVideoWithURLStr:URL];
+    [[PlayerHelper shareVideoPlayer] setVideoWithURLStr:URL];
     PlayerHelper * player = [PlayerHelper shareVideoPlayer];
     
     [self.view addSubview: player];
@@ -193,13 +195,13 @@ static   NSString *  videolistCell = @"videolistCell";
 
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

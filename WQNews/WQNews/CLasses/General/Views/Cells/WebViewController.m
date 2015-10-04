@@ -31,7 +31,7 @@
     UIView * headerView = [[UIView alloc]initWithFrame:CGRectMake(0,10, kScreenWidth, 40)];
     headerView.backgroundColor = [UIColor colorWithRed:1.000 green:0.985 blue:0.472 alpha:1.000];
     UIButton * backButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    backButton.frame = CGRectMake(0, 20, 20, 15);
+    backButton.frame = CGRectMake(5, 17, 25, 18);
     [backButton setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
     [headerView addSubview:backButton];
@@ -43,7 +43,7 @@
     [headerView addSubview:titleLable];
     [self.webView addSubview:headerView];
 }
-//返回fangfa
+//返回方法
 - (void)backAction
 {
     [self dismissViewControllerAnimated:YES completion:nil];

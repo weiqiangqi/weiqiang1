@@ -105,7 +105,6 @@ static NSString * titleCell = @"titleCell";
     TItleCell * cell = (TItleCell *)[self.view viewWithTag:(indexPath.row + 1000)];
     NewsListItem * modelTitle = self.titleArray[indexPath.row];
     if (self.likingArray.count >= 3 && [cell.lable4Choose.text isEqualToString:@"订阅"]) {
-        
         UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"太多了" message:@"你的阅读兴趣比较广\n很抱歉你多选的将不能被展示\n您可以取消别的选项" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alert show];
         cell.lable4Choose.text = @"取消";
