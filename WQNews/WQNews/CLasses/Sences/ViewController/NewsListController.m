@@ -38,6 +38,10 @@
 
 @property(nonatomic,strong)NSMutableArray * likingArray;
 
+//当前所在页面
+@property(nonatomic,assign)NSInteger  currentPage;
+
+
 @end
 
 @implementation NewsListController
@@ -49,7 +53,7 @@ static  NSString * hdpicCell = @"hdpicCell";
 {
     self = [super init];
     if (self) {
-        
+        self.currentPage = 1;
         self.title = @"新闻";
         self.tabBarItem.image = [UIImage imageNamed:@"news"];
         //注册通知
@@ -59,22 +63,15 @@ static  NSString * hdpicCell = @"hdpicCell";
     return self;
 }
 
-
 - (void)viewDidAppear:(BOOL)animated{
     [self.tableView triggerPullToRefresh];
-    
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
-    
-    __weak NewsListController * weakSelf = self;
- [self.tableView addPullToRefreshWithActionHandler:^{
-     
-     [weakSelf drawmainScrollView];
- }];
-    
+
     //实现block
     [[NewsListHelper shareNewsListHerlper]getAllURL:^{
         //解析数据
@@ -84,8 +81,6 @@ static  NSString * hdpicCell = @"hdpicCell";
         [self.chooseArray removeObjectAtIndex:0];
         //初始化自己喜欢的数组
         [self choooseYourLikingArray];
-        //        NewsListItem * toutiaoItem = newsArray[0];
-        //        NSString * toutiaoUrl = toutiaoItem.url;
         
         [self.mutArray removeAllObjects];
         NSString * toutiaoUrl = kTOUTIAOURL;
@@ -197,6 +192,21 @@ static  NSString * hdpicCell = @"hdpicCell";
     [self.mainSccrollView addSubview:self.tableView];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    
+    __weak NewsListController * weakSelf = self;
+    [self.tableView addPullToRefreshWithActionHandler:^{
+        
+        if (self.currentPage == 1) {
+            [weakSelf button1Action];
+        }else if (self.currentPage == 2){
+            [weakSelf button2Action];
+        }else if (self.currentPage == 3){
+            [weakSelf button3Action];
+        }else if (self.currentPage == 4){
+            [weakSelf button4Action];
+        }
+    }];
+    
     
     //在重新加载之前先清理掉之前的数据
     [self.cellMutArray removeAllObjects];
@@ -350,6 +360,8 @@ static  NSString * hdpicCell = @"hdpicCell";
 #pragma mark --表头选择事件
 
 - (void)button1Action{
+    //设置当前页面
+    self.currentPage = 1;
     //控制按钮颜色
     self.firstButton.tintColor = [UIColor redColor];
     self.button2.tintColor = [UIColor blackColor];
@@ -389,6 +401,7 @@ static  NSString * hdpicCell = @"hdpicCell";
 }
 
 - (void)button2Action{
+    self.currentPage = 2;
     self.firstButton.tintColor = [UIColor blackColor];
     self.button2.tintColor = [UIColor redColor];
     self.button3.tintColor = [UIColor blackColor];
@@ -436,6 +449,7 @@ static  NSString * hdpicCell = @"hdpicCell";
 }
 
 - (void)button3Action{
+    self.currentPage = 3;
     self.firstButton.tintColor = [UIColor blackColor];
     self.button2.tintColor = [UIColor blackColor];
     self.button3.tintColor = [UIColor redColor];
@@ -483,6 +497,7 @@ static  NSString * hdpicCell = @"hdpicCell";
 }
 
 - (void)button4Action{
+    self.currentPage = 4;
     self.firstButton.tintColor = [UIColor blackColor];
     self.button2.tintColor = [UIColor blackColor];
     self.button3.tintColor = [UIColor blackColor];
