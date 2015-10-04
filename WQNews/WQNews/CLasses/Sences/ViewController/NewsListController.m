@@ -195,7 +195,7 @@ static  NSString * hdpicCell = @"hdpicCell";
 
 - (void)drawTableView
 {
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth , kScreenHeight -108 ) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth , kScreenHeight - 98 ) style:UITableViewStylePlain];
     [self.mainSccrollView addSubview:self.tableView];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -560,7 +560,6 @@ static  NSString * hdpicCell = @"hdpicCell";
     [chooseVC.likingArray removeAllObjects];
     [chooseVC.likingArray addObjectsFromArray: [self.likingArray mutableCopy]];
     [self presentViewController:chooseVC animated:YES completion:nil];
-    
 
 }
 
@@ -594,9 +593,22 @@ static  NSString * hdpicCell = @"hdpicCell";
 
 - (void)pullAndReleaseBottom{
 //     __weak NewsListController * weakSelf = self;
-    if (_currentPage == 1) {
+    
+    
+    
     pageNumber ++;
     NSString * AddURL = [NSString stringWithFormat:@"http://api.sina.cn/sinago/list.json?uid=f4e8fd0c674b1f09&loading_ad_timestamp=0&platfrom_version=4.4.2&wm=b207&imei=864502025497611&from=6048195012&connection_type=2&chwm=12030_0001&AndroidID=ec0fd8e3601d5a55dcf7c6ffe0eeaf35&v=1&s=20&IMEI=f10426ec3f30043c6798dae6fe0cbf0d&p=%ld&MAC=c08f509cfc8e818f8482d523edf1ee84&channel=news_toutiao",pageNumber];
+    
+    if (_currentPage == 1) {
+        
+    }else if(_currentPage != 1){
+        
+        NewsListItem * newsList = self.likingArray[_currentPage - 2];
+        
+        AddURL = [NSString stringWithFormat:@"http://api.sina.cn/sinago/list.json?uid=f4e8fd0c674b1f09&loading_ad_timestamp=0&platfrom_version=4.4.2&wm=b207&imei=864502025497611&from=6048195012&connection_type=2&chwm=12030_0001&AndroidID=ec0fd8e3601d5a55dcf7c6ffe0eeaf35&v=1&s=20&IMEI=f10426ec3f30043c6798dae6fe0cbf0d&p=%ld&MAC=c08f509cfc8e818f8482d523edf1ee84&channel=%@",pageNumber,newsList.ID];
+        
+    }
+    
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
     [manager GET:AddURL parameters:nil success:^void(AFHTTPRequestOperation * task, id result) {
         NSDictionary * dataDict = result[@"data"];
@@ -618,7 +630,7 @@ static  NSString * hdpicCell = @"hdpicCell";
         NSLog(@"错误是:%@",error);
     }];
         
-    }
+ 
 
 
 

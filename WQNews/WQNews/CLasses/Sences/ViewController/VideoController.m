@@ -14,10 +14,14 @@
 #import "VideoItem.h"
 #import "WebViewController.h"
 #import "PlayerHelper.h"
-
+#import <SVPullToRefresh.h>
 
 @interface VideoController ()<UITableViewDelegate,UITableViewDataSource>
-
+{
+    //加载页数
+    NSInteger pageNumber;
+    
+}
 
 @property(nonatomic,strong)NSMutableArray * VideoMutArray;
 @property(nonatomic,strong)UISegmentedControl * segCV;
@@ -74,7 +78,7 @@ static   NSString *  videolistCell = @"videolistCell";
                 cryURl = videoItem.url;
             }
         }
-        NSLog(@"%@",cryURl);
+      
         
         //解析数据
         AFHTTPRequestOperationManager * videoManager = [AFHTTPRequestOperationManager manager];
@@ -109,6 +113,21 @@ static   NSString *  videolistCell = @"videolistCell";
     self.maintableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 55, kScreenWidth , kScreenHeight - 115) style:UITableViewStylePlain];
     self.maintableView.delegate = self;
     self.maintableView.dataSource = self;
+    //上拉刷新
+    __weak VideoController * weakSelf = self;
+    [self.maintableView addPullToRefreshWithActionHandler:^{
+        //先移除在画tableview
+        [weakSelf.maintableView removeFromSuperview];
+        [weakSelf analysysData];
+        
+    }];
+    //下拉加载
+    [self.maintableView addInfiniteScrollingWithActionHandler:^{
+        [weakSelf pullFromButtom];
+        
+    }];
+    
+    
     //注册自定义cell
     [self.maintableView registerNib:[UINib nibWithNibName:@"VideoListCell" bundle:nil] forCellReuseIdentifier:videolistCell];
     
@@ -151,11 +170,43 @@ static   NSString *  videolistCell = @"videolistCell";
 }
 
 - (void)changeAction{
+    
     self.index = _segCV.selectedSegmentIndex;
+    //先移除在绘制
     [self.maintableView removeFromSuperview];
     [self analysysData];
     
 }
+#pragma mark --- 上拉加载事件--
+//加载事件
+- (void)pullFromButtom{
+    
+    pageNumber ++;
+    
+    //网址分析
+    NSArray * videoArray =  [[NewsListHelper shareNewsListHerlper].videoArray mutableCopy];
+    NewsListItem * newsList = videoArray[_index];
+    NSString * videoURL = [NSString stringWithFormat:@"http://api.sina.cn/sinago/list.json?uid=f4e8fd0c674b1f09&loading_ad_timestamp=0&platfrom_version=4.4.2&wm=b207&imei=864502025497611&from=6048195012&connection_type=2&chwm=12030_0001&AndroidID=ec0fd8e3601d5a55dcf7c6ffe0eeaf35&v=1&s=20&IMEI=f10426ec3f30043c6798dae6fe0cbf0d&p=%ld&MAC=c08f509cfc8e818f8482d523edf1ee84&channel=%@",pageNumber,newsList.ID];
+    
+    //解析数据
+    AFHTTPRequestOperationManager * videoManager = [AFHTTPRequestOperationManager manager];
+    [videoManager GET:videoURL parameters:nil success:^void(AFHTTPRequestOperation * task, id result) {
+        NSArray * array = result[@"data"][@"list"];
+        for (int i = 0; i < array.count; i ++) {
+            NSDictionary * dict = array[i];
+            VideoItem * modelVideo = [VideoItem new];
+            [modelVideo setValuesForKeysWithDictionary:dict];
+            [self.VideoMutArray addObject:modelVideo];
+        }
+        //先移除在绘制新的tableview
+        [self.maintableView removeFromSuperview];
+        [self drawTableView];
+    } failure:^void(AFHTTPRequestOperation * opration, NSError * error) {
+        
+    }];
+
+}
+
 
 
 #pragma mark ---lazy load---

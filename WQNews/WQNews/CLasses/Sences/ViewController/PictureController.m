@@ -15,8 +15,13 @@
 #import "Pictures4PictCell.h"
 #import "Picture2PictCell.h"
 #import "Pictures3VCell.h"
+#import <SVPullToRefresh.h>
 
 @interface PictureController ()<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
+{
+    NSInteger pageNumber;
+    NSString * URLStr;
+}
 //存储板块表头的数组
 @property(nonatomic,strong)NSMutableArray * TitleMutArray;
 //存储cell信息的数组
@@ -35,7 +40,7 @@ static NSString * pictures3VCell = @"pictures3VPicCell";
 {
     self = [super init];
     if (self) {
-        
+        pageNumber = 1;
         self.title = @"图片";
         self.tabBarItem.image = [UIImage imageNamed:@"picture"];
     }
@@ -47,7 +52,6 @@ static NSString * pictures3VCell = @"pictures3VPicCell";
    //解析数据
     [[NewsListHelper shareNewsListHerlper]getAllURL:^{
         self.TitleMutArray = [[NewsListHelper shareNewsListHerlper].hdpicArray mutableCopy];
-        NSString * URLStr;
         for (NSDictionary * titleDict in self.TitleMutArray) {
             if ([titleDict[@"name"] isEqualToString:@"精选"]) {
                 URLStr = titleDict[@"url"];
@@ -80,6 +84,7 @@ static NSString * pictures3VCell = @"pictures3VPicCell";
     UILabel * titleLable = [[UILabel alloc]initWithFrame:CGRectMake(0, 20, kScreenWidth, 20)];
     titleLable.textAlignment = NSTextAlignmentCenter;
     titleLable.text = @"图片";
+    titleLable.textColor = [UIColor redColor];
     [self.view addSubview:titleLable];
     
 }
@@ -95,6 +100,20 @@ static NSString * pictures3VCell = @"pictures3VPicCell";
     [self.PICStableVIew registerNib:[UINib nibWithNibName:@"Pictures4PictCell" bundle:nil] forCellReuseIdentifier:pictures4PicCell];
     [self.PICStableVIew registerNib:[UINib nibWithNibName:@"Picture2PictCell" bundle:nil] forCellReuseIdentifier:pictures2PicCell];
     [self.PICStableVIew registerNib:[UINib nibWithNibName:@"Pictures3VCell" bundle:nil] forCellReuseIdentifier:pictures3VCell];
+    
+    //上拉刷新
+    __weak PictureController * weakSelf = self;
+    [self.PICStableVIew addPullToRefreshWithActionHandler:^{
+        [weakSelf.PICStableVIew removeFromSuperview];
+        [weakSelf viewDidLoad];
+
+    }];
+    //下拉加载
+    [self.PICStableVIew addInfiniteScrollingWithActionHandler:^{
+        [weakSelf pullFromBottom];
+        
+    }];
+
     
     
     [self.view addSubview:self.PICStableVIew];
@@ -160,6 +179,35 @@ static NSString * pictures3VCell = @"pictures3VPicCell";
     webViewVC.Title = picturesItem.title;
     
     [self presentViewController:webViewVC animated:YES completion:nil];
+}
+
+#pragma mark ---上拉加载事件
+- (void)pullFromBottom{
+    pageNumber ++;
+    NSString * picStr =  [NSString stringWithFormat:@"http://api.sina.cn/sinago/list.json?uid=f4e8fd0c674b1f09&loading_ad_timestamp=0&platfrom_version=4.4.2&wm=b207&imei=864502025497611&from=6048195012&connection_type=2&chwm=12030_0001&AndroidID=ec0fd8e3601d5a55dcf7c6ffe0eeaf35&v=1&s=20&IMEI=f10426ec3f30043c6798dae6fe0cbf0d&p=%ld&MAC=c08f509cfc8e818f8482d523edf1ee84&channel=hdpic_toutiao",pageNumber];
+    
+    AFHTTPRequestOperationManager * JXmanager = [AFHTTPRequestOperationManager manager];
+    [JXmanager GET:picStr parameters:nil success:^void(AFHTTPRequestOperation * task, id result) {
+        NSArray * array = [NSArray array];
+        NSLog(@"%ld",array.count);
+        array = result[@"data"][@"list"];
+        NSLog(@"%ld",array.count);
+        for (int i = 0; i < array.count; i ++ ) {
+            NSDictionary * tempDict = [NSDictionary new];
+            tempDict = array[i];
+            HdpicPictures * pictureItem = [HdpicPictures new];
+            [pictureItem setValuesForKeysWithDictionary:tempDict];
+            [self.cellMutArray addObject:pictureItem];
+        }
+        //移除之前的在重画
+        [self.PICStableVIew removeFromSuperview];
+        [self drawTableView];
+        NSLog(@"---------------%ld",self.cellMutArray.count);
+    } failure:^void(AFHTTPRequestOperation * opration, NSError * error) {
+        NSLog(@"数据请求出错了");
+    }];
+
+    
 }
 
 

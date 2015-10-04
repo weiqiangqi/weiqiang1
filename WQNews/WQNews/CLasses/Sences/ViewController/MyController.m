@@ -105,7 +105,7 @@ static NSString * moreCell = @"moreCell";
     if ([_loginButton.titleLabel.text isEqualToString:userName]) {
         _alertLG = [[UIAlertView alloc]initWithTitle:@"退出登录" message:@"你确定退出登录吗?" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
         [_alertLG show];
-//        alertLG.tag = 1001;
+
     }else{
     LoginController * loginVC = [LoginController new];
     [self presentViewController:loginVC animated:YES completion:nil];
@@ -117,6 +117,7 @@ static NSString * moreCell = @"moreCell";
     if (buttonIndex == 0 && [_alertLG.title isEqualToString:alertView.title] ) {
         [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
         [[UserManager shareUserManager] setLoginState:NO];
+         self.imgView.image = [UIImage imageNamed:@"login"];
     }
 }
 
@@ -126,7 +127,7 @@ static NSString * moreCell = @"moreCell";
 
 - (void)drawTableView{
     
-    self.TitleArray = @[@"注册账号",@"新浪登录",@"找回密码",@"清理缓存",@"收藏",@"应用中心"];
+    self.TitleArray = @[@"注册账号",@"找回密码",@"第三方新浪登录",@"清理缓存",@"收藏",@"应用中心"];
     self.tableView = [[UITableView alloc]initWithFrame: CGRectMake(0, 0, kScreenWidth, kScreenHeight - 48) style:UITableViewStylePlain];
     
     self.view.backgroundColor = [UIColor colorWithRed:0.677 green:1.000 blue:0.200 alpha:1.000];
@@ -171,7 +172,7 @@ static NSString * moreCell = @"moreCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if ([self.TitleArray[indexPath.row] isEqualToString:@"新浪登录"]) {
+    if ([self.TitleArray[indexPath.row] isEqualToString:@"第三方新浪登录"]) {
         WBAuthorizeRequest * request = [WBAuthorizeRequest request];
         request.redirectURI = kRedirectURL;
         request.scope = @"all";
