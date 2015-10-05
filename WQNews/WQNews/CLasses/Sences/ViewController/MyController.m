@@ -128,7 +128,7 @@ static NSString * moreCell = @"moreCell";
 
 - (void)drawTableView{
     
-    self.TitleArray = @[@"注册账号",@"找回密码",@"第三方新浪登录",@"清理缓存",@"收藏",@"应用中心"];
+    self.TitleArray = @[@"注册账号",@"找回密码",@"第三方新浪登录"];
     self.tableView = [[UITableView alloc]initWithFrame: CGRectMake(0, 0, kScreenWidth, kScreenHeight - 48) style:UITableViewStylePlain];
     
     self.view.backgroundColor = [UIColor colorWithRed:0.677 green:1.000 blue:0.200 alpha:1.000];
