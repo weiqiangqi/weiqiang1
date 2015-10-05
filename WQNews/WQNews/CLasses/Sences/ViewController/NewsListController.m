@@ -274,6 +274,10 @@ static  NSString * hdpicCell = @"hdpicCell";
 
 //设置cell的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    TouTiaoNews * CellNews = self.cellMutArray[indexPath.row];
+    if ([CellNews.category isEqualToString:@"hdpic"] )if ([CellNews.category isEqualToString:@"hdpic"] ){
+        return 100;
+    }
     return 80;
 }
 

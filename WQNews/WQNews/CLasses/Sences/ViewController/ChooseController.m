@@ -84,13 +84,17 @@ static NSString * titleCell = @"titleCell";
     TItleCell * cell = [tableView dequeueReusableCellWithIdentifier:titleCell forIndexPath:indexPath];
     
     cell.tag = 1000 +indexPath.row;
+    
     NewsListItem * modelTitle = self.titleArray[indexPath.row];
+    NSLog(@"%ld-----",indexPath.row);
     for (NewsListItem * model in self.likingArray) {
         if ([model.name isEqualToString:modelTitle.name]) {
             cell.lable4Choose.text = @"取消";
+            [cell setCellWithTitleItem:modelTitle];
+            return cell;
         }
     }
-    
+    cell.lable4Choose.text = @"订阅";
     [cell setCellWithTitleItem:modelTitle];
     
     return cell;
@@ -102,6 +106,7 @@ static NSString * titleCell = @"titleCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     TItleCell * cell = (TItleCell *)[self.view viewWithTag:(indexPath.row + 1000)];
     NewsListItem * modelTitle = self.titleArray[indexPath.row];
     if (self.likingArray.count >= 3 && [cell.lable4Choose.text isEqualToString:@"订阅"]) {

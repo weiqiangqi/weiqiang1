@@ -14,6 +14,8 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *imagView4Second;
 @property (weak, nonatomic) IBOutlet UIImageView *imgView4Third;
+@property (weak, nonatomic) IBOutlet UILabel *lable4Title;
+
 
 - (void)setCellWithToutiaoNewsItem:(TouTiaoNews *)newsItem;
 

@@ -22,6 +22,7 @@
 }
 //赋值
 - (void)setCellWithToutiaoNewsItem:(TouTiaoNews *)newsItem{
+    self.lable4Title.text = newsItem.title;
     NSDictionary * picsDict = [NSDictionary new];
        picsDict = newsItem.pics;
     NSArray * picsArray = [NSArray array];
