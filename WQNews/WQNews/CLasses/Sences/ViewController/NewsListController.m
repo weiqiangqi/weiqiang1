@@ -177,7 +177,7 @@ static  NSString * hdpicCell = @"hdpicCell";
 {
     
     self.mainSccrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight - 110)];
-    self.mainSccrollView.contentSize = CGSizeMake(kScreenWidth * 4, self.mainSccrollView.frame.size.height);
+    self.mainSccrollView.contentSize = CGSizeMake(kScreenWidth , self.mainSccrollView.frame.size.height);
     self.mainSccrollView.backgroundColor = [UIColor greenColor];
     _mainSccrollView.pagingEnabled = YES;
     self.mainSccrollView.showsHorizontalScrollIndicator = NO;

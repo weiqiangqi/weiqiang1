@@ -15,6 +15,7 @@
 #import "UserManager.h"
 #import <AFNetworking.h>
 #import <UIImageView+WebCache.h>
+#import "WebViewController.h"
 
 
 @interface MyController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
@@ -186,6 +187,11 @@ static NSString * moreCell = @"moreCell";
     }else if ([self.TitleArray[indexPath.row] isEqualToString:@"找回密码"]){
         FindController * findVC = [[FindController alloc]init];
         [self presentViewController:findVC animated:YES completion:nil];
+    }else if ([self.TitleArray[indexPath.row] isEqualToString:@"应用中心" ]){
+        WebViewController * webView = [WebViewController new];
+        webView.Title = @"应用中心";
+        webView.URLStr = @"http://ad.gamebox.360.cn/list.php?searchbox=1&tab=1&pname=com.sina.news&version=111";
+        [self presentViewController:webView animated:YES completion:nil];
     }
     
 }
