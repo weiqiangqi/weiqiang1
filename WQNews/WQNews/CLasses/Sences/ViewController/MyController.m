@@ -226,6 +226,9 @@ static NSString * moreCell = @"moreCell";
    [ sinaManager GET:URL parameters:nil success:^void(AFHTTPRequestOperation * task, id result) {
        NSString * name = result[@"name"];
        NSString * picURL = result[@"profile_image_url"];
+       [[UserManager shareUserManager]setUserName:name];
+       [[UserManager shareUserManager]setLoginState:YES];
+       
        [self.loginButton setTitle:name forState:UIControlStateNormal];
        [self.imgView sd_setImageWithURL:[NSURL URLWithString:picURL]];
        
