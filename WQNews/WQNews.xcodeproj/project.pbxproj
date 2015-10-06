@@ -823,6 +823,7 @@
 				INFOPLIST_FILE = WQNews/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "71987f53-abef-4291-9003-a8dd3d7b04ee";
 			};
 			name = Debug;
 		};
@@ -835,6 +836,7 @@
 				INFOPLIST_FILE = WQNews/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "71987f53-abef-4291-9003-a8dd3d7b04ee";
 			};
 			name = Release;
 		};
