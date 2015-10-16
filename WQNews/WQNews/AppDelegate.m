@@ -88,6 +88,7 @@
     NSString * access_token = userDic[@"access_token"];
     NSString * uid = userDic[@"uid"];
     NSString * url = [NSString stringWithFormat:@"https://api.weibo.com/2/users/show.json?access_token=%@&uid=%@",access_token,uid];
+    
     NSLog(@"%@",url);
     //发布新浪登陆成功通知
       [[NSNotificationCenter defaultCenter]postNotificationName:kSinaLogin object:nil userInfo:@{@"sinaURL":url}];

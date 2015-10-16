@@ -55,7 +55,7 @@ static NSString * titleCell = @"titleCell";
 }
 
 - (void)backToMainScreen{
-    //发出通知
+//发    出通知
     if (self.likingArray.count >= 3) {
         [[NSNotificationCenter defaultCenter]postNotificationName:kChooseInterest object:nil userInfo:@{@"likingArray":self.likingArray}];
         [self dismissViewControllerAnimated:YES completion:nil];
