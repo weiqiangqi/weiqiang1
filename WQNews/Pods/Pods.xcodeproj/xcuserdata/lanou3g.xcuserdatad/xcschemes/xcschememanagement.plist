@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>FMDB.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,7 +32,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1FE73815D775CE039B32E813ECC92CE9</key>
+		<key>08121F5CC23FA3FCD4480136B285DC4D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -37,7 +42,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BD6710188DC69163369104202D8F42F7</key>
+		<key>602C78B8AAFDA0601539447B911AC5C8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AA1E00882135CC5ACCF9C94869AEE8F0</key>
 		<dict>
 			<key>primary</key>
 			<true/>

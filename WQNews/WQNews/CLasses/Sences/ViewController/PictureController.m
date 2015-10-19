@@ -177,14 +177,16 @@ static NSString * pictures3VCell = @"pictures3VPicCell";
      HdpicPictures * picturesItem = self.cellMutArray[indexPath.row];
     webViewVC.URLStr = picturesItem.link;
     webViewVC.Title = picturesItem.title;
+    webViewVC.picUrl = picturesItem.pic;
     
     [self presentViewController:webViewVC animated:YES completion:nil];
 }
 
 #pragma mark ---上拉加载事件
 - (void)pullFromBottom{
+    __weak PictureController * weakSelf = self;
     pageNumber ++;
-    NSString * picStr =  [NSString stringWithFormat:@"http://api.sina.cn/sinago/list.json?uid=f4e8fd0c674b1f09&loading_ad_timestamp=0&platfrom_version=4.4.2&wm=b207&imei=864502025497611&from=6048195012&connection_type=2&chwm=12030_0001&AndroidID=ec0fd8e3601d5a55dcf7c6ffe0eeaf35&v=1&s=20&IMEI=f10426ec3f30043c6798dae6fe0cbf0d&p=%ld&MAC=c08f509cfc8e818f8482d523edf1ee84&channel=hdpic_toutiao",pageNumber];
+    NSString * picStr =  [NSString stringWithFormat:@"http://api.sina.cn/sinago/list.json?uid=f4e8fd0c674b1f09&loading_ad_timestamp=0&platfrom_version=4.4.2&wm=b207&imei=864502025497611&from=6048195012&connection_type=2&chwm=12030_0001&AndroidID=ec0fd8e3601d5a55dcf7c6ffe0eeaf35&v=1&s=10&IMEI=f10426ec3f30043c6798dae6fe0cbf0d&p=%ld&MAC=c08f509cfc8e818f8482d523edf1ee84&channel=hdpic_toutiao",pageNumber];
     
     AFHTTPRequestOperationManager * JXmanager = [AFHTTPRequestOperationManager manager];
     [JXmanager GET:picStr parameters:nil success:^void(AFHTTPRequestOperation * task, id result) {
@@ -197,11 +199,13 @@ static NSString * pictures3VCell = @"pictures3VPicCell";
             tempDict = array[i];
             HdpicPictures * pictureItem = [HdpicPictures new];
             [pictureItem setValuesForKeysWithDictionary:tempDict];
-            [self.cellMutArray addObject:pictureItem];
+            [weakSelf.cellMutArray addObject:pictureItem];
         }
         //移除之前的在重画
-        [self.PICStableVIew removeFromSuperview];
-        [self drawTableView];
+//        [self.PICStableVIew removeFromSuperview];
+//        [self drawTableView];
+        [self.PICStableVIew reloadData];
+        [weakSelf.PICStableVIew.infiniteScrollingView stopAnimating];
         NSLog(@"---------------%ld",self.cellMutArray.count);
     } failure:^void(AFHTTPRequestOperation * opration, NSError * error) {
         NSLog(@"数据请求出错了");

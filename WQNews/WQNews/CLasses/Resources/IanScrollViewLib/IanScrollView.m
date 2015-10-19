@@ -115,7 +115,7 @@
     
     if (!self.withoutPageControl) {
         _pageControl = ({
-            UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake((_scrollView.frame.size.width-100)/2,_scrollView.frame.size.height-18 , 100, 15)];
+            UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake((_scrollView.frame.size.width-100),_scrollView.frame.size.height-18 , 100, 15)];
             
             [pageControl setCurrentPageIndicatorTintColor:self.pageControlCurrentPageIndicatorTintColor ? self.pageControlCurrentPageIndicatorTintColor : [UIColor purpleColor]];
             [pageControl setPageIndicatorTintColor:self.PageControlPageIndicatorTintColor ? self.PageControlPageIndicatorTintColor : [UIColor grayColor]];

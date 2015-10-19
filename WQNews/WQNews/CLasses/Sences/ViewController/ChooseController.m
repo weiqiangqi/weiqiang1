@@ -58,6 +58,7 @@ static NSString * titleCell = @"titleCell";
 //发    出通知
     if (self.likingArray.count >= 3) {
         [[NSNotificationCenter defaultCenter]postNotificationName:kChooseInterest object:nil userInfo:@{@"likingArray":self.likingArray}];
+       
         [self dismissViewControllerAnimated:YES completion:nil];
     }else{
         UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"你选则的太少了" message:@"你换可以在选几个" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];

@@ -16,6 +16,8 @@
 #import <AFNetworking.h>
 #import <UIImageView+WebCache.h>
 #import "WebViewController.h"
+#import "DataManager.h"
+#import "MycollectVC.h"
 
 
 @interface MyController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
@@ -29,7 +31,7 @@
 
 //退出登录的提醒
 @property(nonatomic,strong )UIAlertView * alertLG;
-
+@property(nonatomic,strong)UIAlertView * alert;
 
 @end
 
@@ -128,7 +130,7 @@ static NSString * moreCell = @"moreCell";
 
 - (void)drawTableView{
     
-    self.TitleArray = @[@"注册账号",@"找回密码",@"第三方新浪登录"];
+    self.TitleArray = @[@"注册账号",@"找回密码",@"第三方新浪登录",@"我的收藏",@"清除缓存"];
     self.tableView = [[UITableView alloc]initWithFrame: CGRectMake(0, 0, kScreenWidth, kScreenHeight - 48) style:UITableViewStylePlain];
     
     self.view.backgroundColor = [UIColor colorWithRed:0.677 green:1.000 blue:0.200 alpha:1.000];
@@ -187,16 +189,25 @@ static NSString * moreCell = @"moreCell";
     }else if ([self.TitleArray[indexPath.row] isEqualToString:@"找回密码"]){
         FindController * findVC = [[FindController alloc]init];
         [self presentViewController:findVC animated:YES completion:nil];
-    }else if ([self.TitleArray[indexPath.row] isEqualToString:@"应用中心" ]){
-        WebViewController * webView = [WebViewController new];
-        webView.Title = @"应用中心";
-        webView.URLStr = @"http://ad.gamebox.360.cn/list.php?searchbox=1&tab=1&pname=com.sina.news&version=111";
-        [self presentViewController:webView animated:YES completion:nil];
+    }else if ([self.TitleArray[indexPath.row] isEqualToString:@"我的收藏" ]){
+        MycollectVC * collectVC = [MycollectVC new];
+        [self presentViewController:collectVC animated:YES completion:nil];
+    }else if ([self.TitleArray[indexPath.row] isEqualToString:@"清除缓存" ]){
+       BOOL result = [[DataManager shareDataManager]clearAllDataTableName:kLoverTable];
+        if (result) {
+            _alert = [[UIAlertView alloc]initWithTitle:@"清除缓存成功" message:@"清除缓存成功" delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
+            [_alert show];
+            [NSTimer scheduledTimerWithTimeInterval:0.7f target:self selector:@selector(DismisAlert) userInfo:nil repeats:NO];
+            
+        }
     }
     
 }
-
-
+//alertView提醒事件
+- (void)DismisAlert{
+    
+    [_alert dismissWithClickedButtonIndex:0 animated:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

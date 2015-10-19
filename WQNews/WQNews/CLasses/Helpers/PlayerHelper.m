@@ -90,7 +90,7 @@
     UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 40)];
     
     UIButton * backbutton = [UIButton buttonWithType:UIButtonTypeSystem];
-    backbutton.frame = CGRectMake(5, 15, 30, 20);
+    backbutton.frame = CGRectMake(10, 15, 30, 25);
     
     [backbutton setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
     [backbutton addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];

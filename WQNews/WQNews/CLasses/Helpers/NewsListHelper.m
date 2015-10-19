@@ -55,7 +55,6 @@
         NSArray * VLArray = videoDict[@"list"];
         
         
-        
         NSDictionary * chooseDict = groupDict[@"news2"];
         NSDictionary * headlinesDict = chooseDict[@"headlines"];
         NSArray * chooseArray = headlinesDict[@"list"];

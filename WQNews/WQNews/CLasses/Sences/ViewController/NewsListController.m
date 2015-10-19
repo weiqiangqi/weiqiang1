@@ -65,7 +65,6 @@ static  NSString * hdpicCell = @"hdpicCell";
         self.tabBarItem.image = [UIImage imageNamed:@"news"];
         //注册通知
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(chooseAction:) name:kChooseInterest object:nil];
-        
     }
     return self;
 }
@@ -111,10 +110,7 @@ static  NSString * hdpicCell = @"hdpicCell";
         }];
     }];
     
-
 }
-
-
 #pragma mark ---设置自己喜欢的数组---
 - (void)choooseYourLikingArray{
     for (NewsListItem * item in self.chooseArray) {
@@ -137,34 +133,42 @@ static  NSString * hdpicCell = @"hdpicCell";
     
     IanScrollView * scrollView = [[IanScrollView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth , 188)];
     NSMutableArray * LmutArray = [[NSMutableArray alloc]initWithCapacity:20];
-    
+
     
     //取轮播图数组
     for (TouTiaoNews * news in self.mutArray) {
-        //FIXME: 网络提供的数据有问题
+        
         if (news.is_focus && ([news.category isEqualToString:@"hdpic"] || [news.category isEqualToString:@"plan"] || [news.category isEqualToString:@"cms"])) {
             [self.LBMutArray addObject:news];
             [LmutArray addObject:news.kpic];
         }
     }
+//    UILabel * lableTitle = [[UILabel alloc]initWithFrame:CGRectMake(20, 150, kScreenWidth -120, 28)];
+    
+    
     scrollView.slideImagesArray = LmutArray;
     scrollView.withoutAutoScroll = YES;
     //点击转到详细轮播
     scrollView.ianEcrollViewSelectAction = ^(NSInteger i){
+        
         TouTiaoNews * modelItem =  self.LBMutArray[i];
-        if ([modelItem.category isEqualToString:@"cms"]) {
+   
+        if ([modelItem.category isEqualToString:@"hdpic"]&& modelItem.is_focus) {
+            
+            LBViewController * LBItem =[LBViewController new];
+            LBItem.LBnews = self.LBMutArray[i];
+            
+            LBItem.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+            [self presentViewController:LBItem animated:YES completion:nil];
+        }else{
             WebViewController * webVC = [WebViewController new];
             webVC.URLStr = modelItem.link ;
             webVC.Title = modelItem.title;
             [self presentViewController:webVC animated:YES completion:nil];
-            
-        }else{
-        LBViewController * LBItem =[LBViewController new];
-        LBItem.LBnews = self.LBMutArray[i];
+
+        }
         
-        LBItem.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        [self presentViewController:LBItem animated:YES completion:nil];
-    }
+
     };
     
     [scrollView startLoading];
@@ -201,12 +205,12 @@ static  NSString * hdpicCell = @"hdpicCell";
     self.tableView.dataSource = self;
     //上拉刷新
     __weak NewsListController * weakSelf = self;
-    [self.tableView addPullToRefreshWithActionHandler:^{
+    [weakSelf.tableView addPullToRefreshWithActionHandler:^{
         
         [weakSelf pullAndReleaseForRefresh];
     }];
     //下拉加载
-    [self.tableView addInfiniteScrollingWithActionHandler:^{
+    [weakSelf.tableView addInfiniteScrollingWithActionHandler:^{
         [weakSelf pullAndReleaseBottom];
         
     }];
@@ -225,8 +229,7 @@ static  NSString * hdpicCell = @"hdpicCell";
     [self.tableView registerNib:[UINib nibWithNibName:@"VIdeoCell" bundle:nil] forCellReuseIdentifier:videoCell];
     [self.tableView registerNib:[UINib nibWithNibName:@"CmsCell" bundle:nil] forCellReuseIdentifier:cmsCell];
     [self.tableView registerNib:[UINib nibWithNibName:@"HdpicCell" bundle:nil] forCellReuseIdentifier:hdpicCell];
-    
-    
+
     [self drawScrollView];
     
 }
@@ -261,12 +264,14 @@ static  NSString * hdpicCell = @"hdpicCell";
     }else if ([CellNews.category isEqualToString:@"consice"]){
         SubjectCell * cell = [tableView dequeueReusableCellWithIdentifier:subjectCell forIndexPath:indexPath];
         [cell setCellWithToutiaoNewsItem:CellNews];
+        return cell;
     }else if ([CellNews.category isEqualToString:@"hdpic"] ){
         HdpicCell * cell = [tableView dequeueReusableCellWithIdentifier:hdpicCell forIndexPath:indexPath];
         [cell setCellWithToutiaoNewsItem:CellNews];
+        return cell;
         
     }
-    //FIXME: 精读的选项还没有完善
+    
     SubjectCell * cell = [tableView dequeueReusableCellWithIdentifier:subjectCell forIndexPath:indexPath];
     
     return cell;
@@ -283,6 +288,7 @@ static  NSString * hdpicCell = @"hdpicCell";
 
 //点击cell时触发的事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     TouTiaoNews * CellNews = self.cellMutArray[indexPath.row];
     WebViewController * webView = [WebViewController new];
     if ([CellNews.category isEqualToString:@"hdpic"]) {
@@ -292,12 +298,15 @@ static  NSString * hdpicCell = @"hdpicCell";
         [self presentViewController:LBItem animated:YES completion:nil];
         
     }else{
-        
-        webView.URLStr = CellNews.link;
+       NSString * str = CellNews.link;
+      NSString* string =  [str stringByReplacingOccurrencesOfString:@"&fromsinago=1" withString:@""];
+       string = [string stringByReplacingOccurrencesOfString:@"sinanews.shtml?" withString:@"sharenews.shtml?"];
+        webView.URLStr = string;
+        webView.Title = CellNews.title;
+        webView.picUrl = CellNews.pic;
         [self presentViewController:webView animated:YES completion:nil];
     }
 }
-
 
 
 #pragma  mark ---绘制主界面------
@@ -305,7 +314,7 @@ static  NSString * hdpicCell = @"hdpicCell";
 - (void)drawButton{
     
     UIView * buttonView = [[UIView alloc]initWithFrame:CGRectMake(20, 20, kScreenWidth - 40, 44)];
-    buttonView.tag = 2001;
+       buttonView.tag = 2001;
     //头条新闻
     self.firstButton = [UIButton buttonWithType:UIButtonTypeSystem];
     self.firstButton.frame = CGRectMake(0, 0, (kScreenWidth - 40) / 5, 40);
@@ -313,6 +322,7 @@ static  NSString * hdpicCell = @"hdpicCell";
     [self.firstButton setTitle:@"头条" forState:UIControlStateNormal];
     self.firstButton.titleLabel.textAlignment =NSTextAlignmentCenter;
     self.firstButton.tintColor = [UIColor redColor];
+    self.firstButton.titleLabel.font = [UIFont systemFontOfSize:23];
     
     //第二个button
     self.button2 = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -320,6 +330,7 @@ static  NSString * hdpicCell = @"hdpicCell";
     NewsListItem * yuleItem = self.likingArray[0];
     
     [self.button2 setTitle:yuleItem.name forState:UIControlStateNormal];
+    self.button2.titleLabel.font= [UIFont systemFontOfSize:17];
     self.button2.titleLabel.textAlignment =NSTextAlignmentCenter;
     self.button2.tintColor = [UIColor blackColor];
     //    第三个button
@@ -327,12 +338,13 @@ static  NSString * hdpicCell = @"hdpicCell";
     self.button3.frame = CGRectMake( 2 * (kScreenWidth - 40) / 5,0, (kScreenWidth - 40) / 5, 40);
     NewsListItem * tiyuItem = self.likingArray[1];
     [self.button3 setTitle:tiyuItem.name forState:UIControlStateNormal];
+    self.button3.titleLabel.font= [UIFont systemFontOfSize:17];
     self.button3.titleLabel.textAlignment =NSTextAlignmentCenter;
     self.button3.tintColor = [UIColor blackColor];
     //    第四个
     self.button4 = [UIButton buttonWithType:UIButtonTypeSystem];
     self.button4.frame = CGRectMake( 3 * (kScreenWidth - 40) / 5,0, (kScreenWidth - 40) / 5, 40);
-    
+     self.button4.titleLabel.font= [UIFont systemFontOfSize:17];
     NewsListItem * caijingItem = self.likingArray[2];
     [self.button4 setTitle:caijingItem.name forState:UIControlStateNormal];
     self.button4.titleLabel.textAlignment =NSTextAlignmentCenter;
@@ -345,7 +357,7 @@ static  NSString * hdpicCell = @"hdpicCell";
     
     [self.button5 setTitle:@"编辑" forState:UIControlStateNormal];
     self.button5.titleLabel.textAlignment =NSTextAlignmentCenter;
-    
+     self.button5.titleLabel.font= [UIFont systemFontOfSize:17];
     self.button5.tintColor = [UIColor blackColor];
     //添加事件
     [self.firstButton addTarget:self action:@selector(button1Action) forControlEvents:UIControlEventTouchUpInside];
@@ -362,6 +374,7 @@ static  NSString * hdpicCell = @"hdpicCell";
     [buttonView addSubview:self.button2];
     [buttonView addSubview:self.firstButton];
     [self.view addSubview:buttonView];
+    self.view.backgroundColor = [UIColor colorWithRed:0.872 green:0.974 blue:0.862 alpha:1.000];
 }
 
 #pragma mark --表头选择事件
@@ -375,6 +388,11 @@ static  NSString * hdpicCell = @"hdpicCell";
     self.button3.tintColor = [UIColor blackColor];
     self.button4.tintColor = [UIColor blackColor];
     self.button5.tintColor = [UIColor blackColor];
+    self.firstButton.titleLabel.font = [UIFont systemFontOfSize:23];
+    self.button2.titleLabel.font = [UIFont systemFontOfSize:17];
+    self.button3.titleLabel.font = [UIFont systemFontOfSize:17];
+    self.button4.titleLabel.font = [UIFont systemFontOfSize:17];
+    self.button5.titleLabel.font = [UIFont systemFontOfSize:17];
     
     [self.mutArray removeAllObjects];
     NSString * toutiaoUrl = kTOUTIAOURL;
@@ -414,7 +432,11 @@ static  NSString * hdpicCell = @"hdpicCell";
     self.button3.tintColor = [UIColor blackColor];
     self.button4.tintColor = [UIColor blackColor];
     self.button5.tintColor = [UIColor blackColor];
-    
+    self.firstButton.titleLabel.font = [UIFont systemFontOfSize:17];
+    self.button2.titleLabel.font = [UIFont systemFontOfSize:23];
+    self.button3.titleLabel.font = [UIFont systemFontOfSize:17];
+    self.button4.titleLabel.font = [UIFont systemFontOfSize:17];
+    self.button5.titleLabel.font = [UIFont systemFontOfSize:17];
     
     [self.mutArray removeAllObjects];
     NSString * yuleStr;
@@ -462,6 +484,11 @@ static  NSString * hdpicCell = @"hdpicCell";
     self.button3.tintColor = [UIColor redColor];
     self.button4.tintColor = [UIColor blackColor];
     self.button5.tintColor = [UIColor blackColor];
+    self.firstButton.titleLabel.font = [UIFont systemFontOfSize:17];
+    self.button2.titleLabel.font = [UIFont systemFontOfSize:17];
+    self.button3.titleLabel.font = [UIFont systemFontOfSize:23];
+    self.button4.titleLabel.font = [UIFont systemFontOfSize:17];
+    self.button5.titleLabel.font = [UIFont systemFontOfSize:17];
     
     [self.mutArray removeAllObjects];
     NSString * tiyuStr;
@@ -511,6 +538,11 @@ static  NSString * hdpicCell = @"hdpicCell";
     self.button4.tintColor = [UIColor redColor];
     self.button5.tintColor = [UIColor blackColor];
     
+    self.firstButton.titleLabel.font = [UIFont systemFontOfSize:17];
+    self.button2.titleLabel.font = [UIFont systemFontOfSize:17];
+    self.button3.titleLabel.font = [UIFont systemFontOfSize:17];
+    self.button4.titleLabel.font = [UIFont systemFontOfSize:23];
+    self.button5.titleLabel.font = [UIFont systemFontOfSize:17];
     [self.mutArray removeAllObjects];
     NSString * caijingStr;
 //    for (NewsListItem * caijingItem in self.newsArray) {
@@ -556,6 +588,13 @@ static  NSString * hdpicCell = @"hdpicCell";
     self.button3.tintColor = [UIColor blackColor];
     self.button4.tintColor = [UIColor blackColor];
     self.button5.tintColor = [UIColor redColor];
+    self.firstButton.titleLabel.font = [UIFont systemFontOfSize:17];
+    self.button2.titleLabel.font = [UIFont systemFontOfSize:17];
+    self.button3.titleLabel.font = [UIFont systemFontOfSize:17];
+    self.button4.titleLabel.font = [UIFont systemFontOfSize:17];
+    self.button5.titleLabel.font = [UIFont systemFontOfSize:23];
+    
+    
     ChooseController * chooseVC = [ChooseController new];
     
     chooseVC.titleArray = [self.chooseArray mutableCopy];
@@ -591,22 +630,16 @@ static  NSString * hdpicCell = @"hdpicCell";
     }else if (self.currentPage == 4){
         [weakSelf button4Action];
     }
-
-    
 }
 
 - (void)pullAndReleaseBottom{
-//     __weak NewsListController * weakSelf = self;
-    
-    
-    
+     __weak NewsListController * weakSelf = self;
     pageNumber ++;
     NSString * AddURL = [NSString stringWithFormat:@"http://api.sina.cn/sinago/list.json?uid=f4e8fd0c674b1f09&loading_ad_timestamp=0&platfrom_version=4.4.2&wm=b207&imei=864502025497611&from=6048195012&connection_type=2&chwm=12030_0001&AndroidID=ec0fd8e3601d5a55dcf7c6ffe0eeaf35&v=1&s=20&IMEI=f10426ec3f30043c6798dae6fe0cbf0d&p=%ld&MAC=c08f509cfc8e818f8482d523edf1ee84&channel=news_toutiao",pageNumber];
     
     if (_currentPage == 1) {
         
     }else if(_currentPage != 1){
-        
         NewsListItem * newsList = self.likingArray[_currentPage - 2];
         
         AddURL = [NSString stringWithFormat:@"http://api.sina.cn/sinago/list.json?uid=f4e8fd0c674b1f09&loading_ad_timestamp=0&platfrom_version=4.4.2&wm=b207&imei=864502025497611&from=6048195012&connection_type=2&chwm=12030_0001&AndroidID=ec0fd8e3601d5a55dcf7c6ffe0eeaf35&v=1&s=20&IMEI=f10426ec3f30043c6798dae6fe0cbf0d&p=%ld&MAC=c08f509cfc8e818f8482d523edf1ee84&channel=%@",pageNumber,newsList.ID];
@@ -624,20 +657,29 @@ static  NSString * hdpicCell = @"hdpicCell";
             [newsItem setValuesForKeysWithDictionary:dict];
             [self.mutArray addObject:newsItem];
         }
-        [self.tableView removeFromSuperview];
-        [self.mainSccrollView removeFromSuperview];
+//        [weakSelf.tableView removeFromSuperview];
+//        [weakSelf.mainSccrollView removeFromSuperview];
+//        
+//        [weakSelf drawmainScrollView];
+//        [weakSelf drawTableView];
         
-        [self drawmainScrollView];
-        [self drawTableView];
-        
+        //在重新加载之前先清理掉之前的数据
+        [self.cellMutArray removeAllObjects];
+        //解析数组
+        for (TouTiaoNews  * CellNews in self.mutArray) {
+            if ([CellNews.category isEqualToString:@"subject"] || [CellNews.category isEqualToString:@"video"] || ([CellNews.category isEqualToString:@"cms"] && (!CellNews.is_focus)) || ([CellNews.category isEqualToString:@"hdpic"] &&  (!(CellNews.is_focus))) || [CellNews.category isEqualToString:@"consice"] ) {
+                [self.cellMutArray addObject:CellNews];
+            }
+        }
+
+        NSInteger y = kScreenHeight * (pageNumber - 1);
+        weakSelf.tableView.contentOffset = CGPointMake(0, y);
+        [weakSelf.tableView reloadData];
+        [weakSelf.tableView.infiniteScrollingView stopAnimating];
     } failure:^void(AFHTTPRequestOperation * operation, NSError * error) {
         NSLog(@"错误是:%@",error);
     }];
-        
- 
-
-
-
+    
 }
 
 

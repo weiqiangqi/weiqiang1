@@ -45,6 +45,7 @@ static   NSString *  videolistCell = @"videolistCell";
 }
 
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     //赋初值
@@ -180,7 +181,7 @@ static   NSString *  videolistCell = @"videolistCell";
 #pragma mark --- 上拉加载事件--
 //加载事件
 - (void)pullFromButtom{
-    
+    __weak VideoController * weakSelf = self;
     pageNumber ++;
     
     //网址分析
@@ -196,11 +197,12 @@ static   NSString *  videolistCell = @"videolistCell";
             NSDictionary * dict = array[i];
             VideoItem * modelVideo = [VideoItem new];
             [modelVideo setValuesForKeysWithDictionary:dict];
-            [self.VideoMutArray addObject:modelVideo];
+            [weakSelf.VideoMutArray addObject:modelVideo];
         }
-        //先移除在绘制新的tableview
-        [self.maintableView removeFromSuperview];
-        [self drawTableView];
+
+        [weakSelf.maintableView reloadData];
+        
+        [weakSelf.maintableView.infiniteScrollingView stopAnimating];
     } failure:^void(AFHTTPRequestOperation * opration, NSError * error) {
         
     }];
@@ -222,15 +224,6 @@ static   NSString *  videolistCell = @"videolistCell";
 //cell的点击事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     VideoItem * modelVideo = self.VideoMutArray[indexPath.row];
-    
-    //点击跳转到webView页面
-    //    WebViewController * webView = [WebViewController new];
-    //    webView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    //    NSDictionary * VideoDict = modelVideo.video_info;
-    //    NSString * URL = VideoDict[@"video_id"];
-    //    webView.URLStr = URL;
-    //    webView.Title = modelVideo.title;
-    //    [self presentViewController:webView animated:YES completion:nil];
     
     NSDictionary * VideoDict = modelVideo.video_info;
     NSString * URL = VideoDict[@"url"];

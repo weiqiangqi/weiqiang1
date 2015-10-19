@@ -17,17 +17,9 @@
 
 #define kTOUTIAOURL @"http://api.sina.cn/sinago/list.json?uid=f4e8fd0c674b1f09&loading_ad_timestamp=0&platfrom_version=4.4.2&wm=b207&imei=864502025497611&from=6048195012&connection_type=2&chwm=12030_0001&AndroidID=ec0fd8e3601d5a55dcf7c6ffe0eeaf35&v=1&s=20&IMEI=f10426ec3f30043c6798dae6fe0cbf0d&p=1&MAC=c08f509cfc8e818f8482d523edf1ee84&channel=news_toutiao"
 
-#define kAppKey @"3998436771"
-#define kRedirectURL @"https://api.weibo.com/oauth2/default.html"
-//宏定义
-#define kLoginNotice @"loginSuccess"
-#define kLoginState  @"loginState"
-#define kUserName  @"userName"
-#define kUserPwd  @"userPwd"
-#define kUserEmailAddress  @"emailAddress"
-#define kRegisterSucces @"registerSuccess"
-#define kChooseInterest  @"ChooseInterest"
-#define kSinaLogin  @"SinaLogin"
+#import "WQHeader.h"
+
+
 
 
 

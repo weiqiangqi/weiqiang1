@@ -13,6 +13,6 @@
 @property(nonatomic,strong)NSString * URLStr;
 
 @property(nonatomic,strong)NSString * Title;
-
+@property(nonatomic,strong)NSString * picUrl;
 
 @end
