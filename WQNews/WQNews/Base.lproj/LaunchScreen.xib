@@ -18,7 +18,7 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loadingPage1.png" translatesAutoresizingMaskIntoConstraints="NO" id="jun-Oj-0UC">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1loadingPage.png" translatesAutoresizingMaskIntoConstraints="NO" id="jun-Oj-0UC">
                     <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                 </imageView>
             </subviews>
@@ -38,6 +38,6 @@
         </view>
     </objects>
     <resources>
-        <image name="loadingPage1.png" width="306" height="622"/>
+        <image name="1loadingPage.png" width="306" height="622"/>
     </resources>
 </document>

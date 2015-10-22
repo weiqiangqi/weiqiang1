@@ -8,6 +8,7 @@
 
 #import "WebViewController.h"
 #import "DataManager.h"
+#import "UserManager.h"
 
 @interface WebViewController ()<UIWebViewDelegate>
 {
@@ -97,6 +98,11 @@
 
 #pragma mark---收藏事件---
 - (void)collectAction{
+    NSString * name = [[UserManager shareUserManager]userName];
+    if (name.length <= 0) {
+        return;
+        
+    }
     if (index > 0) {
         index = 0 ;
         UIAlertView * alert =[ [UIAlertView alloc]initWithTitle:@"取消收藏成功" message:@"取消收藏成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];

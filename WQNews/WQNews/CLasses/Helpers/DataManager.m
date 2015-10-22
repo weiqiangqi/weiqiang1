@@ -136,11 +136,10 @@ static FMDatabase * db= nil;
     if (![db open]) {
         return 0;
     }
-    NSString *sql = [NSString stringWithFormat:@"SELECT  FROM %@ where %@ = '%@'" ,tableName,kLoverKey,mainKey];
+    NSString *sql = [NSString stringWithFormat:@"SELECT %@ FROM %@ where %@ = '%@'" ,kLoverTitle,tableName,kLoverKey,mainKey];
     FMResultSet * result = [db executeQuery:sql];
     while ([result next]){
-        
-        NSString * str = [result stringForColumn:mainKey];
+        NSString * str = [result stringForColumn:kLoverTitle];
         return str.length;
     }
     return 0;
