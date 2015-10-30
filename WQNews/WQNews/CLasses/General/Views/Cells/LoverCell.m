@@ -2,7 +2,7 @@
 //  LoverCell.m
 //  WQNews
 //
-//  Created by lanou3g on 15/10/18.
+//  Created by QWQ on 15/10/18.
 //  Copyright © 2015年 齐伟强. All rights reserved.
 //
 

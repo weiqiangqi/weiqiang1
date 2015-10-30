@@ -2,7 +2,7 @@
 //  HLoverModel.h
 //  MedicineNurse
 //
-//  Created by lanou3g on 15/10/15.
+//  Created by QWQ on 15/10/15.
 //  Copyright © 2015年 Adar-Li. All rights reserved.
 //
 

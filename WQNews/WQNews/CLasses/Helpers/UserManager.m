@@ -2,7 +2,7 @@
 //  UserManager.m
 //  WQNews
 //
-//  Created by lanou3g on 15/9/30.
+//  Created by QWQ on 15/9/30.
 //  Copyright (c) 2015年 齐伟强. All rights reserved.
 //
 
@@ -12,10 +12,11 @@
 
 + (UserManager *)shareUserManager{
     static UserManager * manager = nil;
-    if (manager == nil) {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
         manager = [UserManager new];
-    }
-    return manager;
+    });
+       return manager;
 }
 //同步
 - (void)synchronize{

@@ -2,7 +2,7 @@
 //  TouTiaoNews.h
 //  WQNews
 //
-//  Created by lanou3g on 15/9/22.
+//  Created by QWQ on 15/9/22.
 //  Copyright (c) 2015年 齐伟强. All rights reserved.
 //
 
